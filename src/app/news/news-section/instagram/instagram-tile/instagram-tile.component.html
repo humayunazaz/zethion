@@ -1,0 +1,30 @@
+<div class="post-container">
+  <!-- <ig-post [href]="instagramItem.postUrl"></ig-post> -->
+  <div class="ig-post-wrapper" (click)="openItem(instagramItem)" (pan)="mobileHover()">
+    <div class="ig-post-wrapper-inner" [class.noThumbnail]="instagramItem.withOutThumbnail" [class.activeHoverTile]="activePanHoverId === instagramItem.postId">
+      <!-- <ig-post [class.isOdd]="isOdd" width="auto" height="auto"></ig-post> -->
+      <div *ngIf="!imageLoaded && !instagramItem.withOutThumbnail" class="imageLoading">
+        <div class="gold">
+          <mat-spinner></mat-spinner>
+        </div>
+      </div>
+      <img src="{{instagramItem.thumbnail}}" [alt]="instagramItem.socialPage.socialPageUsername" class="news-image" [hidden]="!imageLoaded" (error)="notifyImageError(instagramItem)"
+      draggable="false" (load)="onImageLoad()" *ngIf="!instagramItem.withOutThumbnail">
+      <div class="socialName">
+        <h4>{{instagramItem.socialPage.socialPageUsername}}</h4>
+      </div>
+      <div class="share-like-wrapper">
+        <app-social-share [url]="shareUrl"></app-social-share>
+        <app-social-like [id]="instagramItem.socialPage.idRef" [socialType]="instagramItem.socialPage.pageType" [type]="'social'"></app-social-like>
+      </div>
+      <!-- <div class="socialIcon">
+        <i class="fab fa-instagram icon"></i>
+      </div> -->
+      <div class="instagram-desc-wrapper">
+        <div class="mb-2">
+          <p>{{instagramItem.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

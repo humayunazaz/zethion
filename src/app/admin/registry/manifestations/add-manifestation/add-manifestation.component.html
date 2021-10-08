@@ -1,0 +1,100 @@
+<div class="container">
+  <mat-dialog-content class="translation-modal">
+    <div class="card-content">
+      <h3 class="text-center fo-wt-900 title-content">Add Manifestation</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <form [formGroup]="addManifestationForm" (ngSubmit)="submit()">
+            <div class="form-group">
+              <label>{{'REGISTRY.NAME' | translate}}</label>
+              <input matInput placeholder="{{'REGISTRY.NAME' | translate}}" type="text"  formControlName="name">
+              <p class="error-message" *ngIf="addManifestationForm.controls.name.touched && addManifestationForm.controls.name.errors?.required">Name is required</p>
+            </div>
+            <div class="form-group">
+              <label for="social">{{'REGISTRY.SPORT' | translate}}</label>
+              <app-sport-select [sportControl]="addManifestationForm.controls.sport" hideAll='true'></app-sport-select>
+              <p class="error-message" *ngIf="addManifestationForm.controls.sport.touched && addManifestationForm.controls.sport.errors?.required">Sport is required</p>
+            </div>
+            <div class="form-group">
+              <label for="language">{{'REGISTRY.GENDER' | translate}}</label> <br />
+              <mat-radio-group  aria-label="Select an option"
+                formControlName="gender"
+                (change)='genderChanged($event)'>
+                <mat-radio-button *ngFor="let gender of genders" [value]="gender">{{ 'REGISTRY.' + gender | translate }}</mat-radio-button>
+              </mat-radio-group>
+              <p class="error-message" *ngIf="addManifestationForm.controls.gender.touched && addManifestationForm.controls.gender.errors?.required">Gender is required</p>
+            </div>
+
+
+            <!-- Translations Control -->
+            <div formGroupName="translations" *ngIf="!isEdit">
+              <div class="form-group">
+                <label>{{'LANGUAGE.ENG' | translate}}</label>
+                <input matInput placeholder="{{'REGISTRY.TRANSLATE_TEXT' | translate}}" type="text"  formControlName="en">
+              </div>
+
+              <div class="form-group">
+                <label>{{'LANGUAGE.ITA' | translate}}</label>
+                <input matInput placeholder="{{'REGISTRY.TRANSLATE_TEXT' | translate}}" type="text"  formControlName="it">
+              </div>
+
+              <div class="form-group">
+                <label>{{'LANGUAGE.FRA' | translate}}</label>
+                <input matInput placeholder="{{'REGISTRY.TRANSLATE_TEXT' | translate}}" type="text"  formControlName="fr">
+              </div>
+
+              <div class="form-group">
+                <label>{{'LANGUAGE.GER' | translate}}</label>
+                <input matInput placeholder="{{'REGISTRY.TRANSLATE_TEXT' | translate}}" type="text"  formControlName="de">
+              </div>
+
+              <div class="form-group">
+                <label>{{'LANGUAGE.ESP' | translate}}</label>
+                <input matInput placeholder="{{'REGISTRY.TRANSLATE_TEXT' | translate}}" type="text"  formControlName="es">
+              </div>
+            </div>
+            <div formArrayName="manifestationCodes">
+              <div class="form-group">
+                <label>CODES</label>
+              </div>
+              <div *ngFor="let item of getManifestationCodeControl(); let i = index">
+                <div [formGroup]="item">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input matInput placeholder="{{'CODE.SYSTEM' | translate}}" type="text"  formControlName="system" (keyup)="changeSystem(i)">
+                        <p class="error-message" *ngIf="item.controls.system.touched && item.controls.system.errors?.required">System is required</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input matInput placeholder="{{'CODE.CODE' | translate}}" type="text"  formControlName="code" (keyup)="changeCode(i)">
+                        <p class="error-message" *ngIf="item.controls.code.touched && item.controls.code.errors?.required">Code is required</p>
+                        <p class="error-message mt-10" *ngIf="item.controls.code.touched && item.controls.code.value && item.controls.code.errors?.pattern">Code must be number</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="add-team text-center">
+                        <div class="add-remove-wrapper">
+                          <button type="button" mat-flat-button color="primary" (click)="addManifestationCode()" *ngIf="i === (getManifestationCodeControl().length - 1)">
+                           <i class="fa fa-plus"></i>
+                          </button>
+                          <button  *ngIf="i !== (getManifestationCodeControl().length - 1)" type="button" mat-flat-button color="primary" (click)="removeManifestationCode(i)">
+                            <i class="fa fa-minus"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group text-center add-manifestation">
+              <button type="submit" mat-flat-button color="primary">{{loading? 'FORM.SAVING' : 'FORM.SUBMIT'}}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

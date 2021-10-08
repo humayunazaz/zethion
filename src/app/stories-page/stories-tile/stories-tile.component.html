@@ -1,0 +1,24 @@
+<div class="stories-card" (click)="openStory()">
+  <div class="stories-image-wrapper w-100" [class.bottom]="isBottom">
+    <div *ngIf="!imageLoaded" class="text-center imageLoading">
+      <div class="w-50 mauto gold">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+    <img src="{{titleImage}}" [alt]="storiesItem.author" class="stories-image" [hidden]="!imageLoaded"
+      (error)="notifyImageError(storiesItem)" draggable="false" (load)="onImageLoad()">
+    <div class="name-social-wrapper">
+      <div class="stories-source-name">{{ storiesItem.author }}</div>
+      <!-- <div class="share-like-wrapper">
+        <app-social-share [url]="shareUrl"></app-social-share>
+        <app-social-like [isGeneral]="true"></app-social-like>
+      </div> -->
+    </div>
+  </div>
+  <div class="stories-desc-wrapper p-3" [class.text-bottom]="isBottom">
+    <!-- <div class="mb-2 desc-team">{{storiesItem.source}}</div> -->
+    <div class="desc-title">{{ 'STORY.TITLE_' + storiesItem.code | translate }}</div>
+    <div class="desc-subtitle">{{ 'STORY.SUBTITLE_' + storiesItem.code | translate }}</div>
+    <div class="desc-publishAt">{{ storiesItem.publishedAt | date }}</div>
+  </div>
+</div>

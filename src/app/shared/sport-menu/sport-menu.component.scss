@@ -1,0 +1,176 @@
+@import 'sportbusters';
+
+.sports-icon {
+  position: relative;
+  z-index: 1001;
+  display: block;
+  cursor: pointer;
+
+  .icon-sb-sports {
+    font-size: 200%;
+
+    @media only screen and (#{$bp-lt-768}) {
+      font-size: 180%;
+    }
+  }
+
+  i {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+
+    @media only screen and (#{$bp-lt-768}) {
+      font-size: 19px;
+    }
+  }
+}
+
+.sport-menu-wrapper {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+
+  @media only screen and (#{$bp-lt-768}) {
+    overflow: auto;
+  }
+
+  table {
+    table-layout: fixed;
+    width: 700px;
+
+    @media only screen and (#{$bp-lt-768}) {
+      width: 350px;
+    }
+
+    tbody {
+      tr {
+        height: 75px;
+
+        td {
+          pointer-events: none;
+          text-align: center;
+          border-right: 0.5px solid #a68a43;
+          border-bottom: 0.5px solid #a68a43;
+
+          &:last-child {
+            border-right: none;
+          }
+
+          @media(hover: hover) and (pointer: fine) {
+            &:hover {
+              background-color: rgba(255, 255, 255, 0.7);
+
+              i::before,
+              .sports-name {
+                color: #fff;
+                filter: drop-shadow(5px 5px 5px #000);
+                -webkit-filter: drop-shadow(5px 5px 5px #000);
+              }
+            }
+          }
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+
+            i::before,
+            .sports-name {
+              color: #fff;
+              filter: drop-shadow(5px 5px 5px #000);
+              -webkit-filter: drop-shadow(5px 5px 5px #000);
+            }
+          }
+        }
+
+        &:last-child {
+          td {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+
+  .sport-list {
+    list-style-type: none;
+    padding: 19px 25px;
+    position: relative;
+    margin-bottom: 0 !important;
+
+    @media only screen and (#{$bp-lt-768}) {
+      padding: 15px;
+    }
+
+    &:not(:last-child):after {
+      content: '';
+      position: absolute;
+      right: 0;
+      border-right: 2px solid #c7b273;
+      top: 3%;
+      bottom: 6%;
+
+      @media only screen and (#{$bp-lt-768}) {
+        top: 1.5%;
+        bottom: 3%;
+      }
+
+    }
+
+    li {
+      margin-bottom: 10px;
+      font-size: .8125rem;
+      font-size: .8125rem;
+    }
+  }
+
+  ::ng-deep.mat-checkbox-layout {
+    display: block !important;
+    width: 100%;
+
+    @media only screen and (#{$bp-lt-768}) {
+      line-height: 12px !important;
+    }
+  }
+
+  ::ng-deep.mat-checkbox-checked {
+
+    i::before,
+    .sports-name {
+      color: #a68a43;
+    }
+  }
+
+  ::ng-deep.mat-checkbox-inner-container {
+    display: none !important;
+  }
+
+  ::ng-deep.mat-checkbox-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: auto;
+
+    @media only screen and (#{$bp-lt-768}) {
+      line-height: 12px !important;
+    }
+
+    i {
+      min-height: 50px;
+      font-size: 50px;
+    }
+
+  }
+}
+
+::ng-deep.mat-menu-panel {
+  &.sports-menu {
+    max-width: none !important;
+
+    @media only screen and (#{$bp-lt-768}) {
+      max-height: 350px !important;
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+  }
+}

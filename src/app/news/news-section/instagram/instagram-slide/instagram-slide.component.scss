@@ -1,0 +1,97 @@
+@import "sportbusters";
+
+.nd-ratio {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.nd-ratio>* {
+  display: block;
+  bottom: 0;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+
+.nd-ratio--standard:before {
+  padding-top: 60% !important;
+}
+
+.im-carousel__item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+img {
+  height: 92vh !important;
+  object-fit: cover;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to bottom, black 75%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0.5));
+}
+
+.carousel-caption {
+  top: 0;
+  display: flex !important;
+  align-items: center;
+
+  .slide-desc-wrapper {
+    .slide-desc-team {
+      text-transform: uppercase;
+      color: $color-primary;
+      font-weight: bold;
+      font-size: 0.8em;
+    }
+
+    .slide-desc-title {
+      font-weight: 400;
+      font-size: 1.8em;
+      line-height: 1.2em;
+      letter-spacing: initial;
+      text-shadow: -0.6px 0 #000000, 0 0.6px #000000, 0.6px 0 #000000, 0 -0.6px #000000;
+    }
+
+    .slide-desc-publishAt {
+      opacity: 0.6;
+      font-weight: 600;
+      font-size: 1em;
+      color: #a68a43;
+      text-shadow: -0.6px 0 #000000, 0 0.6px #000000, 0.6px 0 #000000, 0 -0.6px #000000;
+    }
+  }
+}
+
+.socialName {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  color: #a68a43;
+  font-size: 1.4em;
+  text-shadow: -0.6px 0 #000000, 0 0.6px #000000, 0.6px 0 #000000, 0 -0.6px #000000;
+}
+
+.socialIcon {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  color: #a68a43;
+  font-size: 20px;
+  text-shadow: -0.6px 0 #000000, 0 0.6px #000000, 0.6px 0 #000000, 0 -0.6px #000000;
+}
+
+@media(#{$bp-lt-768}) {
+  .im-carousel__item {
+    max-height: 35vh;
+  }
+}
+
+.share-like-wrapper {
+  z-index: 99999;
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  bottom: unset !important;
+
+}

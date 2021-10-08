@@ -1,0 +1,19 @@
+<span class="sports-icon" [matMenuTriggerFor]="sportMenu"><i class="icon-sb-sports"></i></span>
+<mat-menu #sportMenu="matMenu" class="sports-menu" yPosition="above" (closed)="filterSports()">
+  <div class="sport-menu-wrapper">
+      <table>
+        <tbody>
+          <tr *ngFor="let sportColumn of sportsColumn; let rowIndex = index;">
+            <td *ngFor="let sport of sportColumn; let columnIndex = index;">
+              <ng-container *ngIf="sport">
+                <mat-checkbox (click)="$event.stopPropagation()" [checked]="sport.isSelected" (change)="selectSport($event, sport.name, rowIndex, columnIndex)" class="primary">
+                  <i [class]="'icon-sb-' + sport.name.toLowerCase().split('_').join('-')"></i>
+                  <span class="sports-name">{{ 'SPORT.' + sport.name | translate }}</span>
+                </mat-checkbox>
+              </ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</mat-menu>

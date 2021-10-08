@@ -1,0 +1,16 @@
+<div class="im-carousel__item nd-ratio nd-ratio--standard slide-{{index}}" (click)="openStory()">
+  <img [src]="titleImage" [alt]="item.author" [title]="item.author" (error)="notifyImageError()">
+  <div class="stories-source-name">{{ item.author }}</div>
+  <!-- <div class="share-like-wrapper">
+    <app-social-share [url]="shareUrl"></app-social-share>
+    <app-social-like [isGeneral]="true"></app-social-like>
+  </div> -->
+  <div class="carousel-caption d-md-block">
+    <div class="slide-desc-wrapper">
+      <!-- <div class="row mb-2 slide-desc-team">Source</div> -->
+      <div class="row slide-desc-title mt-4 text-left">{{ 'STORY.TITLE_' + item.code | translate }}</div>
+      <div class="row slide-desc-subtitle text-left">{{ 'STORY.SUBTITLE_' + item.code | translate }}</div>
+      <div class="row slide-desc-publishAt mt-2">{{item.publishedAt | date}}</div>
+    </div>
+  </div>
+</div>

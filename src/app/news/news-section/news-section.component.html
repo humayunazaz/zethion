@@ -1,0 +1,128 @@
+<div class="sub-content">
+  <div class="row text-white">
+    <div class="col-lg-4 col-md-5 col-sm-12 slideImg">
+
+      <div class="imageLoading spin-center" *ngIf="!dataService.isLoaded"><div class="w-50 mauto gold"><mat-spinner></mat-spinner></div></div>
+
+      <div id="slideNewsIndicators" class="carousel slide" *ngIf="dataService.isLoaded" [class.d-none]="!dataService.isLoaded" (wheel)=onScrollBigSlider($event)>
+        <div class="im-carousel">
+          <!-- <ngb-carousel #carousel [showNavigationIndicators]="false">
+            <ng-template *ngFor="let p of contentSlides; let i=index;" ngbSlide>
+              <app-news-slide *ngIf="p.dataService.socialType === 'zt'" [hidden]="dataService.socialType !== 'zt'"  [item]="p" [index]="i" (opened)="openItem($event)" (error)="onItemError(p)" style="display:contents;"></app-news-slide>
+              <app-facebook-slide *ngIf="dataService.socialType === 'fb'" [item]="p" [index]="i" (opened)="openItem($event)" (error)="onItemError(p)" style="display:contents;"></app-facebook-slide>
+              <app-instagram-slide *ngIf="dataService.socialType === 'ig'" [item]="p" [index]="i" (opened)="openItem($event)" (error)="onItemError(p)" style="display:contents;"></app-instagram-slide>
+              <app-twitter-slide *ngIf="dataService.socialType === 'tw'" [item]="p" [index]="i" (opened)="openItem($event)" (error)="onItemError(p)" style="display:contents;"></app-twitter-slide>
+            </ng-template>
+          </ngb-carousel> -->
+          <ng-container *ngIf="!dataService.isSlideEmpty">
+            <ng-container *ngFor="let p of dataService.contentSlides; let i=index;">
+              <app-news-slide *ngIf="dataService.socialType === 'zt'" [hidden]="dataService.socialType !== 'zt'"  [item]="p" [index]="i" (opened)="openItem($event)" (error)="onItemError(p)" style="display:contents;"></app-news-slide>
+              <app-facebook-slide *ngIf="dataService.socialType === 'fb'" [item]="p" [index]="i" (opened)="openItem($event)" (error)="onItemError(p)" style="display:contents;"></app-facebook-slide>
+              <app-instagram-slide *ngIf="dataService.socialType === 'ig'" [item]="p" [index]="i" (opened)="openItem($event)" (error)="onItemError(p)" style="display:contents;"></app-instagram-slide>
+              <app-twitter-slide *ngIf="dataService.socialType === 'tw'" [item]="p" [index]="i" (opened)="openItem($event)" (error)="onItemError(p)" style="display:contents;"></app-twitter-slide>
+              <app-youtube-slide *ngIf="dataService.socialType === 'yt'" [item]="p" [index]="i" (opened)="openItem($event)" (error)="onItemError(p)" style="display:contents;"></app-youtube-slide>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="dataService.isSlideEmpty">
+            <app-search-report [type]="'tile'"></app-search-report>
+          </ng-container>
+        </div>
+        <a role="button" *ngIf="dataService.contentSlides.length" class="carousel-control-prev" (click)="scrollToPrevSlide()" >
+          <span class="icon-sb-left"><span class="path1"></span><span class="path2"></span></span>
+          <span class="sr-only">{{ 'FORM.PREVIOUS' | translate }}</span>
+        </a>
+        <a role="button" *ngIf="dataService.contentSlides.length" class="carousel-control-next" (click)="scrollToNextSlide()" >
+          <span class="icon-sb-right"><span class="path1"></span><span class="path2"></span></span>
+          <span class="sr-only">{{ 'FORM.NEXT' | translate }}</span>
+        </a>
+      </div>
+
+
+    </div>
+
+
+<!-- ====================================================================================================================== -->
+                                  <!-- Right side slider  -->
+<!-- ====================================================================================================================== -->
+
+ <div class="col-lg-8 col-md-7 col-sm-12">
+  <div class="news-optionX col-md-12 body-container">
+
+    <!-- <div class="imageLoading spin-center" *ngIf="!hasBoxesContent() && videoCompleted"><div class="w-50 mauto gold"><mat-spinner></mat-spinner></div></div> -->
+    <div
+      class="tiles-container"
+      infiniteScroll
+      [class.fbContainer]="dataService.socialType === 'fb'"
+      [class.igContainer]="dataService.socialType === 'ig'"
+      [class.twContainer]="dataService.socialType === 'tw'"
+      [class.ytContainer]="dataService.socialType === 'yt'"
+      [scrollWindow]="false"
+      [horizontal]="true"
+      [infiniteScrollDistance]="3"
+      (scrolled)="onInfiniteScroll()"
+      (wheel)="mosaicScroll($event)"
+      #desktopMosaicView
+      *ngIf="dataService.isLoaded && !dataService.isSlideEmpty && desktopView && !socialUpdating"
+      >
+        <ng-container>
+          <app-news-content *ngIf="dataService.socialType === 'zt'" [newsBoxes]="dataService.newsBoxes"></app-news-content>
+          <app-facebook-content *ngIf="dataService.socialType === 'fb'" [fbBoxes]="dataService.fbBoxes"></app-facebook-content>
+          <app-instagram-content *ngIf="dataService.socialType === 'ig'" [igBoxes]="dataService.igBoxes"></app-instagram-content>
+          <app-twitter-content *ngIf="dataService.socialType === 'tw'" [twBoxes]="dataService.twBoxes"></app-twitter-content>
+          <app-youtube-content *ngIf="dataService.socialType === 'yt'" [ytBoxes]="dataService.ytBoxes"></app-youtube-content>
+        </ng-container>
+    </div>
+    <div
+      class="tiles-container"
+      infiniteScroll
+      [class.fbContainer]="dataService.socialType === 'fb'"
+      [class.igContainer]="dataService.socialType === 'ig'"
+      [class.twContainer]="dataService.socialType === 'tw'"
+      [class.ytContainer]="dataService.socialType === 'yt'"
+      [scrollWindow]="true"
+      [horizontal]="false"
+      [infiniteScrollDistance]="3"
+      (scrolled)="onInfiniteScroll()"
+      *ngIf="dataService.isLoaded && !dataService.isSlideEmpty && !desktopView"
+      >
+        <ng-container>
+          <app-news-content *ngIf="dataService.socialType === 'zt'" [newsBoxes]="dataService.newsBoxes"></app-news-content>
+          <app-facebook-content *ngIf="dataService.socialType === 'fb'" [fbBoxes]="dataService.fbBoxes"></app-facebook-content>
+          <app-instagram-content *ngIf="dataService.socialType === 'ig'" [igBoxes]="dataService.igBoxes"></app-instagram-content>
+          <app-twitter-content *ngIf="dataService.socialType === 'tw'" [twBoxes]="dataService.twBoxes"></app-twitter-content>
+          <app-youtube-content *ngIf="dataService.socialType === 'yt'" [ytBoxes]="dataService.ytBoxes"></app-youtube-content>
+        </ng-container>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ====================================================================================================================== -->
+                                            <!-- Bottom Section  -->
+<!-- ====================================================================================================================== -->
+<app-menu [newsMenu]="true">
+  <ng-container class="menu-left">
+    <app-shortcut-images #showMenuInvisible [currShortcuts]="dataService.currShortcuts" style="display: contents;" (clicked)="filterContentAndRender(0, 20, [$event], '')"></app-shortcut-images>
+  </ng-container>
+
+  <ng-container class="menu-toggle">
+    <footer-toggle #menuLeft (logoChanged)="socialChanged($event)" [displayedLogo]="dataService.socialType"></footer-toggle>
+  </ng-container>
+
+  <ng-container class="menu-end-mobile">
+    <app-sport-menu (filterSport)="filterBySport($event)"></app-sport-menu>
+  </ng-container>
+
+  <ng-container class="menu-end">
+    <app-sport-menu (filterSport)="filterBySport($event)"></app-sport-menu>
+  </ng-container>
+
+  <ng-container class="news-menu-end">
+    <app-sport-menu (filterSport)="filterBySport($event)"></app-sport-menu>
+  </ng-container>
+
+</app-menu>
+
+</div>
+<router-outlet></router-outlet>

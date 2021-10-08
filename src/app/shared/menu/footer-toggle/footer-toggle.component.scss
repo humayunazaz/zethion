@@ -1,0 +1,505 @@
+@import 'sportbusters';
+@import "~css-toggle-switch/dist/toggle-switch.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+
+.footer-toggle {
+  margin-right: 10px;
+
+  @media only screen and (#{$bp-lt-768}) {
+    margin-right: 0;
+  }
+
+}
+
+.news-footer-row {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+// body {
+//   margin: 0;
+// }
+
+.logo_slid_left {
+  // position: relative;
+  // top: 14px;
+  // left: -3px;
+
+  // padding-top: 7px;
+  // width: 40px;
+  // height: 40px;
+
+  width: 33px;
+  height: 33px;
+  margin-top: 7px;
+
+  object-fit: contain;
+}
+
+.fab {
+  top: 6px;
+  position: relative;
+  font-size: 25px;
+}
+
+// .roller {
+//   justify-content: center;
+//   align-items: center;
+//   display: flex;
+//   height: 100vh;
+//   background: unset !important;
+// }
+
+.switch-ios {
+  // width: 180px;
+  width: 220px;
+}
+
+label {
+  outline: none !important;
+  cursor: pointer;
+}
+
+.switch-ios.switch-toggle {
+  transition: 400ms all ease-in-out 50ms;
+  background: unset !important;
+  height: 4em;
+  box-shadow: none;
+}
+
+.switch-ios.switch-toggle a {
+  background-color: unset !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('/assets/img/logos/Zt-03.png');
+  background-size: contain !important;
+  object-fit: contain !important;
+  z-index: 2;
+  height: 40px;
+  width: 40px !important;
+  transition: 400ms all ease-in-out 50ms;
+  border: none;
+  border-radius: 5pc;
+}
+
+.spinFb {
+  animation: spinFb 400ms linear;
+}
+
+.switch-toggle a {
+  top: 11px;
+  left: 18px;
+}
+
+#logo {
+  margin-left: -8px;
+  margin-top: 3px;
+}
+
+.switch-ios.switch-toggle label {
+  height: 100%;
+  line-height: 3.7em;
+  -webkit-tap-highlight-color: rgba(51, 182, 229, 0);
+  -o-tap-highlight-color: rgba(51, 182, 229, 0);
+  -ms-tap-highlight-color: rgba(51, 182, 229, 0);
+  -moz-tap-highlight-color: rgba(51, 182, 229, 0);
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+}
+
+.switch-toggle .default-logo {
+  // left: 10% !important;
+  left: 7% !important;
+}
+
+/* facebook  */
+
+.switch-toggle .facebook-logo {
+  // left: 31% !important;
+  left: 25% !important;
+}
+
+.switch-toggle label:nth-child(2):nth-last-child(8)~input:checked:nth-child(7)+label~a {
+  left: 85%;
+}
+
+/* instagrame  */
+
+.switch-toggle .instagram-logo {
+  // left: 55.5% !important;
+  left: 45% !important;
+}
+
+.switch-toggle .twitter-logo {
+  // left: 80% !important;
+  left: 64.5% !important;
+}
+
+.switch-toggle .youtube-logo {
+  // left: 80% !important;
+  left: 84.5% !important;
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.switch-ios.switch-toggle a {
+  border: 2px solid #cccccc;
+}
+
+.switch-ios input:checked+label {
+  color: #888b92 !important;
+}
+
+/* new code */
+
+@keyframes spinFb {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+@media only screen and (min-width: 1400px) and (max-width: 1499px) {}
+
+@media only screen and (min-width: 1300px) and (max-width: 1399px) {}
+
+@media only screen and (min-width: 993px) and (max-width: 1299px) {
+  .switch-toggle .twitter-logo {
+    left: 64.5% !important;
+  }
+}
+
+@media only screen and (min-width: 939px) and (max-width: 992px) {
+  .fab {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 938px) {
+  .fab {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 799px) {
+  .fab {
+    font-size: 20px;
+    left: 9px;
+  }
+}
+
+@media only screen and (min-width: 448px) and (max-width: 599px) {
+  .fab {
+    font-size: 20px;
+    left: 9px;
+  }
+
+  .switch-ios.switch-toggle a {
+    height: 40px;
+    width: 40px !important;
+    top: 10px;
+  }
+}
+
+@media only screen and (min-width: 399px) and (max-width: 449px) {
+  .fab {
+    font-size: 20px;
+    left: 9px;
+  }
+
+  .switch-ios.switch-toggle a {
+    height: 40px;
+    width: 40px !important;
+    top: 10px;
+  }
+}
+
+@media only screen and (min-width: 100px) and (max-width: 398px) {
+  .fab {
+    font-size: 20px;
+    left: 9px;
+  }
+
+  .switch-ios.switch-toggle a {
+    height: 40px;
+    width: 40px !important;
+    top: 10px;
+  }
+}
+
+.img-fb,
+.img-insta,
+.img-twi,
+.img-zt,
+.img-yt {
+  display: none;
+  width: 150px;
+  height: 150px;
+}
+
+.default-logo {
+  background-image: url('/assets/img/logos/Zt-03.png') !important;
+}
+
+.facebook-logo {
+  background-image: url('/assets/img/logos/facebook.png') !important;
+}
+
+.instagram-logo {
+  background-image: url('/assets/img/logos/instagram.png') !important;
+}
+
+.twitter-logo {
+  background-image: url('/assets/img/logos/twitter.png') !important;
+}
+
+.youtube-logo {
+  background-image: url('/assets/img/logos/youtube.png') !important;
+}
+
+// * {
+//   font-family: Arial, Helvetica, sans-serif;
+// }
+
+// .logo_slid_left {
+//   position: relative;
+//   top: 0px;
+//   left: -7px;
+//   width: 46px;
+//   height: 46px;
+//   object-fit: contain;
+// }
+
+// .fab {
+//   top: 6px;
+//   position: relative;
+//   font-size: 25px;
+// }
+
+// .roller {
+//   justify-content: center;
+//   align-items: center;
+//   display: flex;
+//   height: 100vh;
+// }
+
+// .switch-ios {
+//   width: 50%;
+// }
+
+// label {
+//   outline: none !important;
+//   cursor: pointer;
+// }
+
+// .switch-ios.switch-toggle {
+//   transition: 400ms all ease-in-out 50ms;
+//   background: transparent;
+//   height: 3.5em;
+//   box-shadow:none;
+// }
+
+// .switch-ios.switch-toggle a {
+//   background-color: #fff !important;
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   background-image: url('../../../../assets/img/logos/Zt-01.png');
+//   z-index: 2;
+//   height: 45px;
+//   width: 45px !important;
+//   transition: 400ms all ease-in-out 50ms;
+// }
+
+// .spinFb {
+//   animation: spinFb 400ms linear;
+// }
+
+// .switch-toggle a {
+//   top: 6px;
+//   left: 3%;
+// }
+
+// .switch-ios.switch-toggle label {
+//   line-height: 3.7em;
+//   -webkit-tap-highlight-color: rgba(51, 182, 229, 0);
+//   -o-tap-highlight-color: rgba(51, 182, 229, 0);
+//   -ms-tap-highlight-color: rgba(51, 182, 229, 0);
+//   -moz-tap-highlight-color: rgba(51, 182, 229, 0);
+// }
+
+// .switch-toggle label:nth-child(2):nth-last-child(8) ~ input:checked:nth-child(3) + label ~ a {
+//   left: 28%!important;
+// }
+
+// .switch-toggle label:nth-child(2):nth-last-child(8) ~ input:checked:nth-child(5) + label ~ a {
+//   left: 50%!important;
+// }
+
+// .switch-toggle label:nth-child(2):nth-last-child(8) ~ input:checked:nth-child(7) + label ~ a {
+//   left: 78%!important;
+// }
+
+// @keyframes spinFb {
+//   100% {
+//       transform: rotate(1turn);
+
+//   }
+// }
+
+
+// @media only screen and (#{$bp-gt-1440}) and (#{$bp-lt-1500}) {
+//   .logo_slid_left {
+//     left: unset !important;
+//     top: unset !important;
+//   }
+
+// }
+
+// @media only screen and (#{$bp-gt-1280}) and (#{$bp-lt-1440}) {
+//   .logo_slid_left {
+//     left: unset !important;
+//     top: unset !important;
+//   }
+
+//   .switch-toggle a {
+//     top: 2px;
+//     left: 3%;
+//   }
+
+//   .switch-ios.switch-toggle a {
+//     height: 43px!important;
+//     width: 43px !important;
+//   }
+// }
+
+// @media only screen and (#{$bp-gt-960}) and (#{$bp-lt-1280}) {
+//   .logo_slid_left {
+//     left: 0px !important;
+//     top: unset !important;
+//   }
+
+//   .switch-ios.switch-toggle a {
+//     height: 45px!important;
+//     width: 45px !important;
+//   }
+//   .switch-toggle label:nth-child(2):nth-last-child(8)~input:checked:nth-child(7)+label~a {
+//     left: 82%;
+//   }
+//   .switch-ios.switch-toggle{
+//     height: 2em!important;
+//   }
+
+//   .switch-ios.switch-toggle a {
+//     height: 43px!important;
+//     width: 43px !important;
+//   }
+
+// }
+
+// @media only screen and (min-width : 939px) and (max-width : 992px) {
+
+//   .logo_slid_left {
+//     left: 5px !important;
+//     width: 35px;
+//     height: 51px;
+//   }
+
+//   .fab {
+//     font-size: 20px;
+//   }
+// }
+
+// @media only screen and (#{$bp-gt-840}) and (#{$bp-lt-960}) {
+
+//   .switch-ios {
+//       width: 100% !important;
+//   }
+
+//   .logo_slid_left {
+//       left: 5px !important;
+//       width: 35px;
+//       height: 51px;
+//   }
+
+//   .fab {
+//     font-size: 20px;
+//   }
+// }
+
+// @media only screen and (#{$bp-gt-600}) and (#{$bp-lt-840}) {
+
+
+//   .switch-ios {
+//     width: 100% !important;
+//   }
+
+//   .logo_slid_left {
+//     left: 5px !important;
+//     width: 35px;
+//     height: 51px;
+//     top: 3px;
+//   }
+
+//   .fab {
+//     font-size: 20px;
+//     left: 9px;
+//   }
+
+//   .switch-ios.switch-toggle a {
+//     height: 30px;
+//     width: 30px !important;
+//   }
+
+// }
+
+// @media only screen and (#{$bp-lt-600}) {
+
+//   .switch-ios {
+//     width: 100% !important;
+//   }
+
+//   .logo_slid_left {
+//     left: -9px !important;
+//     width: 35px;
+//     height: 51px;
+//     top: 3px;
+//   }
+
+//   .fab {
+//     font-size: 20px;
+//     left: 7px;
+//   }
+
+//   .switch-ios.switch-toggle a {
+//     height: 34px;
+//     width: 34px !important;
+//   }
+
+//   .switch-toggle a{
+//     top: 12px;
+//     left: 0%;
+//   }
+
+//   .switch-toggle label:nth-child(2):nth-last-child(8) ~ input:checked:nth-child(3) + label ~ a {
+//     left: 24%!important;
+//   }
+
+//   .switch-toggle label:nth-child(2):nth-last-child(8) ~ input:checked:nth-child(5) + label ~ a {
+//     left: 45%!important;
+//   }
+
+//   .switch-toggle label:nth-child(2):nth-last-child(8) ~ input:checked:nth-child(7) + label ~ a {
+//     left: 71%!important;
+//   }
+
+//   .switch-toggle label:nth-child(2):nth-last-child(8), .switch-toggle label:nth-child(2):nth-last-child(8) ~ label{
+//     width: 21%!important;
+//   }
+// }
+
+// .switch-ios{
+//   width: unset!important;
+// }

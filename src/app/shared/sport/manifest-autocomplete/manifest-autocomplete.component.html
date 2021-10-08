@@ -1,0 +1,16 @@
+<mat-form-field class="w-100 nationality">
+  <input type="text"
+      matInput
+      placeholder="{{ 'FORM.MANIFESTATION' | translate }}"
+      [formControl]="manifestationControl"
+      [matAutocomplete]="auto"
+      [(ngModel)]="searchQuery"
+      (ngModelChange)="changeSelectionValue()"
+    >
+  <mat-autocomplete #auto="matAutocomplete"
+                    [displayWith]="displayFn.bind(searchQuery)"
+                    (optionSelected)='changeSelection($event.option.value)'>
+    <mat-option *ngFor="let result of results | async"
+                [value]="result"> {{ result.name }}</mat-option>
+  </mat-autocomplete>
+</mat-form-field>

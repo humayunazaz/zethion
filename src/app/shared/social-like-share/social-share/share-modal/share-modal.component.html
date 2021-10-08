@@ -1,0 +1,23 @@
+<div class="header-wrapper">
+  <span class="icon-sb-close" (click)="close()"><span class="path1"></span><span class="path2"></span></span>
+</div>
+<div class="button-wrapper">
+  <button class="facebook" shareButton="facebook" theme="default" [autoSetMeta]="false" [url]="shareUrl">
+    <i class="fab fa-facebook-f"></i>
+  </button>
+  <button class="twitter" shareButton="twitter" theme="default" [autoSetMeta]="false" [url]="shareUrl">
+    <i class="fab fa-twitter"></i>
+  </button>
+  <button class="whatsapp" shareButton="whatsapp" theme="default" [autoSetMeta]="false" [url]="shareUrl">
+    <i class="fab fa-whatsapp"></i>
+  </button>
+</div>
+<div class="button-wrapper">
+  <button class="facebook-messenger" [disabled]="isDesktop" shareButton="messenger" theme="default" [autoSetMeta]="false" [url]="shareUrl">
+    <img *ngIf="isDesktop" class="disabled" src="/assets/img/messenger-disabled.png" alt="messenger-disabled"/>
+    <img *ngIf="!isDesktop" class="enabled" src="/assets/img/messenger.png" alt="messenger"/>
+  </button>
+  <button (click)="copyLink()" class="share-link" shareButton="copy" theme="default" [autoSetMeta]="false" [url]="shareUrl">
+    <i class="fas" [class]="isCopied ? 'fa-check' : 'fa-link'"></i>
+  </button>
+</div>

@@ -1,0 +1,7 @@
+<div id="imagePreload"
+     style="display: none;">
+  <img *ngFor="let img of imagePreloadService?.imageUrls"
+       src="{{img}}"
+       (load)="notifyImageLoaded(img)"
+       (error)="notifyImageError(img)">
+</div>

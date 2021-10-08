@@ -1,0 +1,201 @@
+
+.policySection {
+    max-height: 92vh;
+    padding: 0 20px;
+    padding-top: 50px;
+    overflow: scroll;
+    h1{
+        color: #a68a43;
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 2.8rem;
+    }
+    .sectionHead{
+        color: #a68a43;
+        border-bottom: 1px solid;
+        margin-bottom: 40px;
+        h4{
+            margin-bottom: 0;
+        }
+    }
+    h1, p, h3, h4, li, td{
+        word-break: break-word;
+    }
+    .customTable{
+        margin: 30px 0;
+        td, th{
+            border: 1px solid #fff;
+            padding: 10px;
+        }
+    }
+    .collapseNav .collapsed{
+        display: none;
+    }
+    .collapseNav .collapsed.open{   
+        display: block;
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+    }
+    .leftNavigation{
+        .navigationContent.fixedNav{
+            position: fixed;
+            width: 32%;
+            top: 0;
+            .collapseNav{
+                max-height: 81vh;
+            }
+        }
+        .collapseNav{
+            max-height: 64vh;
+            overflow: scroll;
+            padding: 0 15px;
+        }
+        .sectionHead{
+            margin-top: 30px;
+        }
+        .singleNav{
+            .navHead{
+                display: flex;
+                align-items: center;
+                margin-bottom: 15px;
+                h4{
+                    cursor: pointer;
+                    flex: 1;
+                    margin-bottom: 0;
+                }
+                i{
+                    color: #fff;
+                    cursor: pointer;
+                }
+            }
+            .collapsedItems{
+                p{
+                    margin-bottom: 10px;
+                    font-size: .85rem;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .cookiePolicy{
+        p{
+            a{
+                word-break: break-word;
+            }
+        }
+    }
+    .cookiesManagement{
+        .privacySection{
+            margin-bottom: 20px;
+        }
+        .singlePreference{
+            .preferenceHeader{
+                display: flex;
+                padding-right: 10px;
+                .title{
+                    flex: 1;
+                }
+            }
+        }
+        h5{
+            color: #fff;
+        }
+        button{
+            background: #c7b273;
+            color: #fff;
+            font-weight: 700;
+            margin: 0 5px;
+            border-radius: 0;
+        }
+    }
+    .contactSection{
+        margin-top: 50px;
+        .contactContent{
+            display: flex;
+            .leftContent, .rightContent{
+                flex: 1;
+            }
+            .leftContent{
+                .socialIcons{
+                    display: flex;
+                    margin-top: 30px;
+                    .singleIcon{
+                        width: 40px;
+                        height: 40px;
+                        background: #656565;
+                        color: #000;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 50%;
+                        margin-right: 10px;
+                        a{
+                            color: #000;
+                        }
+                    }
+                }
+            }
+            .rightContent{
+                .singleLine{
+                    display: flex;
+                    .icon{
+                        margin-right: 15px;
+                        max-width: 16px;
+                        min-width: 16px;
+                        i{
+                            color: #fff;
+                        }
+                    }
+                    .text{
+                        flex: 1;
+                    }
+                }
+                p{
+                    i{
+                        margin-right: 10px;
+                    }
+                }
+                .contentHere{
+                    padding-right: 50%;
+                }
+            }
+        }
+    }
+}
+.policySection p {
+    font-weight: 100!important;
+}
+.policySection p, .policySection th, .policySection td, .policySection li {
+    color: #fff;
+}
+.policySection h4, .policySection p.subHead{
+    color: #a68a43;
+}
+.scrollTop{
+    position: fixed;
+    right: 1%;
+    bottom: 9%;
+    background: #c7a754;
+    width: 50px;
+    height: 50px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+}
+.scrollTop.active{
+    display: flex;
+}
+.custom-link{
+    color: #a68a43;
+    cursor: pointer;
+}
+.custom-link:focus{
+    outline: none;
+}

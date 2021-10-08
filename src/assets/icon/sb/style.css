@@ -1,0 +1,1515 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?vdfqaa');
+  src:  url('fonts/icomoon.eot?vdfqaa#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?vdfqaa') format('truetype'),
+    url('fonts/icomoon.woff?vdfqaa') format('woff'),
+    url('fonts/icomoon.svg?vdfqaa#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sb-volleyball:before {
+  content: "\ea50";
+  color: #fff;
+}
+.icon-sb-share-curve-colored .path1:before {
+  content: "\e9a9";
+  color: rgb(166, 138, 67);
+}
+.icon-sb-share-curve-colored .path2:before {
+  content: "\e9aa";
+  margin-left: -1.1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-share-curve-solid:before {
+  content: "\e9a5";
+}
+.icon-sb-like-solid-colored .path1:before {
+  content: "\e9a6";
+  color: rgb(166, 138, 67);
+}
+.icon-sb-like-solid-colored .path2:before {
+  content: "\e9a7";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-share-arrow:before {
+  content: "\e9a8";
+}
+.icon-sb-share-arrow-solid:before {
+  content: "\e9ab";
+}
+.icon-sb-share-arrow-colored .path1:before {
+  content: "\e9ac";
+  color: rgb(166, 138, 67);
+}
+.icon-sb-share-arrow-colored .path2:before {
+  content: "\e9ad";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-share:before {
+  content: "\e9ae";
+}
+.icon-sb-share-solid:before {
+  content: "\e9af";
+}
+.icon-sb-share-colored .path1:before {
+  content: "\e9b0";
+  color: rgb(166, 138, 67);
+}
+.icon-sb-share-colored .path2:before {
+  content: "\e9b1";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-share-curve:before {
+  content: "\e9b2";
+}
+.icon-like:before {
+  content: "\e9b3";
+}
+.icon-sb-like-solid:before {
+  content: "\e9b4";
+}
+.icon-sb-likes2:before {
+  content: "\e983";
+}
+.icon-sb-sports:before {
+  content: "\e9a3";
+}
+.icon-sb-info:before {
+  content: "\e900";
+}
+.icon-sb-en .path1:before {
+  content: "\e901";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en .path2:before {
+  content: "\e902";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en .path3:before {
+  content: "\e903";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-en .path4:before {
+  content: "\e904";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en .path5:before {
+  content: "\e905";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en .path6:before {
+  content: "\e906";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en .path7:before {
+  content: "\e907";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-en .path8:before {
+  content: "\e908";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en .path9:before {
+  content: "\e909";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en .path10:before {
+  content: "\e90a";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en .path11:before {
+  content: "\e90b";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en .path12:before {
+  content: "\e90c";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en .path13:before {
+  content: "\e90d";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-en .path14:before {
+  content: "\e90e";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en .path15:before {
+  content: "\e90f";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en .path16:before {
+  content: "\e910";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en .path17:before {
+  content: "\e911";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en .path18:before {
+  content: "\e912";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en .path19:before {
+  content: "\e913";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-en .path20:before {
+  content: "\e914";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en .path21:before {
+  content: "\e915";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en .path22:before {
+  content: "\e916";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en .path23:before {
+  content: "\e917";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en .path24:before {
+  content: "\e918";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en .path25:before {
+  content: "\e919";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-en .path26:before {
+  content: "\e91a";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en .path27:before {
+  content: "\e91b";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en .path28:before {
+  content: "\e91c";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-de .path1:before {
+  content: "\e91d";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-de .path2:before {
+  content: "\e91e";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-de .path3:before {
+  content: "\e91f";
+  margin-left: -1em;
+  color: rgb(247, 232, 2);
+}
+.icon-sb-de .path4:before {
+  content: "\e920";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-de .path5:before {
+  content: "\e921";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-de .path6:before {
+  content: "\e922";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-de .path7:before {
+  content: "\e923";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-de .path8:before {
+  content: "\e924";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-fr .path1:before {
+  content: "\e925";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-fr .path2:before {
+  content: "\e926";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-fr .path3:before {
+  content: "\e927";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-fr .path4:before {
+  content: "\e928";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-fr .path5:before {
+  content: "\e929";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-fr .path6:before {
+  content: "\e92a";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-fr .path7:before {
+  content: "\e92b";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-fr .path8:before {
+  content: "\e92c";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-it .path1:before {
+  content: "\e92d";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-it .path2:before {
+  content: "\e92e";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-it .path3:before {
+  content: "\e92f";
+  margin-left: -1em;
+  color: rgb(0, 141, 68);
+}
+.icon-sb-it .path4:before {
+  content: "\e930";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-it .path5:before {
+  content: "\e931";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-it .path6:before {
+  content: "\e932";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-it .path7:before {
+  content: "\e933";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-it .path8:before {
+  content: "\e934";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es .path1:before {
+  content: "\e935";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es .path2:before {
+  content: "\e936";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es .path3:before {
+  content: "\e937";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es .path4:before {
+  content: "\e938";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es .path5:before {
+  content: "\e939";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es .path6:before {
+  content: "\e93a";
+  margin-left: -1em;
+  color: rgb(247, 232, 2);
+}
+.icon-sb-es .path7:before {
+  content: "\e93b";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es .path8:before {
+  content: "\e93c";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-es .path9:before {
+  content: "\e93d";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es .path10:before {
+  content: "\e93e";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-es .path11:before {
+  content: "\e93f";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-logo:before {
+  content: "\e940";
+}
+.icon-sb-water-sports:before {
+  content: "\e941";
+  color: #fff;
+}
+.icon-sb-olympic-sports:before {
+  content: "\e942";
+  color: #fff;
+}
+.icon-sb-squash:before {
+  content: "\e943";
+  color: #fff;
+}
+.icon-sb-basque-pelote:before {
+  content: "\e944";
+  color: #fff;
+}
+.icon-sb-lacrosse:before {
+  content: "\e945";
+  color: #fff;
+}
+.icon-sb-chess:before {
+  content: "\e946";
+  color: #fff;
+}
+.icon-sb-e-sports:before {
+  content: "\e947";
+  color: #fff;
+}
+.icon-sb-darts:before {
+  content: "\e948";
+  color: #fff;
+}
+.icon-sb-snooker:before {
+  content: "\e949";
+  color: #fff;
+}
+.icon-sb-bowling:before {
+  content: "\e94a";
+  color: #fff;
+}
+.icon-sb-croquet:before {
+  content: "\e94b";
+  color: #fff;
+}
+.icon-sb-bowls:before {
+  content: "\e94c";
+  color: #fff;
+}
+.icon-sb-netball:before {
+  content: "\e94d";
+  color: #fff;
+}
+.icon-sb-right .path1:before {
+  content: "\e94e";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-right .path2:before {
+  content: "\e94f";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-left .path1:before {
+  content: "\e950";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-left .path2:before {
+  content: "\e951";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-double-left .path1:before {
+  content: "\e952";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-double-left .path2:before {
+  content: "\e953";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-double-left .path3:before {
+  content: "\e954";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-double-left .path4:before {
+  content: "\e955";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-close .path1:before {
+  content: "\e956";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-close .path2:before {
+  content: "\e957";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-double-right .path1:before {
+  content: "\e958";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-double-right .path2:before {
+  content: "\e959";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-double-right .path3:before {
+  content: "\e95a";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-double-right .path4:before {
+  content: "\e95b";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-windsurfing:before {
+  content: "\e95c";
+  color: #fff;
+}
+.icon-sb-climbing:before {
+  content: "\e95d";
+  color: #fff;
+}
+.icon-sb-mma:before {
+  content: "\e95e";
+  color: #fff;
+}
+.icon-sb-wrestling:before {
+  content: "\e95f";
+  color: #fff;
+}
+.icon-sb-weightlifting:before {
+  content: "\e960";
+  color: #fff;
+}
+.icon-sb-trampolin:before {
+  content: "\e961";
+  color: #fff;
+}
+.icon-sb-table-tennis:before {
+  content: "\e962";
+  color: #fff;
+}
+.icon-sb-skateboarding:before {
+  content: "\e963";
+  color: #fff;
+}
+.icon-sb-sailing:before {
+  content: "\e964";
+  color: #fff;
+}
+.icon-sb-taekwondo:before {
+  content: "\e965";
+  color: #fff;
+}
+.icon-sb-karate:before {
+  content: "\e966";
+  color: #fff;
+}
+.icon-sb-judo:before {
+  content: "\e967";
+  color: #fff;
+}
+.icon-sb-gymnastics-rhythmic:before {
+  content: "\e968";
+  color: #fff;
+}
+.icon-sb-gymnastics-artistic:before {
+  content: "\e969";
+  color: #fff;
+}
+.icon-sb-fencing:before {
+  content: "\e96a";
+  color: #fff;
+}
+.icon-sb-rowing:before {
+  content: "\e96b";
+  color: #fff;
+}
+.icon-sb-canoe:before {
+  content: "\e96c";
+  color: #fff;
+}
+.icon-sb-surfing:before {
+  content: "\e96d";
+  color: #fff;
+}
+.icon-sb-marathon-swimming:before {
+  content: "\e96e";
+  color: #fff;
+}
+.icon-sb-artistic-swimming:before {
+  content: "\e96f";
+  color: #fff;
+}
+.icon-sb-motocross:before {
+  content: "\e970";
+  color: #fff;
+}
+.icon-sb-granturismo:before {
+  content: "\e971";
+  color: #fff;
+}
+.icon-sb-cycling-bmx:before {
+  content: "\e972";
+  color: #fff;
+}
+.icon-sb-cycling-track:before {
+  content: "\e973";
+  color: #fff;
+}
+.icon-sb-cycling-mountain-bike:before {
+  content: "\e974";
+  color: #fff;
+}
+.icon-sb-ski-jumping:before {
+  content: "\e975";
+  color: #fff;
+}
+.icon-sb-snowboarding:before {
+  content: "\e976";
+  color: #fff;
+}
+.icon-sb-speed-skating:before {
+  content: "\e977";
+  color: #fff;
+}
+.icon-sb-freestyle-skiing:before {
+  content: "\e978";
+  color: #fff;
+}
+.icon-sb-skeleton:before {
+  content: "\e979";
+  color: #fff;
+}
+.icon-sb-luge:before {
+  content: "\e97a";
+  color: #fff;
+}
+.icon-sb-cross-country-skiing:before {
+  content: "\e97b";
+  color: #fff;
+}
+.icon-sb-figure-skating:before {
+  content: "\e97c";
+  color: #fff;
+}
+.icon-sb-curling:before {
+  content: "\e97d";
+  color: #fff;
+}
+.icon-sb-bobsleigh:before {
+  content: "\e97e";
+  color: #fff;
+}
+.icon-sb-biathlon:before {
+  content: "\e97f";
+  color: #fff;
+}
+.icon-sb-language:before {
+  content: "\e980";
+  color: #fff;
+}
+.icon-sb-questions:before {
+  content: "\e981";
+}
+.icon-sb-search:before {
+  content: "\e984";
+}
+.icon-sb-winter-sports:before {
+  content: "\e985";
+  color: #fff;
+}
+.icon-sb-water-polo:before {
+  content: "\e986";
+  color: #fff;
+}
+.icon-sb-tennis:before {
+  content: "\e987";
+  color: #fff;
+}
+.icon-sb-swimming:before {
+  content: "\e988";
+  color: #fff;
+}
+.icon-sb-shooting:before {
+  content: "\e989";
+  color: #fff;
+}
+.icon-sb-rugby:before {
+  content: "\e98a";
+  color: #fff;
+}
+.icon-sb-rally:before {
+  content: "\e98b";
+  color: #fff;
+}
+.icon-sb-padel:before {
+  content: "\e98c";
+  color: #fff;
+}
+.icon-sb-multisports:before {
+  content: "\e98d";
+  color: #fff;
+}
+.icon-sb-motor-sports:before {
+  content: "\e98e";
+  color: #fff;
+}
+.icon-sb-motorcycling:before {
+  content: "\e98f";
+  color: #fff;
+}
+.icon-sb-ice-hockey:before {
+  content: "\e990";
+  color: #fff;
+}
+.icon-sb-handball:before {
+  content: "\e991";
+  color: #fff;
+}
+.icon-sb-golf:before {
+  content: "\e992";
+  color: #fff;
+}
+.icon-sb-futsal:before {
+  content: "\e993";
+  color: #fff;
+}
+.icon-sb-formula1:before {
+  content: "\e994";
+  color: #fff;
+}
+.icon-sb-football:before {
+  content: "\e995";
+  color: #fff;
+}
+.icon-sb-field-hockey:before {
+  content: "\e996";
+  color: #fff;
+}
+.icon-sb-equestrian:before {
+  content: "\e997";
+  color: #fff;
+}
+.icon-sb-diving:before {
+  content: "\e998";
+  color: #fff;
+}
+.icon-sb-cycling:before {
+  content: "\e999";
+  color: #fff;
+}
+.icon-sb-cricket:before {
+  content: "\e99a";
+  color: #fff;
+}
+.icon-sb-boxing:before {
+  content: "\e99b";
+  color: #fff;
+}
+.icon-sb-beach-volleyball:before {
+  content: "\e99c";
+  color: #fff;
+}
+.icon-sb-basketball:before {
+  content: "\e99d";
+  color: #fff;
+}
+.icon-sb-baseball:before {
+  content: "\e99e";
+}
+.icon-sb-badminton:before {
+  content: "\e99f";
+  color: #fff;
+}
+.icon-sb-athletics:before {
+  content: "\e9a0";
+  color: #fff;
+}
+.icon-sb-archery:before {
+  content: "\e9a1";
+  color: #fff;
+}
+.icon-sb-american-football:before {
+  content: "\e9a2";
+  color: #fff;
+}
+.icon-sb-alpine-skiing:before {
+  content: "\e9a4";
+  color: #fff;
+}
+.icon-sb-sports1:before {
+  content: "\e9b5";
+}
+.icon-sb-info1:before {
+  content: "\e9b6";
+}
+.icon-sb-en1 .path1:before {
+  content: "\e9b7";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en1 .path2:before {
+  content: "\e9b8";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en1 .path3:before {
+  content: "\e9b9";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-en1 .path4:before {
+  content: "\e9ba";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en1 .path5:before {
+  content: "\e9bb";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en1 .path6:before {
+  content: "\e9bc";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en1 .path7:before {
+  content: "\e9bd";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-en1 .path8:before {
+  content: "\e9be";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en1 .path9:before {
+  content: "\e9bf";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en1 .path10:before {
+  content: "\e9c0";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en1 .path11:before {
+  content: "\e9c1";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en1 .path12:before {
+  content: "\e9c2";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en1 .path13:before {
+  content: "\e9c3";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-en1 .path14:before {
+  content: "\e9c4";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en1 .path15:before {
+  content: "\e9c5";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en1 .path16:before {
+  content: "\e9c6";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en1 .path17:before {
+  content: "\e9c7";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en1 .path18:before {
+  content: "\e9c8";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en1 .path19:before {
+  content: "\e9c9";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-en1 .path20:before {
+  content: "\e9ca";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en1 .path21:before {
+  content: "\e9cb";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en1 .path22:before {
+  content: "\e9cc";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en1 .path23:before {
+  content: "\e9cd";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en1 .path24:before {
+  content: "\e9ce";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en1 .path25:before {
+  content: "\e9cf";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-en1 .path26:before {
+  content: "\e9d0";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-en1 .path27:before {
+  content: "\e9d1";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-en1 .path28:before {
+  content: "\e9d2";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-de1 .path1:before {
+  content: "\e9d3";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-de1 .path2:before {
+  content: "\e9d4";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-de1 .path3:before {
+  content: "\e9d5";
+  margin-left: -1em;
+  color: rgb(247, 232, 2);
+}
+.icon-sb-de1 .path4:before {
+  content: "\e9d6";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-de1 .path5:before {
+  content: "\e9d7";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-de1 .path6:before {
+  content: "\e9d8";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-de1 .path7:before {
+  content: "\e9d9";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-de1 .path8:before {
+  content: "\e9da";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-fr1 .path1:before {
+  content: "\e9db";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-fr1 .path2:before {
+  content: "\e9dc";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-fr1 .path3:before {
+  content: "\e9dd";
+  margin-left: -1em;
+  color: rgb(22, 79, 206);
+}
+.icon-sb-fr1 .path4:before {
+  content: "\e9de";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-fr1 .path5:before {
+  content: "\e9df";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-fr1 .path6:before {
+  content: "\e9e0";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-fr1 .path7:before {
+  content: "\e9e1";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-fr1 .path8:before {
+  content: "\e9e2";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-it1 .path1:before {
+  content: "\e9e3";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-it1 .path2:before {
+  content: "\e9e4";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-it1 .path3:before {
+  content: "\e9e5";
+  margin-left: -1em;
+  color: rgb(0, 141, 68);
+}
+.icon-sb-it1 .path4:before {
+  content: "\e9e6";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-it1 .path5:before {
+  content: "\e9e7";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-it1 .path6:before {
+  content: "\e9e8";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-it1 .path7:before {
+  content: "\e9e9";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-it1 .path8:before {
+  content: "\e9ea";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es1 .path1:before {
+  content: "\e9eb";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es1 .path2:before {
+  content: "\e9ec";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es1 .path3:before {
+  content: "\e9ed";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es1 .path4:before {
+  content: "\e9ee";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es1 .path5:before {
+  content: "\e9ef";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es1 .path6:before {
+  content: "\e9f0";
+  margin-left: -1em;
+  color: rgb(247, 232, 2);
+}
+.icon-sb-es1 .path7:before {
+  content: "\e9f1";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es1 .path8:before {
+  content: "\e9f2";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-es1 .path9:before {
+  content: "\e9f3";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-es1 .path10:before {
+  content: "\e9f4";
+  margin-left: -1em;
+  color: rgb(237, 31, 52);
+}
+.icon-sb-es1 .path11:before {
+  content: "\e9f5";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-logo1:before {
+  content: "\e9f6";
+}
+.icon-sb-water-sports1:before {
+  content: "\e9f7";
+  color: #fff;
+}
+.icon-sb-olympic-sports1:before {
+  content: "\e9f8";
+  color: #fff;
+}
+.icon-sb-squash1:before {
+  content: "\e9f9";
+  color: #fff;
+}
+.icon-sb-basque-pelote1:before {
+  content: "\e9fa";
+  color: #fff;
+}
+.icon-sb-lacrosse1:before {
+  content: "\e9fb";
+  color: #fff;
+}
+.icon-sb-chess1:before {
+  content: "\e9fc";
+  color: #fff;
+}
+.icon-sb-e-sports1:before {
+  content: "\e9fd";
+  color: #fff;
+}
+.icon-sb-darts1:before {
+  content: "\e9fe";
+  color: #fff;
+}
+.icon-sb-snooker1:before {
+  content: "\e9ff";
+  color: #fff;
+}
+.icon-sb-bowling1:before {
+  content: "\ea00";
+  color: #fff;
+}
+.icon-sb-croquet1:before {
+  content: "\ea01";
+  color: #fff;
+}
+.icon-sb-bowls1:before {
+  content: "\ea02";
+  color: #fff;
+}
+.icon-sb-netball1:before {
+  content: "\ea03";
+  color: #fff;
+}
+.icon-sb-right1 .path1:before {
+  content: "\ea04";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-right1 .path2:before {
+  content: "\ea05";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-left1 .path1:before {
+  content: "\ea06";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-left1 .path2:before {
+  content: "\ea07";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-double-left1 .path1:before {
+  content: "\ea08";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-double-left1 .path2:before {
+  content: "\ea09";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-double-left1 .path3:before {
+  content: "\ea0a";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-double-left1 .path4:before {
+  content: "\ea0b";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-close1 .path1:before {
+  content: "\ea0c";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-close1 .path2:before {
+  content: "\ea0d";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-double-right1 .path1:before {
+  content: "\ea0e";
+  color: rgb(255, 255, 255);
+}
+.icon-sb-double-right1 .path2:before {
+  content: "\ea0f";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-double-right1 .path3:before {
+  content: "\ea10";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-sb-double-right1 .path4:before {
+  content: "\ea11";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-sb-windsurfing1:before {
+  content: "\ea12";
+  color: #fff;
+}
+.icon-sb-climbing1:before {
+  content: "\ea13";
+  color: #fff;
+}
+.icon-sb-mma1:before {
+  content: "\ea14";
+  color: #fff;
+}
+.icon-sb-wrestling1:before {
+  content: "\ea15";
+  color: #fff;
+}
+.icon-sb-weightlifting1:before {
+  content: "\ea16";
+  color: #fff;
+}
+.icon-sb-trampolin1:before {
+  content: "\ea17";
+  color: #fff;
+}
+.icon-sb-table-tennis1:before {
+  content: "\ea18";
+  color: #fff;
+}
+.icon-sb-skateboarding1:before {
+  content: "\ea19";
+  color: #fff;
+}
+.icon-sb-sailing1:before {
+  content: "\ea1a";
+  color: #fff;
+}
+.icon-sb-taekwondo1:before {
+  content: "\ea1b";
+  color: #fff;
+}
+.icon-sb-karate1:before {
+  content: "\ea1c";
+  color: #fff;
+}
+.icon-sb-judo1:before {
+  content: "\ea1d";
+  color: #fff;
+}
+.icon-sb-gymnastics-rhythmic1:before {
+  content: "\ea1e";
+  color: #fff;
+}
+.icon-sb-gymnastics-artistic1:before {
+  content: "\ea1f";
+  color: #fff;
+}
+.icon-sb-fencing1:before {
+  content: "\ea20";
+  color: #fff;
+}
+.icon-sb-rowing1:before {
+  content: "\ea21";
+  color: #fff;
+}
+.icon-sb-canoe1:before {
+  content: "\ea22";
+  color: #fff;
+}
+.icon-sb-surfing1:before {
+  content: "\ea23";
+  color: #fff;
+}
+.icon-sb-marathon-swimming1:before {
+  content: "\ea24";
+  color: #fff;
+}
+.icon-sb-artistic-swimming1:before {
+  content: "\ea25";
+  color: #fff;
+}
+.icon-sb-motocross1:before {
+  content: "\ea26";
+  color: #fff;
+}
+.icon-sb-granturismo1:before {
+  content: "\ea27";
+  color: #fff;
+}
+.icon-sb-cycling-bmx1:before {
+  content: "\ea28";
+  color: #fff;
+}
+.icon-sb-cycling-track1:before {
+  content: "\ea29";
+  color: #fff;
+}
+.icon-sb-cycling-mountain-bike1:before {
+  content: "\ea2a";
+  color: #fff;
+}
+.icon-sb-ski-jumping1:before {
+  content: "\ea2b";
+  color: #fff;
+}
+.icon-sb-snowboarding1:before {
+  content: "\ea2c";
+  color: #fff;
+}
+.icon-sb-speed-skating1:before {
+  content: "\ea2d";
+  color: #fff;
+}
+.icon-sb-freestyle-skiing1:before {
+  content: "\ea2e";
+  color: #fff;
+}
+.icon-sb-skeleton1:before {
+  content: "\ea2f";
+  color: #fff;
+}
+.icon-sb-luge1:before {
+  content: "\ea30";
+  color: #fff;
+}
+.icon-sb-cross-country-skiing1:before {
+  content: "\ea31";
+  color: #fff;
+}
+.icon-sb-figure-skating1:before {
+  content: "\ea32";
+  color: #fff;
+}
+.icon-sb-curling1:before {
+  content: "\ea33";
+  color: #fff;
+}
+.icon-sb-bobsleigh1:before {
+  content: "\ea34";
+  color: #fff;
+}
+.icon-sb-language1:before {
+  content: "\ea36";
+  color: #fff;
+}
+.icon-sb-questions1:before {
+  content: "\ea37";
+}
+.icon-sb-like:before {
+  content: "\e982";
+}
+.icon-sb-search1:before {
+  content: "\ea38";
+}
+.icon-sb-winter-sports1:before {
+  content: "\ea39";
+  color: #fff;
+}
+.icon-sb-water-polo1:before {
+  content: "\ea3a";
+  color: #fff;
+}
+.icon-sb-tennis1:before {
+  content: "\ea3b";
+  color: #fff;
+}
+.icon-sb-swimming1:before {
+  content: "\ea3c";
+  color: #fff;
+}
+.icon-sb-shooting1:before {
+  content: "\ea3d";
+  color: #fff;
+}
+.icon-sb-rugby1:before {
+  content: "\ea3e";
+  color: #fff;
+}
+.icon-sb-rally1:before {
+  content: "\ea3f";
+  color: #fff;
+}
+.icon-sb-padel1:before {
+  content: "\ea40";
+  color: #fff;
+}
+.icon-sb-multisports1:before {
+  content: "\ea41";
+  color: #fff;
+}
+.icon-sb-motor-sports1:before {
+  content: "\ea42";
+  color: #fff;
+}
+.icon-sb-motorcycling1:before {
+  content: "\ea43";
+  color: #fff;
+}
+.icon-sb-ice-hockey1:before {
+  content: "\ea44";
+  color: #fff;
+}
+.icon-sb-handball1:before {
+  content: "\ea45";
+  color: #fff;
+}
+.icon-sb-golf1:before {
+  content: "\ea46";
+  color: #fff;
+}
+.icon-sb-futsal1:before {
+  content: "\ea47";
+  color: #fff;
+}
+.icon-sb-formula11:before {
+  content: "\ea48";
+  color: #fff;
+}
+.icon-sb-football1:before {
+  content: "\ea49";
+  color: #fff;
+}
+.icon-sb-field-hockey1:before {
+  content: "\ea4a";
+  color: #fff;
+}
+.icon-sb-equestrian1:before {
+  content: "\ea4b";
+  color: #fff;
+}
+.icon-sb-diving1:before {
+  content: "\ea4c";
+  color: #fff;
+}
+.icon-sb-cycling1:before {
+  content: "\ea4d";
+  color: #fff;
+}
+.icon-sb-cricket1:before {
+  content: "\ea4e";
+  color: #fff;
+}
+.icon-sb-boxing1:before {
+  content: "\ea4f";
+  color: #fff;
+}
+.icon-sb-basketball1:before {
+  content: "\ea51";
+  color: #fff;
+}
+.icon-sb-baseball1:before {
+  content: "\ea52";
+}
+.icon-sb-badminton1:before {
+  content: "\ea53";
+  color: #fff;
+}
+.icon-sb-athletics1:before {
+  content: "\ea54";
+  color: #fff;
+}
+.icon-sb-archery1:before {
+  content: "\ea55";
+  color: #fff;
+}
+.icon-sb-american-football1:before {
+  content: "\ea56";
+  color: #fff;
+}
+.icon-sb-alpine-skiing1:before {
+  content: "\ea57";
+  color: #fff;
+}

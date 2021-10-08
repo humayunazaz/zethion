@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-4 order-lg-last fixed">
+    <form [formGroup]="formFilter" >
+
+      <div class="form-group">
+        <label for="competitionName">{{'REGISTRY.NAME' | translate}}</label>
+        <input type="text"
+               (ngModelChange)="changeName($event)"
+               class="form-control"
+               formControlName="competitionName"
+               id="competitionName">
+      </div>
+
+      <div class="form-group">
+        <label>{{'REGISTRY.SPORT' | translate}}</label>
+        <app-sport-select (selected)='sportChanged($event)'></app-sport-select>
+      </div>
+
+      <div class="form-group">
+        <label>{{'REGISTRY.COUNTRY' | translate}}</label>
+        <app-country-select (selected)='countryChanged($event)'></app-country-select>
+      </div>
+
+
+      <div class="form-group">
+        <label for="cluster">{{'REGISTRY.TYPE' | translate}}</label>
+        <mat-select
+          appearance="fill"
+          id="competitionType"
+          name="competitionType" multiple
+          [(ngModel)]="selectedCompetitionTypes"
+          formControlName="competitionType"
+          (selectionChange)="changeCompetitionType($event)">
+          <mat-option *ngFor="let type of competitionTypes" [value]="type">
+            {{ type }}
+          </mat-option>
+        </mat-select>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">{{'REGISTRY.GENDER' | translate}}</label> <br />
+        <mat-checkbox *ngFor="let gender of genders" [checked]="true" (change)="genderChanged($event.checked, gender)"> {{ 'REGISTRY.' + gender | translate }}</mat-checkbox>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary" (click)="addCompetition()">{{'FORM.ADD_COMPETITION' | translate}}</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first" *ngIf="loading">
+    <div class="imageLoading spin-center"><div class="w-50 mauto gold"><mat-spinner></mat-spinner></div></div>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first">
+    <div class="table-responsive table-full-width">
+      <table class="table">
+        <thead>
+          <tr class="mat-header-row">
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.COMPETITION' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.SPORT' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'USER.COUNTRY' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.TYPE' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'COMPETITION.PARTECIPATION_TYPE' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.GENDER' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'COMPETITION.LEVEL' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'COMPETITION.PRESTIGE' | translate}}</th>
+            <th scope="col">{{'REGISTRY.ACTION' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="!loading">
+          <tr class="mat-row" *ngFor="let item of data">
+            <td class="mat-cell">{{'COMPETITION.' + item.competitionName + "_" + item.sport + "_" + item.gender +
+              "_" + item.country + "_" + item.level | translate}}</td>
+            <td class="mat-cell">{{'SPORT.' + item.sport | translate}}</td>
+            <td class="mat-cell">{{'COUNTRY.' + item.country | translate}}</td>
+            <td class="mat-cell">{{'COMPETITION.' + item.competitionType | translate}}</td>
+            <td class="mat-cell">{{'COMPETITION.' + item.partecipationType | translate}}</td>
+            <td class="mat-cell">{{'REGISTRY.' + item.gender | translate}}</td>
+            <td class="mat-cell">{{item.level}}</td>
+            <td class="mat-cell">{{item.prestige}}</td>
+            <td class="table-action">
+              <i class="fa fa-plus add" aria-hidden="true" (click)="addTournament(item)"></i>
+              <i class="fa fa-trash trash" aria-hidden="true" (click)="delete(item)"></i>
+              <i class="fa fa-edit edit" aria-hidden="true" (click)="edit(item)"></i>
+            </td>
+          </tr>
+          <tr class="translate-paging">
+            <td>
+              <i *ngIf="page>0" class="fa fa-ellipsis-h load-previous-data" aria-hidden="true" (click)="loadPreviousData()"></i>
+            </td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td>
+              <i class="fa fa-ellipsis-h load-next-data" aria-hidden="true" (click)="loadNextData()"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

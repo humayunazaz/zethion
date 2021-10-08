@@ -1,0 +1,24 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-plain">
+          <div class="card-content">
+            <app-timeline [events]="eventDetailFirst"></app-timeline>
+            <app-timeline [events]="eventDetailSecond"
+                          displaySeparator="true"
+                          title="Second Half"></app-timeline>
+            <ng-container *ngIf="hasOvertime">
+              <app-timeline [events]="eventDetailFirstOT"
+                            displaySeparator="true"
+                            title="First Overtime"></app-timeline>
+              <app-timeline [events]="eventDetailSecondOT"
+                            displaySeparator="true"
+                            title="Second Overtime"></app-timeline>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>>

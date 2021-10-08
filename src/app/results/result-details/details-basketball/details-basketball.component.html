@@ -1,0 +1,69 @@
+<div style="overflow: hidden;">
+  <div class="row detail-header-row">
+    <img class="team-logo team-logo-left"
+         src="{{url_logo_teams}}/{{data.detail.homeTeamCode}}.png"
+         (error)="teamLogoMissing($event)" />
+    <div class="detail-header margin-auto">
+      <h4 class="header-item header-item-left">{{data.detail.homeTeam}}</h4>
+      <div class="header-item-score">
+        <h4>{{data.detail.homeScore}} - {{data.detail.awayScore}}</h4>
+
+      </div>
+      <h4 class="header-item header-item-right">{{data.detail.awayTeam}}</h4>
+    </div>
+    <img class="team-logo team-logo-right"
+         style="margin-right: 3px;"
+         src="{{url_logo_teams}}/{{data.detail.awayTeamCode}}.png"
+         (error)="teamLogoMissing($event)" />
+  </div>
+  <!-- <div *ngIf="data.detail.homeOvertimeScore !== undefined"
+       class="row detail-header-row">
+    <div class="detail-header margin-auto">
+      <p>aot.</p>
+    </div>
+  </div> -->
+  <div class="row">
+    <div class="button-group margin-auto"
+         style="margin-top: 2px;">
+      <a class="nav-link active detail-button"
+         *ngIf="statisticDetail"
+         [ngClass]="{ 'active':loadComponent==='Statistics'}"
+         (click)="loadMyChildComponent('Statistics');"
+         type="button"
+         data-toggle="tab"
+         href="#basketball-statistics"
+         role="tablist">Statistics</a>
+      <a class="nav-link detail-button"
+         [ngClass]="{ 'active':loadComponent==='Players'}"
+         (click)="loadMyChildComponent('Players');"
+         type="button"
+         data-toggle="tab"
+         href="#basketball-players"
+         role="tablist">Players</a>
+
+    </div>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <div class="main-content">
+      <div class="container-fluid">
+        <div class="tab-content tab-space">
+          <div class="tab-pane active"
+               [ngClass]="{ 'active':loadComponent==='Statistics'}"
+               id="basketball-statistics"
+               *ngIf="loadComponent == 'Statistics'">
+            <app-basketball-statistics [rate]="rate" [detail]="statisticDetail"></app-basketball-statistics>
+          </div>
+
+          <div class="tab-pane"
+               [ngClass]="{ 'active':loadComponent==='Players'}"
+               id="basketball-players"
+               style="padding-bottom: 30px;"
+               *ngIf="loadComponent == 'Players'">
+            <app-basketball-players [detail]="statisticDetail" [playersHome]="playerHomeDetail" [playersAway]="playerAwayDetail"></app-basketball-players>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

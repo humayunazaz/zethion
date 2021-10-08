@@ -1,0 +1,107 @@
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-4 order-lg-last fixed">
+    <div class="form-group">
+      <label for="name">{{'REGISTRY.NAME' | translate}}</label>
+      <input [(ngModel)]="name" type="text" class="form-control" id="name" (ngModelChange)="filter()">
+    </div>
+
+    <div class="form-group">
+      <label>{{'REGISTRY.TYPE' | translate}}</label>
+      <mat-select [(ngModel)]="type" placeholder="{{ 'REGISTRY.TYPE' | translate }}" name="type" id="type" (selectionChange)="filter()">
+        <mat-option *ngFor="let type of mediaType" [value]="type.value">
+          {{ type.key }}
+        </mat-option>
+      </mat-select>
+    </div>
+
+    <div class="form-group">
+      <label>{{'REGISTRY.COUNTRY' | translate}}</label>
+      <mat-select [(ngModel)]="country" placeholder="{{ 'REGISTRY.COUNTRY' | translate }}" name="country" id="country" (selectionChange)="filter()">
+        <mat-option *ngFor="let country of countries" [value]="country.value">
+          {{ country.key }}
+        </mat-option>
+      </mat-select>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary" (click)="addMedia()">{{'FORM.ADD_MEDIA' | translate}}</button>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first" *ngIf="loading">
+    <div class="imageLoading spin-center"><div class="w-50 mauto gold"><mat-spinner></mat-spinner></div></div>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first">
+    <div class="table-responsive table-full-width">
+      <table class="table">
+        <thead>
+        <tr class="mat-header-row">
+          <th class="mat-header-cell" [resizeColumn]="true"  scope="col">{{'MEDIA.NAME' | translate}}</th>
+          <th class="mat-header-cell" [resizeColumn]="true"  scope="col">{{'MEDIA.LANGUAGE' | translate}}</th>
+          <th class="mat-header-cell" [resizeColumn]="true"  scope="col">{{'MEDIA.COUNTRY' | translate}}</th>
+          <th class="mat-header-cell" [resizeColumn]="true"  scope="col">{{'MEDIA.TYPE' | translate}}</th>
+          <th class="mat-header-cell" [resizeColumn]="true"  scope="col">{{'MEDIA.URL' | translate}}</th>
+          <th class="mat-header-cell" [resizeColumn]="true"  scope="col">{{'TAG.STATUS' | translate}}</th>
+          <th scope="col">{{'REGISTRY.ACTION' | translate}}</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="!loading">
+        <tr class="mat-row" *ngFor="let media of medias">
+          <td class="mat-cell" *ngIf="media.id !== editNameId" (click)="toggleName(media.id)">
+            {{media.name}}
+          </td>
+          <td class="mat-cell" *ngIf="media.id === editNameId">    
+            <input matInput value="{{media.name}}" (change)="updateValue($event, 'name', media)" />
+          </td>
+          <td class="mat-cell">
+            <mat-select value="{{ media.mainLanguage.toUpperCase() }}" name="mainLanguage" id="mainLanguage" (selectionChange)="updateValue($event, 'mainLanguage', media)">
+              <mat-option *ngFor="let language of languages" [value]="language.value">
+                {{ language.key }}
+              </mat-option>
+            </mat-select>
+          </td>
+          <td class="mat-cell">
+            <mat-select value="{{ media.country }}" name="country" id="country" (selectionChange)="updateValue($event, 'country', media)">
+              <mat-option *ngFor="let country of countries" [value]="country.value">
+                {{ country.key }}
+              </mat-option>
+            </mat-select>
+          </td>
+          <td class="mat-cell">
+            <mat-select value="{{ media.type.toUpperCase() }}" name="type" id="type" (selectionChange)="updateValue($event, 'type', media)">
+              <mat-option *ngFor="let type of mediaType" [value]="type.value">
+                {{ type.key }}
+              </mat-option>
+            </mat-select>
+          </td>
+          <td class="mat-cell" *ngIf="media.id !== editUrlId" (click)="toggleUrl(media.id)">
+            {{media.url || '-'}}
+          </td>
+          <td class="mat-cell" *ngIf="media.id === editUrlId">    
+            <input matInput value="{{media.url || '-'}}" (change)="updateValue($event, 'url', media)" />
+          </td>
+          <td class="mat-cell">            
+            <mat-select value="{{ media.status }}" name="status" id="status" (selectionChange)="updateValue($event, 'status', media)">
+              <mat-option *ngFor="let status of statuses" [value]="status.value">
+                {{ status.key }}
+              </mat-option>
+            </mat-select>
+          </td>
+          <td class="table-action">
+            <i class="fa fa-trash trash" aria-hidden="true" (click)="delete(media)"></i>
+            <img class="add-tags" src="../assets/icon/add-tags.png" alt="add-tags" (click)="addTags(media)" />
+          </td>
+        </tr>
+        <tr class="translate-paging">
+          <td>
+            <i *ngIf="page>0" class="fa fa-ellipsis-h load-previous-data" aria-hidden="true" (click)="loadPreviousData()"></i>
+          </td>
+          <td></td><td></td><td></td><td></td><td></td>
+          <td>
+            <i class="fa fa-ellipsis-h load-next-data" aria-hidden="true" (click)="loadNextData()"></i>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

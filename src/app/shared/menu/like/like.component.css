@@ -1,0 +1,16 @@
+sup {
+  color: bisque;
+  font-weight: bold;
+  top: -1em;
+}
+
+.footer-icon {
+  cursor: pointer;
+  font-size: 150%;
+}
+
+@media only screen and (max-width: 767px) {
+  .icon-sb-like {
+    font-size: 130%;
+  }
+}

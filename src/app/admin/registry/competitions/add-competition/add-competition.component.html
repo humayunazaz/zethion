@@ -1,0 +1,156 @@
+<div class="container">
+  <mat-dialog-content class="translation-modal">
+    <div class="card-content">
+      <h3 class="text-center fo-wt-900 title-content">Add Competition</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <form [formGroup]="addCompetitionForm" (ngSubmit)="submit()">
+            <div class="form-group">
+              <label>{{'REGISTRY.NAME' | translate}}</label>
+              <input matInput placeholder="{{'REGISTRY.NAME' | translate}}" type="text"  formControlName="competitionName">
+              <p class="error-message" *ngIf="addCompetitionForm.controls.competitionName.touched && addCompetitionForm.controls.competitionName.errors?.required">Competition Name is required</p>
+            </div>
+            <div class="form-group">
+              <label>{{'REGISTRY.SPORT' | translate}}</label>
+              <app-sport-select [sportControl]="addCompetitionForm.controls.sport" hideAll='true' ></app-sport-select>
+              <p class="error-message" *ngIf="addCompetitionForm.controls.sport.touched && addCompetitionForm.controls.sport.errors?.required">Sport is required</p>
+            </div>
+            <div class="form-group">
+              <label>{{'REGISTRY.COUNTRY' | translate}}</label>
+              <app-country-select [countryControl]="addCompetitionForm.controls.country" hideAll='true'></app-country-select>
+              <p class="error-message" *ngIf="addCompetitionForm.controls.country.touched && addCompetitionForm.controls.country.errors?.required">Country is required</p>
+            </div>
+            <div class="form-group">
+              <label>{{'COMPETITION.TYPE' | translate}}</label>
+              <mat-select
+                appearance="fill"
+                id="competitionType"
+                name="competitionType"
+                formControlName="competitionType"
+                (selectionChange)="changeCompetitionType($event)">
+                <mat-option *ngFor="let type of competitionTypes" [value]="type">
+                  {{ type }}
+                </mat-option>
+              </mat-select>
+              <p class="error-message" *ngIf="addCompetitionForm.controls.competitionType.touched && addCompetitionForm.controls.competitionType.errors?.required">Competition Type is required</p>
+            </div>
+            <div class="form-group">
+              <label for="partecipationType">{{'COMPETITION.PARTECIPATION_TYPE' | translate}}</label>
+              <mat-select
+                appearance="fill"
+                id="partecipationType"
+                name="partecipationType"
+                formControlName="partecipationType"
+                (selectionChange)="changeParticipationType($event)">
+                <mat-option *ngFor="let type of participationTypes" [value]="type">
+                  {{ type }}
+                </mat-option>
+              </mat-select>
+              <p class="error-message" *ngIf="addCompetitionForm.controls.partecipationType.touched && addCompetitionForm.controls.partecipationType.errors?.required">Partecipation Type is required</p>
+            </div>
+  
+            <div class="form-group">
+              <label>{{'REGISTRY.GENDER' | translate}}</label> <br />
+              <mat-radio-group  aria-label="Select an option"
+                formControlName="gender"
+                (change)='genderChanged($event)'>
+                <mat-radio-button *ngFor="let gender of genders" [value]="gender">{{ 'REGISTRY.' + gender | translate }}</mat-radio-button>
+              </mat-radio-group>
+              <p class="error-message" *ngIf="addCompetitionForm.controls.gender.touched && addCompetitionForm.controls.gender.errors?.required">Gender is required</p>
+            </div>
+  
+  
+            <div class="form-group">
+              <label>{{'COMPETITION.LEVEL' | translate}}</label>
+              <input matInput placeholder="{{'COMPETITION.LEVEL' | translate}}" type="text"  formControlName="level">
+              <p class="error-message" *ngIf="addCompetitionForm.controls.level.touched && addCompetitionForm.controls.level.errors?.required">Level is required</p>
+              <p class="error-message mt-10" *ngIf="addCompetitionForm.controls.level.touched && addCompetitionForm.controls.level.value && addCompetitionForm.controls.level.errors?.pattern">Level must be number</p>
+            </div>
+  
+            <div class="form-group">
+              <label for="prestige">{{'COMPETITION.PRESTIGE' | translate}}</label>
+              <mat-select
+                appearance="fill"
+                id="prestige"
+                name="prestige"
+                formControlName="prestige"
+                (selectionChange)="changePrestige($event)">
+                <mat-option *ngFor="let prestige of prestiges" [value]="prestige">
+                  {{ prestige }}
+                </mat-option>
+              </mat-select>
+              <p class="error-message" *ngIf="addCompetitionForm.controls.prestige.touched && addCompetitionForm.controls.prestige.errors?.required">Prestige is required</p>
+            </div>
+  
+            <!-- Translations Control -->
+            <div formGroupName="translations" *ngIf="!isEdit">
+              <div class="form-group">
+                <label>{{'LANGUAGE.ENG' | translate}}</label>
+                <input matInput placeholder="{{'REGISTRY.TRANSLATE_TEXT' | translate}}" type="text" formControlName="en">
+              </div>
+    
+              <div class="form-group">
+                <label>{{'LANGUAGE.ITA' | translate}}</label>
+                <input matInput placeholder="{{'REGISTRY.TRANSLATE_TEXT' | translate}}" type="text" formControlName="it">
+              </div>
+    
+              <div class="form-group">
+                <label>{{'LANGUAGE.FRA' | translate}}</label>
+                <input matInput placeholder="{{'REGISTRY.TRANSLATE_TEXT' | translate}}" type="text" formControlName="fr">
+              </div>
+    
+              <div class="form-group">
+                <label>{{'LANGUAGE.GER' | translate}}</label>
+                <input matInput placeholder="{{'REGISTRY.TRANSLATE_TEXT' | translate}}" type="text" formControlName="de">
+              </div>
+    
+              <div class="form-group">
+                <label>{{'LANGUAGE.ESP' | translate}}</label>
+                <input matInput placeholder="{{'REGISTRY.TRANSLATE_TEXT' | translate}}" type="text" formControlName="es">
+              </div>
+            </div>
+            <div formArrayName="competitionCodes">
+              <div class="form-group">
+                <label>CODES</label>
+              </div>
+              <div *ngFor="let item of getCompetitionCodeControl(); let i = index">
+                <div [formGroup]="item">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input matInput placeholder="{{'CODE.SYSTEM' | translate}}" type="text" formControlName="system" (keyup)="changeSystem(i)">
+                        <p class="error-message" *ngIf="item.controls.system.touched && item.controls.system.errors?.required">System is required</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input matInput placeholder="{{'CODE.CODE' | translate}}" type="text" formControlName="code" (keyup)="changeCode(i)">
+                        <p class="error-message" *ngIf="item.controls.code.touched && item.controls.code.errors?.required">Code is required</p>
+                        <p class="error-message mt-10" *ngIf="item.controls.code.touched && item.controls.code.value && item.controls.code.errors?.pattern">Code must be number</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="add-team text-center">
+                        <div class="add-remove-wrapper">
+                          <button type="button" mat-flat-button color="primary" (click)="addCompetitionCode()" *ngIf="i === (getCompetitionCodeControl().length - 1)">
+                           <i class="fa fa-plus"></i>
+                          </button>
+                          <button  *ngIf="i !== (getCompetitionCodeControl().length - 1)" type="button" mat-flat-button color="primary" (click)="removeCompetitionCode(i)">
+                            <i class="fa fa-minus"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group text-center add-competition">
+              <button type="submit" mat-flat-button color="primary">{{loading? 'FORM.SAVING' : 'FORM.SUBMIT' | translate}}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

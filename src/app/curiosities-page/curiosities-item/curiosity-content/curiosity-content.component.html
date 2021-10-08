@@ -1,0 +1,30 @@
+<div class="curiosity-content-inner" *ngIf="curiosity">
+  <div class="curiosity-content-body">
+    <div class="title-image-wrapper">
+      <div class="image-overlay-wrapper">
+        <img class="title-image" [src]="curiosity.urlToMedia" alt="title-image" />
+      </div>
+      <div class="text-wrapper">
+        <h1 class="title-text">{{ curiosity.title }}</h1>
+        <h3 class="subtitle-text">{{ curiosity.description }}</h3>
+      </div>
+    </div>
+    <div class="row topAds mobileAdsView">
+      <div class="col-6" *ngFor="let ad of randomAds; let i=index;" style="text-align: center;">
+        <div [innerHTML]="ad" *ngIf="i < 2"></div>
+      </div>
+    </div>
+    <div class="main-paragraph" [innerHTML]="curiosity.content | safeHtml"></div>
+    <div class="row bottomAds desktopAdsView">
+      <div class="col-sm-3 singleAd" *ngFor="let ad of randomAds" style="text-align: center;">
+        <div [innerHTML]="ad"></div>
+      </div>
+    </div>
+    <div class="row bottomAds mobileAdsView">
+      <div class="col-6" *ngFor="let ad of randomAds.slice(2)" style="text-align: center;">
+        <div [innerHTML]="ad"></div>
+      </div>
+    </div>
+    <paypal-donate></paypal-donate>
+  </div>
+</div>

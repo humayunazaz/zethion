@@ -1,0 +1,94 @@
+<div class="d-lg footer-toggle">
+  <div class="img-fb">
+    <img src="assets/img/logos/facebook.png" class="fb_1" alt="facebook.png">
+  </div>
+  <div class="img-insta">
+    <img src="assets/img/logos/instagram.png" class="" alt="instagram.png">
+  </div>
+  <div class="img-twi">
+    <img src="assets/img/logos/twitter.png" alt="twitter.png">
+  </div>
+  <div class="img-yt">
+    <img src="assets/img/logos/youtube.png" alt="youtube.png">
+  </div>
+  <div class="img-zt">
+    <img src="assets/img/logos/Zt-03.png" alt="Zt.svg">
+  </div>
+  <div class="switch-toggle switch-ios">
+    <input id="zt" name="view10" type="radio" value="zt" checked="">
+    <label for="zt" (click)="changeLogo('zt')">
+      <span class="db text-black br-100">
+        <img class="logo_slid_left" src="assets/img/logos/Zt-02.png" alt="Zt-02.png">
+      </span>
+    </label>
+    <!-- <input id="fb" name="view10" type="radio" value="fb">
+    <label for="fb" (click)="changeLogo('fb')">
+      <span class="db text-black">
+        <i class="fab fa-facebook-f icon"></i>
+      </span>
+    </label>
+    <input id="ig" name="view10" type="radio" value="ig">
+    <label for="ig" (click)="changeLogo('ig')">
+      <span class="db text-black">
+        <i class="fab fa-instagram icon"></i>
+      </span>
+    </label>
+    <input id="tw" name="view10" type="radio" value="tw">
+    <label for="tw" (click)="changeLogo('tw')"><span class="db text-black"><i
+          class="fab fa-twitter icon"></i></span></label>
+    <input id="yt" name="view10" type="radio" value="yt">
+    <label for="yt" (click)="changeLogo('yt')"><span class="db text-black"><i
+          class="fab fa-youtube icon"></i></span></label> -->
+    <a id="logo" [ngClass]="{
+      'default-logo': displayedLogo === 'zt' || displayedLogo === 'home',
+      'facebook-logo': displayedLogo === 'fb',
+      'twitter-logo': displayedLogo === 'tw',
+      'instagram-logo': displayedLogo === 'ig',
+      'youtube-logo': displayedLogo === 'yt'
+    }" [class.spinFb]="spinEffect"></a>
+  </div>
+  <!--
+  <div class="switch-toggle switch-ios">
+    <input id="zt"
+           name="view10"
+           type="radio"
+           value="zt"
+           checked="">
+    <label for="zt"
+           (click)="changeLogo('zt')">
+      <span class="db text-black br-100">
+        <img class="logo_slid_left"
+             src="assets/img/logos/Zt-02.png"
+             alt="zt.png">
+      </span>
+    </label>
+    <input id="fb"
+           name="view10"
+           type="radio"
+           value="fb">
+    <label for="fb"
+           (click)="changeLogo('fb')">
+      <span class="db text-black">
+        <i class="fab fa-facebook-f"></i>
+      </span>
+    </label>
+    <input id="ig"
+           name="view10"
+           type="radio"
+           value="ig">
+    <label for="ig"
+           (click)="changeLogo('ig')">
+      <span class="db text-black">
+        <i class="fab fa-instagram"></i>
+      </span>
+    </label>
+    <input id="tw"
+           name="view10"
+           type="radio"
+           value="tw">
+    <label for="tw"
+           (click)="changeLogo('tw')"><span class="db text-black"><i class="fab fa-twitter"></i></span>
+    </label>
+    <a id="logo"></a>
+  </div> -->
+</div>

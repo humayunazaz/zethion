@@ -1,0 +1,68 @@
+@import 'sportbusters';
+
+.tournament-header {
+  top: 0;
+  left: 0;
+  width: auto;
+  height: 50px;
+  min-height: 50px;
+  background-color: $color-primary;
+  margin-bottom: 30px;
+  display: flex-start;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.tournament-flag {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  & > img {
+    margin: 0 10%;
+    height: 80%;
+    width: auto;
+  }
+}
+.tournament-title {
+  padding-left: 1rem;
+}
+
+mat-dialog-content.mat-dialog-content {
+  overflow: auto !important;
+  &::-webkit-scrollbar {
+    display: block !important;
+  }
+  -ms-overflow-style: initial !important;
+
+  ::-webkit-scrollbar {
+    width: 10px !important;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: white !important;
+  }
+}
+
+@media (#{$bp-lt-460}) {
+  ::ng-deep .custom-modalbox > mat-dialog-container {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+}
+
+.tab-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.detail-button {
+  cursor: pointer;
+}

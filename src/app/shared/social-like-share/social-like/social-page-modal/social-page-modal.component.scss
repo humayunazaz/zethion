@@ -1,0 +1,176 @@
+@import 'sportbusters';
+
+.header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  h3 {
+    color: #a68a43;
+    margin: 0;
+    font-size: 22px;
+  }
+
+  span {
+    cursor: pointer;
+  }
+
+  .icon-sb-close {
+
+    .path1,
+    .path2 {
+      &::before {
+        color: #a68a43;
+      }
+    }
+  }
+
+}
+
+.social-pages {
+  margin-top: 30px;
+}
+
+.social-pages-wrapper {
+  display: flex;
+  margin-top: 30px;
+
+  @media only screen and (#{$bp-lt-768}) {
+    flex-direction: column;
+  }
+
+  .social-item {
+
+    &:first-child {
+      margin-right: 20px;
+
+      @media only screen and (#{$bp-lt-768}) {
+        margin-right: 0;
+        margin-bottom: 40px;
+      }
+    }
+
+  }
+}
+
+.footer-wrapper {
+  margin-top: 30px;
+
+  span {
+    cursor: pointer;
+  }
+
+  .icon-sb-left {
+
+    .path1,
+    .path2 {
+      &::before {
+        color: #a68a43;
+      }
+    }
+  }
+}
+
+.youtube {
+  &:first-child {
+    &:nth-last-child(1) {
+      justify-content: center;
+
+      .social-item {
+        margin-right: 0 !important;
+      }
+    }
+  }
+
+  &:last-child {
+    .social-item {
+      margin-left: 20px;
+    }
+  }
+}
+
+.instagram {
+  justify-content: space-evenly;
+
+  .social-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-right: 0 !important;
+
+    &:first-child {
+      @media only screen and (#{$bp-lt-768}) {
+        margin-bottom: 40px;
+      }
+    }
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .instagram-name {
+      color: #a68a43;
+      font-size: 17px;
+      margin-top: 10px;
+    }
+
+    .instagram-button {
+      background: #0095f6;
+      border-color: #0095f6;
+      color: #fff;
+      font-size: 17px;
+      padding: 0 24px;
+      margin-top: 10px;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+
+.twitter {
+  justify-content: space-evenly;
+
+  .social-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-right: 0 !important;
+
+    &:first-child {
+      @media only screen and (#{$bp-lt-768}) {
+        margin-bottom: 40px;
+      }
+    }
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .twitter-name {
+      color: #a68a43;
+      font-size: 17px;
+      margin-top: 10px;
+    }
+
+    .twitter-button {
+      background: #1da1f2;
+      border-color: #1da1f2;
+      color: #fff;
+      font-size: 17px;
+      padding: 0 24px;
+      margin-top: 10px;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

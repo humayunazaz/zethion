@@ -1,0 +1,135 @@
+<div class="row nowrap shortcut d-flex align-items-center pl-3 pr-3 footerRow" *ngIf="true && vidComp" style="justify-content: space-between;" [ngClass]="{'story-footer-row' : storyMenu || curiositiesMenu || curiosityMenu || policyMenu, 'news-footer-row': newsMenu}">
+  <div class="col-xl-8 col-sm-12" [ngClass]="{'story-menu-wrapper col-md-8 col-lg-8': storyMenu || curiosityMenu || policyMenu, 'col-md-12 col-lg-12': storiesMenu || curiositiesMenu, 'col-md-11 col-lg-12 padding-0 justify-content-start': newsMenu }">
+    <div class="row nowrap app-menu-content" [ngClass]="{'justify-content-start align-items-center': storyMenu || curiosityMenu || newsMenu || policyMenu }">
+      <!-- logo fixed -->
+      <!-- full logo -->
+      <img src="assets/img/logos/text_logo.png" width="120" height="25" (click)="goToMain()" class="logo-fondo pl-2 pr-2" alt="logo">
+      <!-- for stories page -->
+      <!-- <div class="logo-left d-sm-none d-md-block" (click)="goToMain()" [ngClass]="curiositiesMenu || newsMenu || storyMenu ? 'd-lg-none' : null" *ngIf="curiositiesMenu || newsMenu || storyMenu"></div> -->
+      <!-- /logo fixed -->
+      <!-- <div class="logo-left d-sm-none d-md-block" *ngIf="showStaticLogo && !policyMenu && !newsMenu && !storyMenu && !curiositiesMenu && !curiosityMenu"></div> -->
+
+      <div *ngIf="storyMenu || curiosityMenu" class="stories-menu-back">
+        <span class="icon-sb-double-left" (click)="goPrevious()"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></span>
+      </div>
+
+      <div class="back-toggle-wrapper">
+        <div *ngIf="newsMenu || curiositiesMenu || policyMenu" class="stories-menu-back">
+          <span class="icon-sb-left" (click)="goPrevious()"><span class="path1"></span><span class="path2"></span></span>
+        </div>
+        <ng-content select=".menu-toggle"></ng-content>
+      </div>
+
+      <div class="short-cutimage-wrapper"  *ngIf="curiositiesMenu || newsMenu || storyMenu || curiosityMenu" [ngClass]="newsMenu || newsMenu || storyMenu || curiosityMenu ? 'd-none d-lg-block' : null">
+        <ng-content select=".stories-menu-left"></ng-content>
+      </div>
+
+      <ng-content select=".menu-left"></ng-content>
+
+      <!-- footerNavbar -->
+      <div class="footerNavBar" *ngIf="!policyMenu && !storyMenu && !curiosityMenu">
+        <nav class="navbar navbar-light bg-lignt" (click)="togglemenu()">
+          <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#collapsingNavbar2">
+            <div>
+              <div class="menu-icon hamber-block">
+                <div class="delay-1" [ngClass]="{'menu-icon-bar menu-icon-background':!showmenu, 'menu-icon-bar-long menu-icon-background-long':showmenu}">
+                </div>
+                <div class="delay-2" [ngClass]="{'menu-icon-bar-long menu-icon-background':!showmenu, 'menu-icon-bar menu-icon-background-long':showmenu}">
+                </div>
+                <div class="delay-3" [ngClass]="{'menu-icon-bar menu-icon-background':!showmenu, 'menu-icon-bar-long menu-icon-background-long':showmenu}">
+                </div>
+                <div class="delay-4" [ngClass]="{'menu-icon-bar-long menu-icon-background':!showmenu, 'menu-icon-bar menu-icon-background-long':showmenu}">
+                </div>
+              </div>
+            </div>
+          </button>
+        </nav>
+        <div class="mobile-menu d-xl-none align-items-center" [ngClass]="{'mobile-menu': showmenu, 'mobile-menu-closed':!showmenu, 'news-menu': newsMenu}">
+          <div class="footer-menu d-flex align-items-center pull-right">
+
+            <ng-content select=".menu-side-right"></ng-content>
+
+            <div class="right-footer-icon-wrapper">
+
+              <nav class="navbar">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/info/contacts">Contact Us</a>
+                  </li>
+                  <div class="separator"></div>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/info/terms">Terms of Use</a>
+                  </li>
+                  <div class="separator"></div>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/info/privacy">Policy</a>
+                  </li>
+                  <div class="separator"></div>
+                  <li class="nav-item">
+                    <div class="nav-link">
+                      <app-language></app-language>
+                    </div>
+                  </li>
+                  <!-- <li class="nav-item">
+                    <div class="nav-link">
+                      <ng-content select=".menu-end-mobile"></ng-content>
+                    </div>
+                  </li> -->
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /footerNavbar -->
+    </div>
+  </div>
+  <div class="footer-menu d-flex align-items-center" [ngClass]="storyMenu || curiosityMenu || policyMenu ? 'story-item-menu' : null" style="justify-content: end;">
+
+    <ng-content select=".menu-right"></ng-content>
+
+    <div class="right-footer-icon-wrapper" *ngIf="!policyMenu && !storyMenu && !curiosityMenu">
+
+      <nav class="navbar navbar-expand-lg">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/info/contacts">Contact Us</a>
+          </li>
+          <div class="separator"></div>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/info/terms">Terms of Use</a>
+          </li>
+          <div class="separator"></div>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/info/privacy">Policy</a>
+          </li>
+          <div class="separator"></div>
+          <li class="nav-item">
+            <div class="nav-link">
+              <app-language></app-language>
+            </div>
+          </li>
+          <!-- <li class="nav-item">
+            <div class="nav-link">
+              <ng-content select=".menu-end"></ng-content>
+            </div>
+          </li> -->
+        </ul>
+      </nav>
+    </div>
+
+    <!-- <div class="backIcon" *ngIf="policyMenu">
+      <div class="policyLang">
+        <app-language></app-language>
+      </div>
+      <span class="icon-sb-left" [routerLink]="['/']"><span class="path1"></span><span class="path2"></span></span>
+    </div> -->
+
+    <div class="story-language" *ngIf="storyMenu || curiosityMenu || policyMenu">
+      <div class="policyLang">
+        <app-language></app-language>
+        <!-- <sup>+</sup> -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="container">
+  <!-- <ng2-adsense
+    [adClient]="'ca-pub-9553091373172779'"
+    [adSlot]="1660393731"
+    [width]="320"
+    [height]="108"
+  >
+  </ng2-adsense> -->
+  <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="button" data-action="like" data-size="large" data-share="false"></div>
+  <div *ngIf="storageService.checkAnalyticalCookies()">
+    <button gaEvent="click_test" gaCategory="ga_directive_test">Click Test</button>
+    <button gaEvent="focus_test" gaCategory="ga_directive_test" gaBind="focus">Focus Test</button>
+    <button gaEvent="blur_test" gaCategory="ga_directive_test" gaBind="blur">Blur Test</button>
+    <button gaEvent="custom_test" gaCategory="ga_directive_test" gaBind="customEvent">Custom Event Test</button>
+  </div>
+
+  <div *ngIf="storageService.checkAnalyticalCookies()">
+    <input gaEvent="fill_blur" gaCategory="ga_directive_input_test" placeholder="Auto Blur Test">
+  </div>
+
+  <div gaCategory="ga_test_category" *ngIf="storageService.checkAnalyticalCookies()">
+    <button gaEvent gaAction="click_test">Click Test</button>
+    <button gaEvent gaAction="focus_test" gaBind="focus">Focus Test</button>
+    <button gaEvent gaAction="blur_test" gaBind="blur">Blur Test</button>
+  </div>
+
+  <h2 *ngIf="storageService.checkThirdPartyCookies()">Facebook Service</h2>
+
+  <button (click)="login()" class="btn btn-lg btn-primary btn-block" *ngIf="storageService.checkThirdPartyCookies()">
+    Login
+  </button>
+
+  <button (click)="loginWithOptions()" class="btn btn-lg btn-primary btn-block" *ngIf="storageService.checkThirdPartyCookies()">
+    Login with Options
+  </button>
+
+  <button class="btn btn-lg btn-primary btn-block" (click)="getLoginStatus()" *ngIf="storageService.checkThirdPartyCookies()">
+    Get login status
+  </button>
+
+  <button (click)="getProfile()" class="btn btn-lg btn-primary btn-block" *ngIf="storageService.checkThirdPartyCookies()">
+    Get profile
+  </button>
+
+  <button (click)="test()" class="btn btn-lg btn-primary btn-block" *ngIf="storageService.checkThirdPartyCookies()">
+    Get friends
+  </button>
+
+  <button (click)="share()" class="btn btn-lg btn-primary btn-block" *ngIf="storageService.checkThirdPartyCookies()">
+    Share dialog
+  </button>
+
+</div>
+

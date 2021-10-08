@@ -1,0 +1,937 @@
+<div class="policyPage">
+    <div #policyContent class="policySection" (scroll)="fixedSideNav(policyContent)">
+        <h1 class="text-uppercase">{{ 'POLICY.LEGAL_NOTES' | translate }}</h1>
+        <div class="row">
+            <div class="col-sm-4 leftNavigation">
+                <div class="navigationContent" [class.fixedNav]="fixSideNav">
+                    <div class="sectionHead">
+                        <h4>
+                            {{ 'POLICY.NEWS_SOCIAL' | translate }}
+                        </h4>
+                        <i class="fa fa-plus" (click)="toggleMainNav()" *ngIf="mobileMode"></i>
+                    </div>
+                    <div class="collapseNav" [class.open]="!mobileNavCollapsed">
+                        <div class="singleNav" *ngFor="let singleNav of policyCollapseNav">
+                            <div class="navHead">
+                                <h4>
+                                    <span *ngIf="singleNav.id === 'contact'" (click)="mainTitleScroll('contacts', singleNav)">{{ singleNav.mainTitle | translate }}</span>
+                                    <span *ngIf="singleNav.id === 'terms'" (click)="mainTitleScroll('terms', singleNav)">{{ singleNav.mainTitle | translate }}</span>
+                                    <span *ngIf="singleNav.id === 'privacy'" (click)="mainTitleScroll('privacy', singleNav)">{{ singleNav.mainTitle | translate }}</span>
+                                    <span *ngIf="singleNav.id === 'cookiePolicy'" (click)="mainTitleScroll('cookiePolicy', singleNav)">{{ singleNav.mainTitle | translate }}</span>
+                                    <span *ngIf="singleNav.id === 'cookieManagement'" (click)="mainTitleScroll('cookieManagement', singleNav)">{{ singleNav.mainTitle | translate }}</span>
+                                </h4>
+                                <i class="fa fa-angle-down" (click)="toggleCollapse(singleNav)" *ngIf="singleNav.collapsed && singleNav.collapseable"></i>
+                                <i class="fa fa-angle-up" (click)="toggleCollapse(singleNav)" *ngIf="!singleNav.collapsed && singleNav.collapseable"></i>
+                            </div>
+                            <div class="collapsed" [class.open]="!singleNav.collapsed" *ngIf="singleNav.collapseable">
+                                <div class="collapsedItems" *ngIf="singleNav.id === 'terms'">
+                                    <p (click)="scrollTo(terms1)">{{ 'USE_TERMS.TERMS_SUBHEAD1' | translate }}</p>
+                                    <p (click)="scrollTo(terms2)">{{ 'USE_TERMS.TERMS_SUBHEAD2' | translate }}</p>
+                                    <p (click)="scrollTo(terms3)">{{ 'USE_TERMS.TERMS_SUBHEAD3' | translate }}</p>
+                                    <p (click)="scrollTo(terms4)">{{ 'USE_TERMS.TERMS_SUBHEAD4' | translate }}</p>
+                                    <p (click)="scrollTo(terms5)">{{ 'USE_TERMS.TERMS_SUBHEAD5' | translate }}</p>
+                                    <p (click)="scrollTo(terms6)">{{ 'USE_TERMS.TERMS_SUBHEAD6' | translate }}</p>
+                                    <p (click)="scrollTo(terms7)">{{ 'USE_TERMS.TERMS_SUBHEAD7' | translate }}</p>
+                                    <p (click)="scrollTo(terms8)">{{ 'USE_TERMS.TERMS_SUBHEAD8' | translate }}</p>
+                                    <p (click)="scrollTo(terms9)">{{ 'USE_TERMS.TERMS_SUBHEAD9' | translate }}</p>
+                                </div>
+                                <div class="collapsedItems" *ngIf="singleNav.id === 'privacy'">
+                                    <p (click)="scrollTo(privacy1)">{{ 'PRIVACY.PRIVACY_SUBHEAD1' | translate }}</p>
+                                    <p (click)="scrollTo(privacy2)">{{ 'PRIVACY.PRIVACY_SUBHEAD2' | translate }}</p>
+                                    <p (click)="scrollTo(privacy3)">{{ 'PRIVACY.PRIVACY_SUBHEAD3' | translate }}</p>
+                                    <p (click)="scrollTo(privacy4)">{{ 'PRIVACY.PRIVACY_SUBHEAD4' | translate }}</p>
+                                    <p (click)="scrollTo(privacy5)">{{ 'PRIVACY.PRIVACY_SUBHEAD5' | translate }}</p>
+                                    <p (click)="scrollTo(privacy6)">{{ 'PRIVACY.PRIVACY_SUBHEAD6' | translate }}</p>
+                                    <p (click)="scrollTo(privacy7)">{{ 'PRIVACY.PRIVACY_SUBHEAD7' | translate }}</p>
+                                    <p (click)="scrollTo(privacy8)">{{ 'PRIVACY.PRIVACY_SUBHEAD8' | translate }}</p>
+                                    <p (click)="scrollTo(privacy9)">{{ 'PRIVACY.PRIVACY_SUBHEAD9' | translate }}</p>
+                                    <p (click)="scrollTo(privacy10)">{{ 'PRIVACY.PRIVACY_SUBHEAD10' | translate }}</p>
+                                    <p (click)="scrollTo(privacy11)">{{ 'PRIVACY.PRIVACY_SUBHEAD11' | translate }}</p>
+                                    <p (click)="scrollTo(privacy12)">{{ 'PRIVACY.PRIVACY_SUBHEAD12' | translate }}</p>
+                                </div>
+                                <div class="collapsedItems" *ngIf="singleNav.id === 'cookiePolicy'">
+                                    <p (click)="scrollTo(cookiePolicy1)">{{ 'COOKIE.COOKIE_POLICY_SUBHEAD1' | translate }}</p>
+                                    <p (click)="scrollTo(cookiePolicy2)">{{ 'COOKIE.COOKIE_POLICY_SUBHEAD2' | translate }}</p>
+                                    <p (click)="scrollTo(cookiePolicy3)">{{ 'COOKIE.COOKIE_POLICY_SUBHEAD3' | translate }}</p>
+                                    <p (click)="scrollTo(cookiePolicy4)">{{ 'COOKIE.COOKIE_POLICY_SUBHEAD4' | translate }}</p>
+                                    <p (click)="scrollTo(cookiePolicy5)">{{ 'COOKIE.COOKIE_POLICY_SUBHEAD5' | translate }}</p>
+                                    <p (click)="scrollTo(cookiePolicy6)">{{ 'COOKIE.COOKIE_POLICY_SUBHEAD6' | translate }}</p>
+                                    <p (click)="scrollTo(cookiePolicy7)">GOOGLE CHROME</p>
+                                    <p (click)="scrollTo(cookiePolicy8)">FIREFOX</p>
+                                    <p (click)="scrollTo(cookiePolicy9)">MICROSOFT EDGE</p>
+                                    <p (click)="scrollTo(cookiePolicy10)">SAFARI</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 mainContent">
+                <div class="contactSection" #contacts>
+                    <div class="contactContent">
+                        <div class="leftContent">
+                            <div class="socialIcons">
+                                <div class="singleIcon">
+                                    <a href="https://www.facebook.com/ZethionOfficial" target="_blank">
+                                        <i class="fab fa-facebook-f icon"></i>
+                                    </a>
+                                </div>
+                                <div class="singleIcon">
+                                    <a href="https://www.linkedin.com/in/info-zethion-a471841ba/" target="_blank">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </div>
+                                <div class="singleIcon">
+                                    <a href="https://www.youtube.com/channel/UC17BIssvkxTeleIrhMTLNtg" target="_blank">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </div>
+                                <div class="singleIcon">
+                                    <a href="https://www.instagram.com/zethion.official/" target="_blank">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </div>
+                                <div class="singleIcon">
+                                    <a href="https://twitter.com/ZethionOfficial" target="_blank">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rightContent">
+                            <div class="contentHere">
+                                <div class="contentHeading">
+                                    <h4>{{ 'CONTACT.TITLE' | translate }}</h4>
+                                </div>
+                                <div class="singleLine">
+                                    <div class="icon">
+                                        <i class="fa fa-home"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>Via Luigi Chiesi, 9 42121</p>
+                                        <p>Reggio Emilia - Italia</p>
+                                    </div>
+                                </div>
+                                <div class="singleLine">
+                                    <div class="icon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>+39 328 6367544</p>
+                                        <p>+33 7 68 391686</p>
+                                    </div>
+                                </div>
+                                <div class="singleLine">
+                                    <div class="icon">
+                                        <i class="fa fa-print"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>VAT 02895980353</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div #terms class="termsCondition">
+                    <h3 class="sectionHead">{{ 'USE_TERMS.USE_TERMS' | translate }}</h3>
+                    <h4>{{ 'USE_TERMS.LAST_UPDATE' | translate }}: 2021-05-06</h4>
+                    <h4>{{ 'USE_TERMS.PREMISE' | translate }}</h4>
+                    <p>{{ 'USE_TERMS.PREMISE_P11' | translate }}  <a href="https://zethion.com">www.zethion.com</a> {{ 'USE_TERMS.PREMISE_P12' | translate }} </p>
+                    <p>{{ 'USE_TERMS.PREMISE_P21' | translate }}
+                      <a class="custom-link" routerLink="/info/privacy">{{ 'USE_LEFTNAV.PRIVACY' | translate }}</a>
+                      {{ 'USE_TERMS.PREMISE_P22' | translate }}
+                      <a class="custom-link" routerLink="/info/cookiePolicy">{{ 'USE_LEFTNAV.COOKIE_POLICY' | translate }}</a>
+                      {{ 'USE_TERMS.PREMISE_P23' | translate }}
+                    </p>
+
+                    <h4 #terms1>{{ 'USE_TERMS.CHANGE_UPDATE' | translate }}</h4>
+                    <ol>
+                        <li>{{ 'USE_TERMS.CHANGE_UPDATE_LI1' | translate }}</li>
+                        <li>{{ 'USE_TERMS.CHANGE_UPDATE_LI2' | translate }}</li>
+                        <li>{{ 'USE_TERMS.CHANGE_UPDATE_LI3' | translate }}
+                            <ol type="a">
+                                <li>{{ 'USE_TERMS.CHANGE_UPDATE_LI31' | translate }}</li>
+                                <li>{{ 'USE_TERMS.CHANGE_UPDATE_LI32' | translate }}</li>
+                                <li>{{ 'USE_TERMS.CHANGE_UPDATE_LI33' | translate }}</li>
+                            </ol>
+                        </li>
+                    </ol>
+
+                    <h4 #terms2>{{ 'USE_TERMS.GOALS' | translate }}</h4>
+                    <ol>
+                        <li>{{ 'USE_TERMS.GOALS_LI1' | translate }}</li>
+                        <li>{{ 'USE_TERMS.GOALS_LI2' | translate }}</li>
+                        <li>{{ 'USE_TERMS.GOALS_LI3' | translate }}</li>
+                    </ol>
+
+                    <h4 #terms3>{{ 'USE_TERMS.STOP' | translate }}</h4>
+                    <ol>
+                        <li>{{ 'USE_TERMS.STOP_LI1' | translate }}</li>
+                        <li>{{ 'USE_TERMS.STOP_LI2' | translate }}</li>
+                    </ol>
+
+                    <h4 #terms4>{{ 'USE_TERMS.COPYRIGHT' | translate }}</h4>
+                    <ol>
+                        <li>{{ 'USE_TERMS.COPYRIGHT_LI1' | translate }}</li>
+                        <li>{{ 'USE_TERMS.COPYRIGHT_LI2' | translate }}</li>
+                        <li>{{ 'USE_TERMS.COPYRIGHT_LI3' | translate }}</li>
+                        <li>{{ 'USE_TERMS.COPYRIGHT_LI4' | translate }}</li>
+                        <li>{{ 'USE_TERMS.COPYRIGHT_LI5' | translate }}</li>
+                        <li>{{ 'USE_TERMS.COPYRIGHT_LI6' | translate }}</li>
+                        <li>{{ 'USE_TERMS.COPYRIGHT_LI7' | translate }}</li>
+                        <li>{{ 'USE_TERMS.COPYRIGHT_LI8' | translate }}</li>
+                    </ol>
+
+                    <h4 #terms5>{{ 'USE_TERMS.OBLIGATION' | translate }}</h4>
+                    <ol>
+                        <li>
+                          {{ 'USE_TERMS.OBLIGATION_LI11' | translate }}
+                          <a class="custom-link" routerLink="/info/privacy">{{ 'USE_LEFTNAV.PRIVACY' | translate }}</a>
+                          {{ 'USE_TERMS.OBLIGATION_LI12' | translate }}
+                          <a class="custom-link" routerLink="/info/cookiePolicy">{{ 'USE_LEFTNAV.COOKIE_POLICY' | translate }}</a>
+                          {{ 'USE_TERMS.OBLIGATION_LI13' | translate }}
+                        </li>
+                        <li>
+                            {{ 'USE_TERMS.OBLIGATION_LI2' | translate }}
+                        </li>
+                    </ol>
+
+                    <h4 #terms6>{{ 'USE_TERMS.LIABILITY' | translate }}</h4>
+                    <ol>
+                        <li>
+                            {{ 'USE_TERMS.LIABILITY_LI1' | translate }}
+                        </li>
+                        <li>
+                            {{ 'USE_TERMS.LIABILITY_LI2' | translate }}
+                        </li>
+                        <li>
+                            {{ 'USE_TERMS.LIABILITY_LI3' | translate }}
+                        </li>
+                        <li>
+                            {{ 'USE_TERMS.LIABILITY_LI4' | translate }}
+
+                            <ol type="a">
+                                <li>
+                                    {{ 'USE_TERMS.LIABILITY_LI4_LI1' | translate }}
+                                </li>
+                                <li>
+                                    {{ 'USE_TERMS.LIABILITY_LI4_LI2' | translate }}
+                                </li>
+                                <li>
+                                    {{ 'USE_TERMS.LIABILITY_LI4_LI3' | translate }}
+                                </li>
+                                <li>
+                                    {{ 'USE_TERMS.LIABILITY_LI4_LI4' | translate }}
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            {{ 'USE_TERMS.LIABILITY_LI5' | translate }}
+                        </li>
+                        <li>
+                            {{ 'USE_TERMS.LIABILITY_LI6' | translate }}
+                        </li>
+                        <li>
+                            {{ 'USE_TERMS.LIABILITY_LI7' | translate }}
+                        </li>
+                    </ol>
+
+                    <h4 #terms7>{{ 'USE_TERMS.THIRDPARTY' | translate }}</h4>
+                    <ol>
+                        <li>
+                            {{ 'USE_TERMS.THIRDPARTY_LI1' | translate }}
+                        </li>
+                        <li>
+                            {{ 'USE_TERMS.THIRDPARTY_LI2' | translate }}
+                        </li>
+                        <li>
+                            {{ 'USE_TERMS.THIRDPARTY_LI3' | translate }}
+                        </li>
+                        <li>
+                            {{ 'USE_TERMS.THIRDPARTY_LI4' | translate }}
+                        </li>
+                        <li>
+                          <a href="https://www.youtube.com/t/terms">YouTube Terms of Services</a>
+                          {{ 'USE_TERMS.THIRDPARTY_LI5' | translate }}
+                        </li>
+                        <li>
+                          <a href="https://policies.google.com/privacy?hl=en">Google Privacy Policy</a>
+                          {{ 'USE_TERMS.THIRDPARTY_LI6' | translate }}
+                        </li>
+                    </ol>
+
+                    <h4 #terms8>{{ 'USE_TERMS.PERSONAL_DATA' | translate }}</h4>
+                    <ol>
+                        <li>
+                            {{ 'USE_TERMS.PERSONAL_DATA_LI1' | translate }}
+                          <a class="custom-link" routerLink="/info/cookiePolicy">{{ 'USE_LEFTNAV.COOKIE_POLICY' | translate }}</a>
+                        </li>
+                        <li>
+                            {{ 'USE_TERMS.PERSONAL_DATA_LI21' | translate }}
+                          <a class="custom-link" routerLink="/info/privacy">{{ 'USE_LEFTNAV.PRIVACY' | translate }}</a>
+                          {{ 'USE_TERMS.PERSONAL_DATA_LI22' | translate }}
+                        </li>
+                    </ol>
+
+                    <h4 #terms9>{{ 'USE_TERMS.DISPUTE' | translate }}</h4>
+                    <ol>
+                        <li>
+                          {{ 'USE_TERMS.DISPUTE_LI11' | translate }}
+                          <a class="custom-link" routerLink="/info/privacy">{{ 'USE_LEFTNAV.PRIVACY' | translate }}</a>
+                          {{ 'USE_TERMS.DISPUTE_LI12' | translate }}
+                          <a class="custom-link" routerLink="/info/cookiePolicy">{{ 'USE_LEFTNAV.COOKIE_POLICY' | translate }}</a>
+                          {{ 'USE_TERMS.DISPUTE_LI13' | translate }}
+                        </li>
+                        <li>
+                            {{ 'USE_TERMS.DISPUTE_LI2' | translate }}
+                        </li>
+                    </ol>
+                </div>
+                <div #privacy class="privacyPolicy">
+                    <h3 class="sectionHead">
+                        {{ 'PRIVACY.PRIVACY' | translate }}
+                    </h3>
+                    <h4>{{ 'USE_TERMS.LAST_UPDATE' | translate }}: 2021-05-06</h4>
+                    <p><b>Zethion S.r.l.</b>{{ 'PRIVACY.DESCRIPTION_P1' | translate }}  <a href="https://zethion.com">www.zethion.com</a> {{ 'PRIVACY.DESCRIPTION_P2' | translate }} </p>
+
+                    <h4 #privacy1>{{ 'PRIVACY.CONTROLLER' | translate }}</h4>
+                    <p>
+                        {{ 'PRIVACY.CONTROLLER_DESCRIPTION' | translate }}
+                    </p>
+
+                    <h4 #privacy2>{{ 'PRIVACY.DATA_PROCESSING' | translate }}</h4>
+                    <p>
+                        {{ 'PRIVACY.DATA_PROCESSING_DESC' | translate }}
+                    </p>
+                    <ol type="I">
+                        <li>
+                            {{ 'PRIVACY.DATA_PROCESSING_LI1' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.DATA_PROCESSING_LI2' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.DATA_PROCESSING_LI3' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.DATA_PROCESSING_LI4' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.DATA_PROCESSING_LI5' | translate }}
+                        </li>
+                    </ol>
+
+                    <h4 #privacy3>
+                        {{ 'PRIVACY.LEGAL_BASIS' | translate }}
+                    </h4>
+                    <p>
+                        {{ 'PRIVACY.LEGAL_BASIS_DESC' | translate }}
+                    </p>
+                    <ol type="I">
+                        <li>
+                            {{ 'PRIVACY.LEGAL_BASIS_LI1' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.LEGAL_BASIS_LI2' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.LEGAL_BASIS_LI3' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.LEGAL_BASIS_LI4' | translate }}
+                        </li>
+                    </ol>
+
+                    <h4 #privacy4>{{ 'PRIVACY.CATAGORIES' | translate }}</h4>
+                    <p>
+                        {{ 'PRIVACY.CATAGORIES_DESC' | translate }}
+                    </p>
+                    <p class="subHead">
+                        {{ 'PRIVACY.CATAGORIES_DATA_DRIVING' | translate }}
+                    </p>
+                    <p>
+                        {{ 'PRIVACY.CATAGORIES_DATA_DRIVING_PARA1' | translate }}
+                    </p>
+                    <p>
+                        {{ 'PRIVACY.CATAGORIES_DATA_DRIVING_PARA2' | translate }}
+                    </p>
+                    <p>
+                        {{ 'PRIVACY.CATAGORIES_DATA_DRIVING_PARA3' | translate }}
+                    </p>
+                    <p class="subHead">
+                        {{ 'PRIVACY.CATAGORIES_COOKIES' | translate }}
+                    </p>
+                    <p> {{ 'PRIVACY.CATAGORIES_COOKIES_DESC' | translate }}
+                      <a class="custom-link" routerLink="/info/cookiePolicy">{{ 'USE_LEFTNAV.COOKIE_POLICY' | translate }}</a>
+                    </p>
+
+
+                    <h4 #privacy5>{{ 'PRIVACY.DATA_PROCESSING_MODE' | translate }}</h4>
+                    <p>
+                        {{ 'PRIVACY.DATA_PROCESSING_MODE_DESC' | translate }}
+                    </p>
+
+                    <h4 #privacy6>{{ 'PRIVACY.DATA_PROVISION' | translate }}</h4>
+                    <p>
+                        {{ 'PRIVACY.DATA_PROVISION_DESC' | translate }}
+                    </p>
+
+                    <h4 #privacy7>{{ 'PRIVACY.DATA_CONSERVATION' | translate }}</h4>
+                    <p>
+                        {{ 'PRIVACY.DATA_CONSERVATION_DESC' | translate }}
+                    </p>
+                    <ol type="I">
+                        <li>
+                            {{ 'PRIVACY.DATA_CONSERVATION_LI1' | translate }}
+                            <a class="custom-link" routerLink="/info/cookiePolicy">{{ 'USE_LEFTNAV.COOKIE_POLICY' | translate }}</a>
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.DATA_CONSERVATION_LI2' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.DATA_CONSERVATION_LI3' | translate }}
+                        </li>
+                    </ol>
+
+                    <h4 #privacy8>{{ 'PRIVACY.DATA_COMMUNICATION' | translate }}</h4>
+                    <p>
+                        {{ 'PRIVACY.DATA_COMMUNICATION_DESC' | translate }}
+                    </p>
+                    <ol type="I">
+                        <li>
+                            {{ 'PRIVACY.DATA_COMMUNICATION_LI1' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.DATA_COMMUNICATION_LI2' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.DATA_COMMUNICATION_LI3' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.DATA_COMMUNICATION_LI4' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.DATA_COMMUNICATION_LI5' | translate }}
+                        </li>
+                    </ol>
+
+                    <h4 #privacy9>{{ 'PRIVACY.PROFILING' | translate }}</h4>
+                    <p>
+                        {{ 'PRIVACY.PROFILING_DESC' | translate }}
+                    </p>
+
+                    <h4 #privacy10>{{ 'PRIVACY.TRANSFER_DATA_THIRD_COUNTRIES' | translate }}</h4>
+                    <p>
+                        {{ 'PRIVACY.TRANSFER_DATA_THIRD_COUNTRIES_DESC' | translate }}
+                    </p>
+
+                    <h4 #privacy11>{{ 'PRIVACY.RIGHT_DATA_SUBMIT' | translate }}</h4>
+                    <p>
+                        {{ 'PRIVACY.RIGHT_DATA_SUBMIT_DESC' | translate }}
+                    </p>
+                    <ol type="a">
+                        <li>
+                            {{ 'PRIVACY.RIGHT_DATA_SUBMIT_UL1_LI1' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.RIGHT_DATA_SUBMIT_UL1_LI2' | translate }}
+                            <ol type="I">
+                                <li>
+                                    {{ 'PRIVACY.RIGHT_DATA_SUBMIT_UL1_LI2_LI1' | translate }}
+                                </li>
+                                <li>
+                                    {{ 'PRIVACY.RIGHT_DATA_SUBMIT_UL1_LI2_LI2' | translate }}
+                                </li>
+                                <li>
+                                    {{ 'PRIVACY.RIGHT_DATA_SUBMIT_UL1_LI2_LI3' | translate }}
+                                </li>
+                                <li>
+                                    {{ 'PRIVACY.RIGHT_DATA_SUBMIT_UL1_LI2_LI4' | translate }}
+                                </li>
+                                <li>
+                                    {{ 'PRIVACY.RIGHT_DATA_SUBMIT_UL1_LI2_LI5' | translate }}
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.RIGHT_DATA_SUBMIT_UL1_LI3' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.RIGHT_DATA_SUBMIT_UL1_LI4' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.RIGHT_DATA_SUBMIT_UL1_LI5' | translate }}
+                        </li>
+                    </ol>
+                    <p>
+                        {{ 'PRIVACY.RIGHT_DATA_SUBMIT_PARA1' | translate }}
+                    </p>
+                    <ol type="a">
+                        <li>
+                            {{ 'PRIVACY.RIGHT_DATA_SUBMIT_UL2_LI1' | translate }}
+                        </li>
+                        <li>
+                            {{ 'PRIVACY.RIGHT_DATA_SUBMIT_UL2_LI2' | translate }}
+                        </li>
+                    </ol>
+                    <p>
+                      {{ 'PRIVACY.RIGHT_DATA_SUBMIT_PARA2' | translate }}
+                    </p>
+                    <p>
+                        {{ 'PRIVACY.RIGHT_DATA_SUBMIT_PARA21' | translate }}
+                        <a href="www.garanteprivacy.it">www.garanteprivacy.it</a>
+                        {{ 'PRIVACY.RIGHT_DATA_SUBMIT_PARA22' | translate }}
+                    </p>
+                    <p>
+                        {{ 'PRIVACY.RIGHT_DATA_SUBMIT_PARA3' | translate }}
+                    </p>
+
+                    <h4 #privacy12>{{ 'PRIVACY.CHANGES_PRIVACY' | translate }}</h4>
+                    <p>{{ 'PRIVACY.CHANGES_PRIVACY_DESC_PARA1' | translate }}</p>
+                    <p>{{ 'PRIVACY.CHANGES_PRIVACY_DESC_PARA2' | translate }}</p>
+                </div>
+                <div #cookiePolicy class="cookiePolicy">
+                    <h3 class="sectionHead">
+                        {{ 'COOKIE.COOKIE_POLICY' | translate }}
+                    </h3>
+                    <h4>{{ 'USE_TERMS.LAST_UPDATE' | translate }}</h4>
+                    <p>
+                        {{ 'COOKIE.DESCRIPTION_POLICY1' | translate }}
+                        <a href="https://zethion.com">www.zethion.com</a>
+                        {{ 'COOKIE.DESCRIPTION_POLICY2' | translate }}
+                    </p>
+                    <h4 #cookiePolicy1>
+                        {{ 'COOKIE.WHAT_COOKIES' | translate }}
+                    </h4>
+                    <p>
+                        {{ 'COOKIE.WHAT_COOKIES_PARA1' | translate }}
+                    </p>
+                    <p>
+                        {{ 'COOKIE.WHAT_COOKIES_PARA2' | translate }}
+                    </p>
+                    <p>
+                        {{ 'COOKIE.WHAT_COOKIES_PARA3' | translate }}
+                    </p>
+                    <p>
+                        {{ 'COOKIE.WHAT_COOKIES_PARA4' | translate }}
+                    </p>
+
+                    <h4 #cookiePolicy2>
+                        {{ 'COOKIE.TYPES_COOKIES' | translate }}
+                    </h4>
+                    <table class="customTable">
+                        <tbody>
+                            <tr>
+                                <td style="width:30%">
+                                    {{ 'COOKIE.TYPES_COOKIES_TYPE1' | translate }}
+                                </td>
+                                <td style="width:70%">
+                                    {{ 'COOKIE.TYPES_COOKIES_TYPE1_DESC' | translate }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:30%">
+                                    {{ 'COOKIE.TYPES_COOKIES_TYPE2' | translate }}
+                                </td>
+                                <td style="width:70%">
+                                    {{ 'COOKIE.TYPES_COOKIES_TYPE2_DESC' | translate }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:30%">
+                                    {{ 'COOKIE.TYPES_COOKIES_TYPE3' | translate }}
+                                </td>
+                                <td style="width:70%">
+                                    {{ 'COOKIE.TYPES_COOKIES_TYPE3_DESC' | translate }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:30%">
+                                    {{ 'COOKIE.TYPES_COOKIES_TYPE4' | translate }}
+                                </td>
+                                <td style="width:70%">
+                                    {{ 'COOKIE.TYPES_COOKIES_TYPE4_DESC' | translate }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h4 #cookiePolicy3>
+                        {{ 'COOKIE.COOKIES_CATAGORIES' | translate }}
+                    </h4>
+                    <p class="subHead">{{ 'COOKIE.COOKIES_CATAGORIES_TECHNICAL' | translate }}</p>
+                    <p>
+                        {{ 'COOKIE.COOKIES_CATAGORIES_TECHNICAL_DESC_PARA1' | translate }}
+                    </p>
+                    <p>{{ 'COOKIE.COOKIES_CATAGORIES_TECHNICAL_DESC_PARA2' | translate }}</p>
+                    <p>
+                        {{ 'COOKIE.COOKIES_CATAGORIES_TECHNICAL_DESC_PARA3' | translate }}
+                    </p>
+                    <ol>
+                      <li>
+                        {{ 'COOKIE.COOKIES_CATAGORIES_TECHNICAL_LI1' | translate }}
+                      </li>
+                      <li>
+                        {{ 'COOKIE.COOKIES_CATAGORIES_TECHNICAL_LI2' | translate }}
+                      </li>
+                      <li>
+                        {{ 'COOKIE.COOKIES_CATAGORIES_TECHNICAL_LI3' | translate }}
+                      </li>
+                    </ol>
+                    <div class="customTableWrapper">
+                        <table class="customTable">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">{{ 'COOKIE.COOKIES_CATAGORIES_NAVIGATION' | translate }}</th>
+                                </tr>
+                                <tr>
+                                    <th style="width:20%">
+                                        {{ 'COOKIE.COOKIES_CATAGORIES_NAVIGATION_TABLE_HEAD1' | translate }}
+                                    </th>
+                                    <th style="width:50%">
+                                        {{ 'COOKIE.COOKIES_CATAGORIES_NAVIGATION_TABLE_HEAD2' | translate }}
+                                    </th>
+                                    <th style="width:15%">
+                                        {{ 'COOKIE.COOKIES_CATAGORIES_NAVIGATION_TABLE_HEAD3' | translate }}
+                                    </th>
+                                    <th style="width:15%">
+                                        {{ 'COOKIE.COOKIES_CATAGORIES_NAVIGATION_TABLE_HEAD4' | translate }}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width:20%">
+                                        JSESSIONID
+                                    </td>
+                                    <td style="width:50%">
+                                        {{ 'COOKIE.COOKIES_CATAGORIES_NAVIGATION_TYPE1_DESC' | translate }}
+                                    </td>
+                                    <td style="width:15%">
+                                        {{ 'COOKIE.SESSION' | translate }}
+                                    </td>
+                                    <td style="width:15%">
+                                        {{ 'COOKIE.FIRST_PART' | translate }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:20%">
+                                        XSRF-TOKEN
+                                    </td>
+                                    <td style="width:50%">
+                                        {{ 'COOKIE.COOKIES_CATAGORIES_NAVIGATION_TYPE2_DESC' | translate }}
+                                    </td>
+                                    <td style="width:15%">
+                                        {{ 'COOKIE.SESSION' | translate }}
+                                    </td>
+                                    <td style="width:15%">
+                                        {{ 'COOKIE.FIRST_PART' | translate }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:20%">
+                                      IP
+                                    </td>
+                                    <td style="width:50%">
+                                        {{ 'COOKIE.COOKIES_CATAGORIES_NAVIGATION_TYPE3_DESC' | translate }}
+                                    </td>
+                                    <td style="width:15%">
+                                        {{ 'COOKIE.TWO_YEARS' | translate }}
+                                    </td>
+                                    <td style="width:15%">
+                                        {{ 'COOKIE.FIRST_PART' | translate }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:20%">
+                                      loggedUser
+                                    </td>
+                                    <td style="width:50%">
+                                        {{ 'COOKIE.COOKIES_CATAGORIES_NAVIGATION_TYPE4_DESC' | translate }}
+                                    </td>
+                                    <td style="width:15%">
+                                        {{ 'COOKIE.TWO_YEARS' | translate }}
+                                    </td>
+                                    <td style="width:15%">
+                                        {{ 'COOKIE.FIRST_PART' | translate }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:20%">
+                                      customCookieConsent
+                                    </td>
+                                    <td style="width:50%">
+                                        {{ 'COOKIE.COOKIES_CATAGORIES_NAVIGATION_TYPE5_DESC' | translate }}
+                                    </td>
+                                    <td style="width:15%">
+                                        {{ 'COOKIE.TWO_YEARS' | translate }}
+                                    </td>
+                                    <td style="width:15%">
+                                        {{ 'COOKIE.FIRST_PART' | translate }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:20%">
+                                      cookieConsentStatus
+                                    </td>
+                                    <td style="width:50%">
+                                        {{ 'COOKIE.COOKIES_CATAGORIES_NAVIGATION_TYPE6_DESC' | translate }}
+                                    </td>
+                                    <td style="width:15%">
+                                        {{ 'COOKIE.TWO_YEARS' | translate }}
+                                    </td>
+                                    <td style="width:15%">
+                                        {{ 'COOKIE.FIRST_PART' | translate }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                  <td style="width:20%">
+                                    clientId
+                                  </td>
+                                  <td style="width:50%">
+                                    {{ 'COOKIE.COOKIES_CATAGORIES_FUNCTIONAL_TYPE1_DESC' | translate }}
+                                  </td>
+                                  <td style="width:15%">
+                                    {{ 'COOKIE.TWO_YEARS' | translate }}
+                                  </td>
+                                  <td style="width:15%">
+                                    {{ 'COOKIE.FIRST_PART' | translate }}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style="width:20%">
+                                    country
+                                  </td>
+                                  <td style="width:50%">
+                                    {{ 'COOKIE.COOKIES_CATAGORIES_FUNCTIONAL_TYPE4_DESC' | translate }}
+                                  </td>
+                                  <td style="width:15%">
+                                    {{ 'COOKIE.TWO_YEARS' | translate }}
+                                  </td>
+                                  <td style="width:15%">
+                                    {{ 'COOKIE.FIRST_PART' | translate }}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style="width:20%">
+                                    language
+                                  </td>
+                                  <td style="width:50%">
+                                    {{ 'COOKIE.COOKIES_CATAGORIES_FUNCTIONAL_TYPE5_DESC' | translate }}
+                                  </td>
+                                  <td style="width:15%">
+                                    {{ 'COOKIE.TWO_YEARS' | translate }}
+                                  </td>
+                                  <td style="width:15%">
+                                    {{ 'COOKIE.FIRST_PART' | translate }}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style="width:20%">
+                                    countries
+                                  </td>
+                                  <td style="width:50%">
+                                    {{ 'COOKIE.COOKIES_CATAGORIES_FUNCTIONAL_TYPE6_DESC' | translate }}
+                                  </td>
+                                  <td style="width:15%">
+                                    {{ 'COOKIE.TWO_YEARS' | translate }}
+                                  </td>
+                                  <td style="width:15%">
+                                    {{ 'COOKIE.FIRST_PART' | translate }}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td style="width:20%">
+                                    user-languages
+                                  </td>
+                                  <td style="width:50%">
+                                    {{ 'COOKIE.COOKIES_CATAGORIES_FUNCTIONAL_TYPE7_DESC' | translate }}
+                                  </td>
+                                  <td style="width:15%">
+                                    {{ 'COOKIE.TWO_YEARS' | translate }}
+                                  </td>
+                                  <td style="width:15%">
+                                    {{ 'COOKIE.FIRST_PART' | translate }}
+                                  </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p class="subHead" #cookiePolicy4>{{ 'COOKIE.COOKIES_CATAGORIES_ANALYTICAL' | translate }}</p>
+
+                    <p>
+                        {{ 'COOKIE.COOKIES_CATAGORIES_ANALYTICAL_DESC_PARA1' | translate }}
+                    </p>
+
+                    <p>
+                      <a href="https://policies.google.com/privacy?hl=en">Google Privacy Policy</a>
+                      {{ 'COOKIE.COOKIES_CATAGORIES_ANALYTICAL_DESC_PARA2' | translate }}
+                      <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage">{{ 'COOKIE.HERE' | translate }}</a>
+                    </p>
+
+                    <div class="customTableWrapper">
+                        <table class="customTable">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">{{ 'COOKIE.COOKIES_CATAGORIES_FUNCTIONAL' | translate }}</th>
+                                </tr>
+                                <tr>
+                                    <th style="width:20%">
+                                        {{ 'COOKIE.COOKIES_CATAGORIES_NAVIGATION_TABLE_HEAD1' | translate }}
+                                    </th>
+                                    <th style="width:50%">
+                                        {{ 'COOKIE.COOKIES_CATAGORIES_NAVIGATION_TABLE_HEAD2' | translate }}
+                                    </th>
+                                    <th style="width:15%">
+                                        {{ 'COOKIE.COOKIES_CATAGORIES_NAVIGATION_TABLE_HEAD3' | translate }}
+                                    </th>
+                                    <th style="width:15%">
+                                        {{ 'COOKIE.COOKIES_CATAGORIES_NAVIGATION_TABLE_HEAD4' | translate }}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width:20%">
+                                      sports
+                                    </td>
+                                    <td style="width:50%">
+                                        {{ 'COOKIE.COOKIES_CATAGORIES_FUNCTIONAL_TYPE8_DESC' | translate }}
+                                    </td>
+                                    <td style="width:15%">
+                                        {{ 'COOKIE.TWO_YEARS' | translate }}
+                                    </td>
+                                    <td style="width:15%">
+                                        {{ 'COOKIE.FIRST_PART' | translate }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                  <td style="width:20%">
+                                    completeSportsList
+                                  </td>
+                                  <td style="width:50%">
+
+                                  </td>
+                                  <td style="width:15%">
+                                    {{ 'COOKIE.TWO_YEARS' | translate }}
+                                  </td>
+                                  <td style="width:15%">
+                                    {{ 'COOKIE.FIRST_PART' | translate }}
+                                  </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p class="subHead" #cookiePolicy5>
+                        {{ 'COOKIE.INFORMATION_PERSONAL_DATA' | translate }}
+                    </p>
+                    <p>
+                        {{ 'COOKIE.INFORMATION_PERSONAL_DATA_DESC' | translate }}
+                        <a class="custom-link" routerLink="/info/privacy">{{ 'USE_LEFTNAV.PRIVACY' | translate }}</a>
+                    </p>
+
+                    <p class="subHead" #cookiePolicy6>
+                        {{ 'COOKIE.COOKIE_PREFERENCE' | translate }}
+                    </p>
+                    <p>
+                        {{ 'COOKIE.COOKIE_PREFERENCE_DESC_PARA1' | translate }}
+                    </p>
+                    <p>
+                        {{ 'COOKIE.COOKIE_PREFERENCE_DESC_PARA2' | translate }}
+                      <p>
+                       <span class="custom-link" (click)="scrollTo(cookieManagement)">{{ 'USE_LEFTNAV.COOKIE_MANAGEMENT' | translate }}</span>
+                      </p>
+                    <p>
+                        {{ 'COOKIE.COOKIE_PREFERENCE_DESC_PARA3' | translate }}
+                    </p>
+
+                    <h4 #cookiePolicy7>
+                        GOOGLE CHROME
+                    </h4>
+                    <p>
+                        {{ 'LANGUAGE.ITA' | translate }}:
+                        <a href="https://support.google.com/chrome/answer/95647?hl=it" target="_blank">https://support.google.com/chrome/answer/95647?hl=it</a>
+                    </p>
+                    <p>
+                      {{ 'LANGUAGE.ENG' | translate }}:
+                        <a href="https://support.google.com/chrome/bin/answer.py?hl=eng&answer=95647" target="_blank">https://support.google.com/chrome/bin/answer.py?hl=eng&answer=95647</a>
+                    </p>
+
+                    <h4 #cookiePolicy8>
+                        FIREFOX
+                    </h4>
+                    <p>
+                      {{ 'LANGUAGE.ITA' | translate }}:
+                        <a href=" https://support.mozilla.org/it/kb/Gestione%20dei%20cookie" target="_blank"> https://support.mozilla.org/it/kb/Gestione%20dei%20cookie</a>
+                    </p>
+                    <p>
+                      {{ 'LANGUAGE.ENG' | translate }}:
+                        <a href="https://support.mozilla.org/en-US/kb/enable-and-disable-cookie-website-preferences" target="_blank">https://support.mozilla.org/en-US/kb/enable-and-disable-cookie-website-preferences</a>
+                    </p>
+
+                    <h4 #cookiePolicy9>
+                        MICROSOFT EDGE
+                    </h4>
+                    <p>
+                      {{ 'LANGUAGE.ITA' | translate }}:
+                        <a href="https://support.microsoft.com/it-it/help/4027947/windows-delete-cookies" target="_blank">https://support.microsoft.com/it-it/help/4027947/windows-delete-cookies</a>
+                    </p>
+                    <p>
+                      {{ 'LANGUAGE.ENG' | translate }}:
+                        <a href="https://support.microsoft.com/en-us/help/4027947/windows-delete-cookies" target="_blank">https://support.microsoft.com/en-us/help/4027947/windows-delete-cookies</a>
+                    </p>
+
+                    <h4 #cookiePolicy10>
+                        SAFARI
+                    </h4>
+                    <p>
+                      {{ 'LANGUAGE.ITA' | translate }}:
+                        <a href="https://support.apple.com/it-it/HT201265" target="_blank">https://support.apple.com/it-it/HT201265</a>
+                    </p>
+                    <p>
+                      {{ 'LANGUAGE.ENG' | translate }}:
+                        <a href="https://support.apple.com/kb/PH17191?viewlocale=it_IT&locale=en_US" target="_blank">https://support.apple.com/kb/PH17191?viewlocale=it_IT&locale=en_US</a>
+                    </p>
+                </div>
+                <div #cookieManagement class="cookiesManagement">
+                    <h3 class="sectionHead">
+                        {{ 'USE_LEFTNAV.COOKIE_MANAGEMENT' | translate }}
+                    </h3>
+                    <div class="privacySection">
+                        <div class="privacyActionButton">
+                            <button class="btn" (click)="acceptAllCookies(policyContent)">{{ 'COOKIE.ACCEPT_ALL' | translate }}</button>
+                        </div>
+                    </div>
+                    <div class="manageConsentSection">
+                        <h4>{{ 'COOKIE.CONSENTS' | translate }}</h4>
+                        <div class="singlePreference" *ngFor="let preference of consentPreference">
+                            <div class="preferenceHeader">
+                                <div class="title">
+                                    <h5>{{preference.title | translate}}</h5>
+                                </div>
+                                <div class="slider">
+                                    <mat-slide-toggle *ngIf="preference.stateChanges" class="example-margin" [checked]="cookiesConsentValues[preference.id]"
+                                        [color]="primary" (change)="updateCookieValues(preference.id, $event)">
+                                    </mat-slide-toggle>
+                                    <p class="remainActive" *ngIf="!preference.stateChanges">{{ 'COOKIE.ALWAYS_ACTIVE' | translate }}</p>
+                                </div>
+                            </div>
+                            <div class="preferenceDescription">
+                                <p>{{preference.description | translate}}</p>
+                            </div>
+                        </div>
+                        <div class="actionButton">
+                            <button class="btn" (click)="setCookiesChoice(policyContent)">{{ 'COOKIE.CONFIRM_CHOICES' | translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="scrollTop" [class.active]="fixSideNav" (click)="scrollTop(policyContent)">
+        <i class="fa fa-angle-up"></i>
+    </div>
+    <app-menu [policyMenu]="true"></app-menu>
+</div>

@@ -1,0 +1,34 @@
+<div class="curiosities-card" (click)="openCuriosity()">
+  <div class="curiosities-image-wrapper w-100" [class.bottom]="isBottom" *ngIf="curiositiesItem.mediaType === 'IMAGE'">
+    <div *ngIf="!imageLoaded" class="text-center imageLoading">
+      <div class="w-50 mauto gold">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+    <img src="{{curiositiesItem.urlToMedia}}" [alt]="curiositiesItem.title" class="curiosities-image" [hidden]="!imageLoaded"
+      (error)="notifyImageError(curiositiesItem)" draggable="false" (load)="onImageLoad()">
+      <div class="name-social-wrapper">
+        <div class="curiosities-source-name">{{ curiositiesItem.author }}</div>
+        <div class="share-like-wrapper">
+          <!-- <app-social-share [url]="shareUrl"></app-social-share>
+          <app-social-like [id]="curiositiesItem.sourceId" [type]="'news'"></app-social-like> -->
+        </div>
+      </div>
+  </div>
+  <div class="curiosities-image-wrapper w-100" [class.bottom]="isBottom" *ngIf="curiositiesItem.mediaType === 'VIDEO'">
+    <div class="playButton">
+      <button class="active"><i class="fa fa-play"></i></button>
+    </div>
+    <video [class.d-none]="displayVideoThumb" muted playsinline onloadedmetadata="this.muted = true" class="newsVideo">
+      <source src="{{curiositiesItem.urlToMedia}}" type="video/mp4">
+    </video>
+    <img src="{{curiositiesItem.urlToMedia.split('.').slice(0, -1).join('.')}}_THUMBNAIL.jpg" alt="{{curiositiesItem.source}}"
+      class="curiosities-image" [class.d-none]="!displayVideoThumb" draggable="false" (error)="onVideoThumbError()">
+  </div>
+  <div class="curiosities-desc-wrapper p-3" [class.text-bottom]="isBottom">
+    <!-- <div class="mb-2 desc-team">{{curiositiesItem.source}}</div> -->
+    <div class="desc-title">{{curiositiesItem.title}}</div>
+    <p class="desc-sub">{{curiositiesItem.description}}</p>
+    <div class="desc-publishAt">{{curiositiesItem.publishedAt | date}}</div>
+  </div>
+</div>

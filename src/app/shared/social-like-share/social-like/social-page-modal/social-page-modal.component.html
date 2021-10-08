@@ -1,0 +1,56 @@
+<div class="header-wrapper">
+  <span class="icon-sb-close" (click)="close()"><span class="path1"></span><span class="path2"></span></span>
+</div>
+<div class="social-pages">
+  <ng-container *ngIf="selectedSocial === 'facebook'">
+    <div class="social-pages-wrapper facebook">
+      <div class="social-item">
+        <fb-page #fbPage1></fb-page>
+      </div>
+      <div class="social-item">
+        <fb-page #fbPage2></fb-page>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="selectedSocial === 'instagram'">
+    <div class="social-pages-wrapper instagram">
+      <div class="social-item" *ngIf="instagramDetails[0]">
+        <img [src]="instagramDetails[0]?.pic" alt="instagram-placeholder" />
+        <div class="instagram-name">{{ instagramDetails[0]?.name }}</div>
+        <a [href]="instagramDetails[0]?.url" target="_blank" class="instagram-button">Follow</a>
+      </div>
+      <div class="social-item" *ngIf="instagramDetails[1]">
+        <img [src]="instagramDetails[1]?.pic" alt="instagram-placeholder" />
+        <div class="instagram-name">{{ instagramDetails[1]?.name }}</div>    
+        <a [href]="instagramDetails[1]?.url" target="_blank" class="instagram-button">Follow</a>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="selectedSocial === 'twitter'">
+    <div class="social-pages-wrapper twitter">
+      <div class="social-item" *ngIf="twitterDetails[0]">
+        <img [src]="twitterDetails[0]?.pic" alt="twitter-placeholder" />
+        <div class="twitter-name">{{ twitterDetails[0]?.name }}</div>
+        <a [href]="twitterDetails[0]?.url" target="_blank" class="twitter-button">Follow</a>
+      </div>
+      <div class="social-item" *ngIf="twitterDetails[1]">
+        <img [src]="twitterDetails[1]?.pic" alt="twitter-placeholder" />
+        <div class="twitter-name">{{ twitterDetails[1]?.name }}</div>    
+        <a [href]="twitterDetails[1]?.url" target="_blank" class="twitter-button">Follow</a>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="selectedSocial === 'youtube'">
+    <div class="social-pages-wrapper youtube">
+      <div class="social-item" *ngIf="youtubeDetails[0]">
+        <div class="g-ytsubscribe" [attr.data-channel]="youtubeDetails[0]" data-layout="full" data-theme="dark" data-count="hidden"></div>
+      </div>
+      <!-- <div class="social-item" *ngIf="youtubeDetails[1]">
+        <div class="g-ytsubscribe" [attr.data-channelid]="youtubeDetails[1]" data-layout="full" data-theme="dark" data-count="hidden"></div>
+      </div> -->
+    </div>
+  </ng-container>
+</div>
+<div class="footer-wrapper">
+  <span class="icon-sb-left" (click)="back()"><span class="path1"></span><span class="path2"></span></span>
+</div>

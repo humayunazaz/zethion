@@ -1,0 +1,56 @@
+@import 'sportbusters';
+
+td {
+  &.team {
+    width: 34% !important;
+  }
+  &.score {
+    width: 12% !important;
+  }
+  &.logo {
+    width: 4% !important;
+  }
+  &.tournament {
+    font-weight: bold;
+    font-size: medium;
+  }
+}
+
+:host {
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
+app-scroll-container {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+app-scroll-container.full {
+  flex-basis: auto;
+}
+
+app-scroll-container.part {
+  flex-basis: 200px;
+}
+
+
+@media (#{$bp-lt-460}) {
+  content,
+  table,
+  table th,
+  table td {
+    font-size: 0.6rem !important;
+  }
+  .team-logo {
+    height: 4rem;
+    width: auto;
+  }
+
+  .team.size-small {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+

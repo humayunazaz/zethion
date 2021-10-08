@@ -1,0 +1,96 @@
+@import 'sportbusters';
+
+.header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  h3 {
+    color: #a68a43;
+    margin: 0;
+    font-size: 22px;
+  }
+
+  span {
+    cursor: pointer;
+  }
+
+  .icon-sb-close {
+
+    .path1,
+    .path2 {
+      &::before {
+        color: #a68a43;
+      }
+    }
+  }
+
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+
+  &:last-child {
+    margin-top: 20px;
+  }
+
+  button {
+    outline: 0;
+    border: none;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin-right: 50px;
+    border: 2px solid #ccc;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    // @media only screen and (#{$bp-lt-768}) {
+    //   margin-right: 10px;
+    // }
+
+    &.facebook {
+      background-color: #4267B2;
+    }
+
+    &.twitter {
+      background-color: #00acee;
+    }
+
+    &.whatsapp {
+      background-color: #25D366;
+    }
+
+    &.facebook-messenger {
+      background-color: #fff;
+
+      img {
+        &.enabled {
+          width: 34px;
+        }
+        &.disabled {
+          width: 28px;
+        }
+      }
+    }
+
+    &.share-link {
+      background: transparent;
+      color: #a68a43;
+    }
+
+    i {
+      font-size: 25px;
+    }
+  }
+
+}

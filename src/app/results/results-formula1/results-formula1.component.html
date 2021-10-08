@@ -1,0 +1,22 @@
+<div class="row" *ngIf="filtersLoaded | async">
+  <div class="col-md-7"></div>
+  <div class="col-md-3 col-sm-8 col-8">
+    <app-tournament-select [choices]="gpChoices"
+                           (selected)='gpChanged($event)'
+                           [selectedTournament]="selectedTournamentId">
+    </app-tournament-select>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div *ngIf="filtersLoadedResults | async">
+        <app-table-results-formula1 [data]="formula1Results" [selectedSport]="selectedSport">
+        </app-table-results-formula1>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+

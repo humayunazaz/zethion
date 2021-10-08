@@ -1,0 +1,87 @@
+<div style="overflow: hidden;">
+  <div class="row detail-header-row">
+    <img class="team-logo team-logo-left"
+         src="{{url_logo_teams}}/{{data.detail.homeTeamCode}}.png"
+         (error)="teamLogoMissing($event)" />
+    <div class="detail-header margin-auto">
+      <h4 class="header-item header-item-left">{{data.detail.homeTeam}}</h4>
+      <div class="header-item-score">
+        <h4>{{data.detail.homeScore}} - {{data.detail.awayScore}}</h4>
+        <div class="pt-designation"
+             *ngIf="data.detail.homePenaltyScore !== undefined; else otScore">
+          {{ data.detail.homePenaltyScore + ' - ' + data.detail.awayPenaltyScore }} </div>
+        <ng-template #otScore>
+          <div class="ot-designation"
+               *ngIf="data.detail.homeOvertimeScore !== undefined"> a.o.t. </div>
+        </ng-template>
+      </div>
+      <h4 class="header-item header-item-right">{{data.detail.awayTeam}}</h4>
+    </div>
+    <img class="team-logo team-logo-right"
+         style="margin-right: 3px;"
+         src="{{url_logo_teams}}/{{data.detail.awayTeamCode}}.png"
+         (error)="teamLogoMissing($event)" />
+  </div>
+  <!-- <div *ngIf="data.detail.homeOvertimeScore !== undefined"
+       class="row detail-header-row">
+    <div class="detail-header margin-auto">
+      <p>aot.</p>
+    </div>
+  </div> -->
+  <div class="row">
+    <div class="button-group margin-auto"
+         style="margin-top: 2px;">
+      <a class="nav-link detail-button"
+         [ngClass]="{ 'active':loadComponent==='Timeline'}"
+         (click)="loadMyChildComponent('Timeline');"
+         type="button"
+         data-toggle="tab"
+         href="#football-timeline"
+         role="tablist">Timeline</a>
+      <a class="nav-link detail-button"
+         [ngClass]="{ 'active':loadComponent==='OnField'}"
+         (click)="loadMyChildComponent('OnField');"
+         type="button"
+         data-toggle="tab"
+         href="#football-onfield"
+         role="tablist">On Field</a>
+      <a class="nav-link active detail-button"
+         *ngIf="statisticDetail"
+         [ngClass]="{ 'active':loadComponent==='Statistics'}"
+         (click)="loadMyChildComponent('Statistics');"
+         type="button"
+         data-toggle="tab"
+         href="#football-statistics"
+         role="tablist">Statistics</a>
+    </div>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <div class="main-content">
+      <div class="container-fluid">
+        <div class="tab-content tab-space">
+          <div class="tab-pane"
+               [ngClass]="{ 'active':loadComponent==='Timeline'}"
+               id="football-timeline"
+               *ngIf="loadComponent == 'Timeline'">
+            <app-football-timeline [eventDetail]="eventDetail"
+                                   [hasOvertime]="hasOvertime"></app-football-timeline>
+          </div>
+          <div class="tab-pane"
+               [ngClass]="{ 'active':loadComponent==='OnField'}"
+               id="football-onfield"
+               style="padding-bottom: 30px;"
+               *ngIf="loadComponent == 'OnField'">
+            <app-football-onfield [playerDetail]="playerDetail"></app-football-onfield>
+          </div>
+          <div class="tab-pane active"
+               [ngClass]="{ 'active':loadComponent==='Statistics'}"
+               id="football-statistics"
+               *ngIf="loadComponent == 'Statistics'">
+            <app-football-statistics [detail]="statisticDetail"
+                                     [rate]="rate"></app-football-statistics>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

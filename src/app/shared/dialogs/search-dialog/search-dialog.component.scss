@@ -1,0 +1,182 @@
+@import 'sportbusters';
+
+.card {
+  width: 100%;
+  margin: 15px 15px;
+  background: none;
+}
+
+.card-header {
+  padding: .4rem 1.0rem;
+  margin-bottom: 0;
+  background-color: #191f34cc;
+  border-bottom: 1px solid #a19f9f21;
+  color: #a19f9f;
+  font-size: 14px;
+}
+
+.card-body {
+  background: #040c17a8;
+}
+
+.card-content {
+  color: white;
+  font-family: 'Lato', sans-serif;
+}
+
+.card-content h3,
+.card-content p {
+  font-family: 'Lato', sans-serif;
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+
+.search-modal {
+  overflow-x: hidden;
+  padding: 30px;
+  color: #a19f9f;
+  // background-image: url("../../../../assets/img/favicon-lyre.png");
+  // background-repeat: no-repeat;
+  // background-position: right;
+  // background-size: 25%;
+  background-color: rgba(0, 9, 21, 0.8);
+  max-height: 90%;
+
+}
+
+.desc-content {
+  padding: 20px 40px;
+}
+
+.title-content {
+  padding: 10px 20px;
+}
+
+.img-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.img-content {
+  width: 70%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mat-select-panel {
+  background: rgba(0, 9, 21, 0.98) !important;
+}
+
+.tag {
+  border: 1px #a19f9f solid;
+  color: #a19f9f;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 2px 2px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tag-selected {
+  background: #1d1a11;
+  color: white;
+  box-shadow: inset 4px -2px 20px 0px rgba(0, 0, 0, 0.14), 2px 4px 10px -4px $color-primary;
+  border: 1px solid #1d1a11;
+}
+
+.clear-container {
+  margin-top: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.clear-btn {
+  margin-right: 10px;
+  border: 1px solid white;
+  padding: 5px;
+}
+
+.confirm-buttom {
+  text-align: right;
+  width: 100%;
+  font-size: 25px;
+  padding-top: 20px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.confirm-buttom:hover {
+  color: $color-primary;
+}
+
+.blk-search {
+  margin-bottom: 25px;
+}
+
+@media only screen and (#{$bp-lt-840}) {
+
+  ::ng-deep .custom-dialog-container,
+  .custom-dialog-container-no-scroll {
+    width: unset !important;
+  }
+
+  .close {
+    display: block;
+    position: absolute;
+    right: 5px;
+    text-shadow: unset;
+    opacity: unset;
+    padding: 5px;
+  }
+
+  .fa.fa-times {
+    color: #55534f;
+  }
+
+  ::ng-deep .custom-dialog-container .mat-dialog-container {
+    padding: 0 9px 9px 9px !important;
+  }
+
+  .mat-dialog-content {
+    // max-height: 100vh!important;
+    height: 100vh;
+
+  }
+
+  .title-content {
+    font-size: 20px;
+  }
+
+  .desc-content {
+    font-size: 15px;
+    padding: 1px 40px;
+  }
+
+  .img-content {
+    width: 87%;
+  }
+
+  .card-content {
+    margin-bottom: 8vh;
+  }
+
+  .img-div {
+    margin-top: 40px;
+  }
+}
+
+/* CSS specific to iOS devices */
+@supports (-webkit-touch-callout: none) {
+  .mat-dialog-content {
+    // max-height: 100vh!important;
+    height: 86vh;
+  }
+
+}

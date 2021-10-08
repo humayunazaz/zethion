@@ -1,0 +1,16 @@
+<div class="sidebar-content">
+  <div class="cls-icon" (click)="openClassifications()" (mouseover)="mouseOverEvent()"
+    (mouseout)="mouseLeaveEvent()">
+    <div class="delay-1"
+      [ngClass]="{'cls-icon-bar-0 cls-icon-background':!mouseOverState, 'cls-icon-bar-long-0 cls-icon-background-long':mouseOverState}">
+    </div>
+    <div class="delay-2"
+      [ngClass]="{'cls-icon-bar-long cls-icon-background':!mouseOverState, 'cls-icon-bar cls-icon-background-long':mouseOverState}">
+    </div>
+    <div class="delay-3"
+      [ngClass]="{'cls-icon-bar cls-icon-background':!mouseOverState, 'cls-icon-bar-long cls-icon-background-long':mouseOverState}">
+    </div>
+    <div class="delay-4"
+      [ngClass]="{'cls-icon-bar-long cls-icon-background':!mouseOverState, 'cls-icon-bar cls-icon-background-long':mouseOverState}">
+    </div>
+</div>

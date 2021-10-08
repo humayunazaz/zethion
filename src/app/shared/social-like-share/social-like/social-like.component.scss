@@ -1,0 +1,14 @@
+@import 'sportbusters';
+
+span {
+  font-size: 20px;
+
+  @media only screen and (#{$bp-lt-768}) {
+    font-size: 16px;
+  }
+
+  &:hover {
+    filter: drop-shadow(5px 5px 5px #a68a43);
+    -webkit-filter: drop-shadow(5px 5px 5px #a68a43);
+  }
+}

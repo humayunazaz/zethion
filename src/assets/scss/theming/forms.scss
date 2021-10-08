@@ -1,0 +1,38 @@
+
+.mat-form-field-infix {
+  color: white !important;
+  background-color: transparent !important;
+}
+
+
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  color: #d2d2d2 !important;
+}
+.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: #d2d2d2 !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: #d2d2d2 !important;
+}
+.mat-input-element {
+  caret-color: #d2d2d2 !important;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: $color-accent !important;
+}
+
+.mat-option {
+  color: rgba(255, 255, 255, 1) !important;
+}
+.mat-autocomplete-panel {
+  background: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.87);
+}
+.mat-option:hover {
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14),
+    0 7px 10px -5px rgb(228, 106, 7);
+  background: $color-accent !important;
+  color: #fff !important;
+}

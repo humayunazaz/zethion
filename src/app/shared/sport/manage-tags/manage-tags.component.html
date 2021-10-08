@@ -1,0 +1,43 @@
+<div class="container">
+  <mat-dialog-content class="translation-modal">
+    <div class="card-content">
+      <h3 class="text-center fo-wt-900 title-content">Add Tags</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive table-full-width">
+            <table class="table">
+              <thead>
+              <tr class="mat-header-row">
+                <th scope="col">{{'TAG.KEYWORD' | translate}}</th>
+                <th scope="col">{{'TAG.TYPE' | translate}}</th>
+                <th scope="col">{{'TAG.SUBJECT' | translate}}</th>
+                <th scope="col">{{'TAG.IMAGE' | translate}}</th>
+                <th scope="col">{{'REGISTRY.ACTION' | translate}}</th>
+              </tr>
+              </thead>
+              <tbody *ngIf="tags.length">
+                <tr *ngFor="let tag of tags">
+                  <td>{{ tag.keyword }}</td>
+                  <td>{{ tag.type || 'GENERAL' }}</td>
+                  <td>{{ tag.name || '-' }}</td>
+                  <td><input matInput value="{{tag.urlToImage || '-'}}" (change)="updateValue($event, 'urlToImage', tag)" /></td>
+                  <td class="table-action">
+                    <i class="fa fa-trash trash" aria-hidden="true"  (click)="delete(tag)"></i>
+                  </td>
+                </tr>
+              </tbody>
+              <tbody *ngIf="!tags.length">
+                <tr class="no-tags-found">
+                  <td colspan="5">No tag(s) found.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="add-tag pull-right">
+            <button class="btn btn-primary" (click)="addTag()"><i class="fa fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

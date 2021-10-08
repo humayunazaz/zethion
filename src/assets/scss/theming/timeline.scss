@@ -1,0 +1,119 @@
+$white-color: white;
+
+.timeline {
+    list-style: none;
+    padding: 20px 0 20px;
+    position: relative;
+    margin-top: 30px;
+
+    &:before {
+        top: 50px;
+        bottom: 0;
+        position: absolute;
+        content: " ";
+        width: 3px;
+        background-color: #E5E5E5;
+        left: 50%;
+        margin-left: -1px;
+    }
+
+    h6{
+        color: gray;
+        font-weight: 400;
+        margin: 10px 0px 0px;
+    }
+
+    > li {
+        margin-bottom: 20px;
+        position: relative;
+
+        &:before,
+        &:after {
+            content: " ";
+            display: table;
+        }
+
+        &:after {
+            clear: both;
+        }
+
+    }
+
+    > li > .timeline-panel {
+        width: 45%;
+        float: left;
+        padding: 20px;
+        margin-bottom: 20px;
+        position: relative;
+        box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+        border-radius: $border-radius-large;
+        // color: $mdb-card-body-text;
+        // background: $mdb-card-body-background;
+
+        &:before {
+            position: absolute;
+            top: 26px;
+            right: -15px;
+            display: inline-block;
+            border-top: 15px solid transparent;
+            border-left: 15px solid #e4e4e4;
+            border-right: 0 solid #e4e4e4;
+            border-bottom: 15px solid transparent;
+            content: " ";
+        }
+
+        &:after {
+            position: absolute;
+            top: 27px;
+            right: -14px;
+            display: inline-block;
+            border-top: 14px solid transparent;
+            border-left: 14px solid $white-color;
+            border-right: 0 solid $white-color;
+            border-bottom: 14px solid transparent;
+            content: " ";
+        }
+    }
+
+    > li.timeline-inverted > .timeline-panel {
+        float: right;
+        background-color: $white-color;
+
+        &:before {
+            border-left-width: 0;
+            border-right-width: 15px;
+            left: -15px;
+            right: auto;
+        }
+
+        &:after {
+            border-left-width: 0;
+            border-right-width: 14px;
+            left: -14px;
+            right: auto;
+        }
+
+    }
+
+
+}
+
+
+.timeline-body{
+    hr{
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .btn{
+        margin-bottom: 0;
+    }
+}
+.timeline-body > p,
+.timeline-body > ul {
+  margin-bottom: 0;
+}
+
+.timeline-body > p + p {
+  margin-top: 5px;
+}

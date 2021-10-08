@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-4 order-lg-last fixed">
+    <form [formGroup]="formFilter">
+
+      <div class="form-group">
+        <label for="code">{{'REGISTRY.CODE' | translate}}</label>
+        <input type="text"
+               (ngModelChange)="changeCode($event)"
+               class="form-control"
+               formControlName="code"
+               id="code">
+      </div>
+
+      <div class="form-group">
+        <label for="cluster">{{'REGISTRY.CLUSTER' | translate}}</label>
+        <mat-select
+          id="cluster"
+          name="cluster"
+          formControlName="cluster"
+          [(ngModel)]="cluster"
+          (selectionChange)="changeCluster($event)">
+          <mat-option *ngFor="let cluster of clusters" [value]="cluster">
+            {{ cluster }}
+          </mat-option>
+        </mat-select>
+      </div>
+      <div class="form-group">
+        <label for="language">{{'REGISTRY.LANGUAGE' | translate}}</label>
+        <mat-select
+          appearance="fill"
+          id="language"
+          name="language" multiple
+          formControlName="language"
+          [(ngModel)]="selectedLanguages"
+          (selectionChange)="changeLanguages($event)">
+          <mat-option *ngFor="let language of languages"
+                      [value]="language.value">
+            {{ 'LANGUAGE.' + language.code | translate }}
+          </mat-option>
+        </mat-select>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary" (click)="addTranslation()">{{'FORM.ADD_TRANSLATION' | translate}}</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first" *ngIf="loading">
+    <div class="imageLoading spin-center"><div class="w-50 mauto gold"><mat-spinner></mat-spinner></div></div>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first">
+    <div class="table-responsive table-full-width">
+      <table class="table">
+        <thead>
+          <tr>
+            <!-- <img class="nation-logo"
+           src="./assets/img/flags/{{tournamentInput.nation}}.png"
+           alt=""> -->
+            <th scope="col">{{'REGISTRY.CODE' | translate}}</th>
+            <th scope="col">{{'REGISTRY.CLUSTER' | translate}}</th>
+            <th scope="col"><img class="nation-logo" src="./assets/icon/round_flag/en.png"alt=""></th>
+            <th scope="col"><img class="nation-logo" src="./assets/icon/round_flag/it.png"alt=""></th>
+            <th scope="col"><img class="nation-logo" src="./assets/icon/round_flag/fr.png"alt=""></th>
+            <th scope="col"><img class="nation-logo" src="./assets/icon/round_flag/de.png"alt=""></th>
+            <th scope="col"><img class="nation-logo" src="./assets/icon/round_flag/es.png"alt=""></th>
+          </tr>
+        </thead>
+        <tbody *ngIf="!loading">
+          <tr *ngFor="let item of data">
+            <td>{{item.code}}</td>
+            <td>{{item.cluster}}</td>
+            <td><input matInput value="{{item.languages.en}}" (change) = "valueChanged($event.target.value, 'en', item)" /></td>
+            <td><input matInput value="{{item.languages.it}}" (change) = "valueChanged($event.target.value, 'it', item)" /></td>
+            <td><input matInput value="{{item.languages.fr}}" (change) = "valueChanged($event.target.value, 'fr', item)"  /></td>
+            <td><input matInput value="{{item.languages.de}}" (change) = "valueChanged($event.target.value, 'de', item)"  /></td>
+            <td><input matInput value="{{item.languages.es}}" (change) = "valueChanged($event.target.value, 'es', item)" /></td>
+          </tr>
+          <tr class="translate-paging">
+            <td>
+              <i *ngIf="page>0" class="fa fa-ellipsis-h load-previous-data" aria-hidden="true" (click)="loadPreviousData()"></i>
+            </td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td>
+              <i class="fa fa-ellipsis-h load-next-data" aria-hidden="true" (click)="loadNextData()"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

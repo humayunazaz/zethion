@@ -1,0 +1,54 @@
+@import 'sportbusters';
+
+.card-content {
+  color: white;
+
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.info-modal {
+  padding: 0px;
+  margin: auto !important;
+  min-width: 300px;
+  overflow-x: hidden;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.desc-content {
+  padding: 20px 40px;
+}
+
+.title-content {
+  padding: 10px 20px;
+}
+
+.custom-scrollBar {
+  ::-webkit-scrollbar-thumb {
+    background: #c7b273 !important;
+    background-color: #c7b273 !important;
+  }
+
+  ::-webkit-scrollbar-button {
+    display: none !important;
+  }
+}
+
+@media only screen and (#{$bp-lt-840}) {}
+
+
+.closeButton {
+  cursor: pointer;
+
+  .icon-sb-close {
+
+    .path1,
+    .path2 {
+      &::before {
+        color: #a68a43;
+      }
+    }
+  }
+}

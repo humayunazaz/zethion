@@ -1,0 +1,10 @@
+<button class="close" (click)="onNoClick()"><
+  <span class="icon-sb-close"><span class="path1"></span><span class="path2"></span></span>
+</button>
+<div class="container">
+  <mat-dialog-content class="fb-content">
+    <div class="fb-post-wrapper-inner">
+      <iframe [src]="youtubeURL | sanitizeYoutube" frameborder="0" allowfullscreen="false"></iframe>
+    </div>
+  </mat-dialog-content>
+</div>

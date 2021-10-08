@@ -1,0 +1,20 @@
+<perfect-scrollbar style="max-height: 720px;">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="content table-responsive"
+               *ngIf="filtersLoaded | async"
+               infinite-scroll
+               [infiniteScrollDistance]="2"
+               [infiniteScrollThrottle]="300"
+               (scrolled)="handleScroll()">
+            <app-table-results [data]="resultsParams.tableData"
+                               [selectedSport]="resultsParams.selectedSport">
+            </app-table-results>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</perfect-scrollbar>

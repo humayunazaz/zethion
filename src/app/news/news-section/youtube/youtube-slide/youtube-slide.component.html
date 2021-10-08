@@ -1,0 +1,19 @@
+<div class="im-carousel__item nd-ratio nd-ratio--standard slide-{{index}}" (click)="openItem(item)">
+  <img [src]="item.thumbnail" [alt]="item.socialPage.socialPageUsername"  (error)="notifyImageError()" (load)="onImageLoad()" [hidden]="!imageLoaded" *ngIf="!item.withOutThumbnail">
+  <div class="carousel-caption d-md-block">
+    <div class="slide-desc-wrapper">
+      <div class="row mb-2 slide-desc-title">{{item.description}}</div>
+      <div class="row mb-2 slide-desc-subtitle">{{item.subDescription}}</div>
+    </div>
+  </div>
+  <div class="socialName">
+    <h4>{{item.socialPage.socialPageUsername}}</h4>
+  </div>
+  <div class="share-like-wrapper">
+    <app-social-share [url]="shareUrl"></app-social-share>
+    <app-social-like [id]="item.socialPage.idRef" [socialType]="item.socialPage.pageType" [type]="'social'"></app-social-like>
+  </div>
+  <!-- <div class="socialIcon">
+    <i class="fab fa-youtube icon"></i>
+  </div> -->
+</div>

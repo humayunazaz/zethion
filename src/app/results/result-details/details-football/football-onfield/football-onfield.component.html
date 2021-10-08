@@ -1,0 +1,11 @@
+<div class="onfield-wrapper">
+  <div class="onfield-court">
+    <div class="players-overlay">
+      <div *ngFor="let player of players"
+           [ngClass]="player.positionClass + ' ' + player.imageClass">
+        <div class="home-player-name"
+             [ngClass]="player.nameClass"><span>{{ player.name }}</span></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="im-carousel__item nd-ratio nd-ratio--standard slide-{{index}}" (click)="openCuriosity()">
+  <img [src]="item.urlToMedia" [alt]="item.title" [title]="item.title" (error)="notifyImageError()">
+  <div class="news-source-name">{{ item.author }}</div>
+  <div class="share-like-wrapper">
+    <!-- <app-social-share [url]="shareUrl"></app-social-share>
+    <app-social-like [id]="item.sourceId" [type]="'news'"></app-social-like> -->
+  </div>
+  <div class="carousel-caption d-md-block">
+    <div class="slide-desc-wrapper">
+      <!-- <div class="row mb-2 slide-desc-team">{{item.source}}</div> -->
+      <div class="row slide-desc-title mt-4 text-left">{{item.title}}</div>
+      <div class="row mb-2 slide-desc-subtitle">{{item.description}}</div>
+      <div class="row slide-desc-publishAt mt-2">{{item.publishedAt | date}}</div>
+    </div>
+  </div>
+</div>

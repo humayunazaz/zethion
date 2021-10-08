@@ -1,0 +1,30 @@
+<div class="post-container">
+  <!-- <fb-post [href]="facebookItem.postUrl"></fb-post> -->
+  <div class="fb-post-wrapper" (click)="onPostClicked(facebookItem)" (pan)="mobileHover()">
+    <div class="fb-post-wrapper-inner" [class.noThumbnail]="facebookItem.withOutThumbnail" [class.activeHoverTile]="activePanHoverId === facebookItem.postId">
+      <!-- <fb-post [class.isOdd]="isOdd" width="auto" height="auto"></fb-post> -->
+        <div *ngIf="!imageLoaded && !facebookItem.withOutThumbnail" class="imageLoading">
+          <div class="gold">
+            <mat-spinner></mat-spinner>
+          </div>
+        </div>
+      <img src="{{facebookItem.thumbnail}}" [alt]="facebookItem.socialPage.socialPageUsername"  class="news-image" [hidden]="!imageLoaded" (error)="notifyImageError(facebookItem)"
+        draggable="false" (load)="onImageLoad()" *ngIf="!facebookItem.withOutThumbnail">
+      <div class="socialName">
+        <h4>{{facebookItem.socialPage.socialPageUsername}}</h4>
+      </div>
+      <div class="share-like-wrapper">
+        <app-social-share [url]="shareUrl"></app-social-share>
+        <app-social-like [id]="facebookItem.socialPage.idRef" [socialType]="facebookItem.socialPage.pageType" [type]="'social'"></app-social-like>
+      </div>
+      <!-- <div class="socialIcon">
+        <i class="fab fa-facebook-f icon"></i>
+      </div> -->
+      <div class="facebook-desc-wrapper">
+        <div class="mb-2">
+          <p>{{facebookItem.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

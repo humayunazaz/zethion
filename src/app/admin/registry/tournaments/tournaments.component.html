@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-4 order-lg-last fixed">
+    <form [formGroup]="formFilter" >
+
+      <div class="form-group">
+        <label for="competitionName">{{'REGISTRY.NAME' | translate}}</label>
+        <input type="text"
+               (ngModelChange)="changeName($event)"
+               class="form-control"
+               formControlName="competitionName"
+               id="competitionName">
+      </div>
+
+      <div class="form-group">
+        <label>{{'REGISTRY.SPORT' | translate}}</label>
+        <app-sport-select (selected)='sportChanged($event)'></app-sport-select>
+      </div>
+
+      <div class="form-group">
+        <label>{{'REGISTRY.COUNTRY' | translate}}</label>
+        <app-country-select (selected)='countryChanged($event)'></app-country-select>
+      </div>
+
+      <div class="form-group">
+        <mat-select placeholder="{{ 'TOURNAMENT.STARTING_YEAR' | translate }}"
+                    name="startingYear" formControlName="startingYear"
+                    id="startingYear"
+                    (selectionChange)="yearChanged($event.value)"
+        >
+          <mat-option *ngFor="let year of startingYears" [value]="year">
+            {{ year }}
+          </mat-option>
+        </mat-select>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary" (click)="addTournament()">{{'FORM.ADD_TOURNAMENT' | translate}}</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first" *ngIf="loading">
+    <div class="imageLoading spin-center"><div class="w-50 mauto gold"><mat-spinner></mat-spinner></div></div>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first">
+    <div class="table-responsive table-full-width">
+      <table class="table">
+        <thead>
+        <tr class="mat-header-row">
+          <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.COMPETITION' | translate}}</th>
+          <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.SPORT' | translate}}</th>
+          <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.COUNTRY' | translate}}</th>
+          <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.PLACE' | translate}}</th>
+          <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'TOURNAMENT.STARTING_YEAR' | translate}}</th>
+          <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'FORM.DATE' | translate}}</th>
+          <th scope="col">{{'REGISTRY.ACTION' | translate}}</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="!loading">
+        <tr class="mat-row" *ngFor="let item of data">
+          <td class="mat-cell">{{'COMPETITION.' + item.competition.competitionName + "_" + item.competition.sport + "_" + item.competition.gender +
+            "_" + item.competition.country + "_" + item.competition.level | translate}}</td>
+          <td class="mat-cell">{{'SPORT.' + item.competition.sport | translate}}</td>
+          <td class="mat-cell">{{'COUNTRY.' + item.competition.country | translate}}</td>
+          <td class="mat-cell">{{item.place.description}}</td>
+          <td class="mat-cell">{{item.startingYear}}</td>
+          <td class="mat-cell">{{item.date}}</td>
+          <td class="table-action">
+            <i class="fa fa-edit edit" aria-hidden="true" (click)="edit(item)"></i>
+            <i class="fa fa-trash trash" aria-hidden="true"  (click)="delete(item)"></i>
+          </td>
+        </tr>
+        <tr class="translate-paging">
+          <td>
+            <i *ngIf="page>0" class="fa fa-ellipsis-h load-previous-data" aria-hidden="true" (click)="loadPreviousData()"></i>
+          </td>
+          <td></td><td></td><td></td><td></td><td></td>
+          <td>
+            <i class="fa fa-ellipsis-h load-next-data" aria-hidden="true" (click)="loadNextData()"></i>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

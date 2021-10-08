@@ -1,0 +1,76 @@
+@import 'sportbusters';
+
+table.table {
+
+  color: white;
+
+  th img {
+    display: block;
+    height: 25px !important;
+  }
+
+}
+
+.checkbox-icon {
+  display:block;
+  height: 35px !important;
+}
+
+@media (#{$bp-gt-992}){
+  .fixed {
+    position: fixed;
+    right: 20px;
+  }
+}
+
+label {
+  border-bottom : 1px solid darkgrey;
+}
+
+
+
+.social-automatic {
+  color: $color-automatic-insert;
+  cursor: pointer;
+}
+
+.social-trash {
+  color: $color-grey-trash;
+  cursor: pointer;
+}
+
+td.social-action i {
+  padding-left: 5px;
+}
+
+.load-previous-data {
+  color: $color-grey-trash;
+  cursor: pointer;
+}
+
+.load-next-data {
+  color: $color-grey-trash;
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+}
+
+.translate-paging>td:hover{
+  background: none !important
+}
+
+td:hover{
+  background-color: $color-grey-trash;;
+}
+td input{
+  color: white;
+}
+td input:focus{
+  padding-top: 5x;
+  padding-bottom: 5px;
+  min-width: 100px;
+}
+
+.nation-logo{
+  width: 25px !important;
+}

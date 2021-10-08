@@ -1,0 +1,80 @@
+@import 'sportbusters';
+
+input {
+  color: white !important;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-form-field.mat-form-field-suffix {
+  padding-bottom: 10px !important;
+}
+
+.a-profile {
+  margin-top: 14px;
+  cursor: pointer;
+}
+
+.a-align {
+  margin-left: -26px;
+}
+
+.gold {
+  color: #c7b273;
+}
+
+::ng-deep .mat-form-field-suffix {
+  margin-top: 15px;
+}
+
+::ng-deep .mat-form-field {
+  line-height: 0 !important;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #c7b273;
+}
+
+::ng-deep .mat-option:hover {
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px #c7b273;
+  background: #c7b273 !important;
+}
+
+::ng-deep .mat-option:focus:hover {
+  background-color: #c7b273 !important;
+}
+
+::ng-deep .mat-option.mat-selected:not(.mat-option-multiple) {
+  background-color: #c7b273 !important;
+}
+
+::ng-deep .mat-form-field-flex {
+  align-items: center !important;
+}
+
+.icon-sb-search {
+  cursor: pointer;
+  font-size: 200%;
+}
+
+@media (#{$bp-gt-768}) {
+  .mat-align {
+    width: 98%;
+  }
+
+  .a-align {
+    margin-left: -28px;
+  }
+}
+
+@media (#{$bp-lt-768}) {
+  .mat-align {
+    width: 100%;
+  }
+
+  .a-align {
+    margin-left: -18px;
+  }
+}

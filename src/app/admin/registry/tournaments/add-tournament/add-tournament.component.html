@@ -1,0 +1,109 @@
+<div class="container">
+  <mat-dialog-content class="translation-modal">
+    <div class="card-content">
+      <h3 class="text-center fo-wt-900 title-content">Add Tournament</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <form [formGroup]="addTournamentForm" (ngSubmit)="addTournament()">
+            <div class="form-group">
+              <label>{{'REGISTRY.SPORT' | translate}}</label>
+              <app-sport-select [sportControl]="addTournamentForm.controls.sport" hideAll='true' (selected)='sportChanged($event)'></app-sport-select>
+              <p class="error-message mt-10" *ngIf="addTournamentForm.controls.sport.touched && addTournamentForm.controls.sport.errors?.required">Sport is required</p>
+            </div>
+            <div class="form-group">
+              <label>{{'REGISTRY.COMPETITION' | translate}}</label>
+              <app-competition-autocomplete [competitionControl]="addTournamentForm.controls.competition" [selectedSport]="selectedSport">
+              </app-competition-autocomplete>
+              <p class="error-message mt-10" *ngIf="addTournamentForm.controls.competition.touched && addTournamentForm.controls.competition.errors?.required">Competition is required</p>
+            </div>
+            <div class="form-group">
+              <label>{{ 'TOURNAMENT.PLACE' | translate }}</label>
+              <app-place-autocomplete [placeControl]="addTournamentForm.controls.place" (optionSelected)='placeSelected($event)' State="edit">
+              </app-place-autocomplete>
+              <p class="error-message" *ngIf="addTournamentForm.controls.place.touched && addTournamentForm.controls.place.errors?.required">Place is required</p>
+            </div>
+            <div class="form-group">
+              <label>{{ 'TOURNAMENT.YEAR' | translate }}</label>
+              <mat-select formControlName="startingYear" placeholder="{{ 'TOURNAMENT.STARTING_YEAR' | translate }}" name="startingYear"
+                id="startingYear">
+                <mat-option *ngFor="let year of startingYears" [value]="year">
+                  {{ year }}
+                </mat-option>
+              </mat-select>
+              <p class="error-message  mt-10" *ngIf="addTournamentForm.controls.startingYear.touched && addTournamentForm.controls.startingYear.errors?.required">Starting Year is required</p>
+            </div>
+            <div class="form-group">
+              <mat-form-field class="w-100 birthdate">
+                <input formControlName="date" readonly matInput [matDatepicker]="picker" placeholder="{{ 'TOURNAMENT.DATE' | translate }}" #pickerInput>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker disabled="false"></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <ng-container *ngIf="addTournamentForm.controls.sport.value && addTournamentForm.controls.sport.value === 'TENNIS'">
+              <div class="form-group">
+                <label>{{ 'TOURNAMENT.IN_OUT' | translate }}</label>
+                <mat-select formControlName="inOut" placeholder="{{ 'TOURNAMENT.IN_OUT' | translate }}" name="inOut" id="inOut">
+                  <mat-option *ngFor="let inOut of inOuts" [value]="inOut.value">
+                    {{ inOut.key }}
+                  </mat-option>
+                </mat-select>
+                <p class="error-message mt-10" *ngIf="addTournamentForm.controls.inOut.touched && addTournamentForm.controls.inOut.errors?.required">In/Out is required</p>
+              </div>
+              <div class="form-group">
+                <label>{{ 'TOURNAMENT.SURFACE' | translate }}</label>
+                <mat-select formControlName="surface" placeholder="{{ 'TOURNAMENT.SURFACE' | translate }}" name="surface" id="surface">
+                  <mat-option *ngFor="let surface of surfaces" [value]="surface.value">
+                    {{ surface.key }}
+                  </mat-option>
+                </mat-select>
+                <p class="error-message mt-10" *ngIf="addTournamentForm.controls.surface.touched && addTournamentForm.controls.surface.errors?.required">Surface is required</p>
+              </div>
+              <div class="form-group">
+                <label>{{ 'TOURNAMENT.CURRENT_LEVEL' | translate }}</label>
+                <mat-select formControlName="currentLevel" placeholder="{{ 'TOURNAMENT.CURRENT_LEVEL' | translate }}" name="currentLevel"
+                  id="currentLevel">
+                  <mat-option *ngFor="let currentLevel of currentLevels" [value]="currentLevel.value">
+                    {{ currentLevel.key }}
+                  </mat-option>
+                </mat-select>
+                <p class="error-message mt-10" *ngIf="addTournamentForm.controls.currentLevel.touched && addTournamentForm.controls.currentLevel.errors?.required">Current Level is required</p>
+              </div>
+            </ng-container>
+            <div class="form-group">
+              <label>{{ 'TOURNAMENT.PARTICIPANTS' | translate }}</label>
+              <input formControlName="partecipants" matInput placeholder="{{'TOURNAMENT.PARTICIPANTS' | translate}}" type="text" />
+              <p class="error-message mt-10" *ngIf="addTournamentForm.controls.partecipants.touched && addTournamentForm.controls.partecipants.value && addTournamentForm.controls.partecipants.errors?.pattern">Participants must be number</p>
+            </div>
+            <ng-container *ngIf="addTournamentForm.controls.sport.value && addTournamentForm.controls.sport.value !== 'TENNIS'">
+              <div formArrayName="teams">
+                <div *ngFor="let item of getTeamControl(); let i = index">
+                  <div [formGroup]="item">
+                    <div class="form-group">
+                      <div class="label-delete-wrapper">
+                        <label>{{ 'TOURNAMENT.TEAM' | translate }} {{ i + 1 }}</label>
+                        <button  *ngIf="i > 0" type="button" mat-flat-button color="primary" (click)="removeTeam(i)">
+                          <i class="fa fa-minus"></i> Remove Team
+                        </button>
+                      </div>
+                      <app-team-autocomplete [teamControl]="item.controls.team" State="edit" type="team" [sport]="addTournamentForm.controls.sport.value"></app-team-autocomplete>
+                    </div>
+                  </div>
+                </div>
+                <div class="add-team text-center">
+                  <button type="button" mat-flat-button color="primary" (click)="addTeam()">
+                   <i class="fa fa-plus"></i> Add Team
+                  </button>
+                </div>
+              </div>
+            </ng-container>
+            <div class="add-tournament text-center">
+              <button mat-flat-button color="primary" type="submit" [disabled]="loading">
+                {{loading ? 'FORM.SAVING' : 'FORM.SUBMIT' | translate}}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

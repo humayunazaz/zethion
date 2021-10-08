@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-4 order-lg-last fixed">
+    <form>
+
+      <div class="form-group">
+        <label for="teamName">{{'REGISTRY.NAME' | translate}}</label>
+        <input type="text" (keyup)="changeName($event)" class="form-control" id="teamName">
+      </div>
+
+      <div class="form-group">
+        <label>{{'REGISTRY.SPORT' | translate}}</label>
+        <app-sport-select (selected)="sportChanged($event)"></app-sport-select>
+      </div>
+
+      <div class="form-group">
+        <label>{{'REGISTRY.COUNTRY' | translate}}</label>
+        <app-country-select (selected)="countryChanged($event)"></app-country-select>
+      </div>
+
+      <div class="form-group">
+        <label>{{'REGISTRY.STATUS' | translate}}</label>
+        <mat-select placeholder="{{ 'REGISTRY.STATUS' | translate }}" name="status" id="status"
+          (selectionChange)="statusChange($event)">
+          <mat-option *ngFor="let status of statuses" [value]="status.value">
+            {{ status.key }}
+          </mat-option>
+        </mat-select>
+      </div>
+
+
+      <div class="form-group">
+        <button class="btn btn-primary" (click)="addTeam()">{{'FORM.ADD_TEAM' | translate}}</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first" *ngIf="loading">
+    <div class="imageLoading spin-center">
+      <div class="w-50 mauto gold">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first">
+    <div class="table-responsive table-full-width">
+      <table class="table">
+        <thead>
+          <tr class="mat-header-row">
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.TEAM_NAME' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.TEAM_SHORT_NAME' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'USER.COUNTRY' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'USER.CITY' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.FOUNDATION_YEAR' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.SPORT' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.STATUS' | translate}}</th>
+            <th scope="col">{{'REGISTRY.ACTION' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="!loading">
+          <tr class="mat-row" *ngFor="let team of teams">
+            <td class="mat-cell">{{ team.name }}</td>
+            <td class="mat-cell">{{ team.shortName || '' }}</td>
+            <td class="mat-cell">{{ team.country }}</td>
+            <td class="mat-cell">{{ team.city || '' }}</td>
+            <td class="mat-cell">{{ team.foundationYear || '' }}</td>
+            <td class="mat-cell">{{ team.sport }}</td>
+            <td class="mat-cell">{{ team.status }}</td>
+            <td class="table-action">
+              <i class="fa fa-edit edit" aria-hidden="true" (click)="edit(team)"></i>
+              <i class="fa fa-trash trash" aria-hidden="true" (click)="delete(team)"></i>
+            </td>
+          </tr>
+          <tr class="translate-paging">
+            <td>
+              <i *ngIf="page>0" class="fa fa-ellipsis-h load-previous-data" aria-hidden="true" (click)="loadPreviousData()"></i>
+            </td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td>
+              <i class="fa fa-ellipsis-h load-next-data" aria-hidden="true" (click)="loadNextData()"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

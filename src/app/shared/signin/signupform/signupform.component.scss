@@ -1,0 +1,25 @@
+a.disabledtag {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: #d2d2d2 !important;
+  opacity: 0.5;
+}
+.required_part {
+  margin-bottom: -8px;
+}
+.formstate h3 {
+  margin-top: 0px;
+}
+.required_part input {
+  height: 20px;
+}
+
+.formstate_next,
+.formstate_pre {
+  & > a {
+    font-size: 16px;
+    & > i {
+      vertical-align: middle;
+    }
+  }
+}

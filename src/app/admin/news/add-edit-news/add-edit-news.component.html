@@ -1,0 +1,169 @@
+<div class="container">
+  <mat-dialog-content class="translation-modal">
+    <div class="card-content">
+      <h3 class="text-center fo-wt-900 title-content">{{ isEdit ? 'Edit' : 'Add' }} News</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <form [formGroup]="addEditNewsForm" (ngSubmit)="submit()">
+
+            <div class="form-group">
+              <label for="gender">{{'NEWS.MULTI_COUNTRY' | translate}}</label> <br />
+              <mat-checkbox (change)="toggleMultiCountry()" formControlName="multiCountry"> {{ 'NEWS.MULTI_COUNTRY' | translate }}</mat-checkbox>
+            </div>
+
+            <div class="form-group">
+              <label for="language">{{'NEWS.LANGUAGE' | translate}}</label>
+              <mat-select formControlName="language" placeholder="{{ 'REGISTRY.LANGUAGE' | translate }}" name="language" id="language">
+                <mat-option *ngFor="let language of languages" [value]="language.value">
+                  {{ language.key }}
+                </mat-option>
+              </mat-select>
+              <p class="error-message mt-10" *ngIf="addEditNewsForm.controls.language.touched && addEditNewsForm.controls.language.errors?.required">Language is required</p>
+            </div>
+
+            <div class="form-group">
+              <label for="type">{{'NEWS.COUNTRY_CODE' | translate}}</label>
+              <mat-select formControlName="countryCode" placeholder="{{ 'USER.COUNTRY' | translate }}" name="countryCode" id="countryCode">
+                <mat-option *ngFor="let country of countries" [value]="country.value">
+                  {{ country.key }}
+                </mat-option>
+              </mat-select>
+              <p class="error-message mt-10" *ngIf="addEditNewsForm.controls.countryCode.touched && addEditNewsForm.controls.countryCode.errors?.required">Country is required</p>
+            </div>
+
+            <div class="form-group">
+              <label>{{'NEWS.AUTHOR' | translate}}</label>
+              <input matInput placeholder="{{'NEWS.AUTHOR' | translate}}" type="text"  formControlName="author">
+            </div>
+
+            <div class="form-group">
+              <label>{{'NEWS.TITLE' | translate}}</label>
+              <input matInput placeholder="{{'NEWS.TITLE' | translate}}" type="text"  formControlName="title">
+              <p class="error-message" *ngIf="addEditNewsForm.controls.title.touched && addEditNewsForm.controls.title.errors?.required">Title is required</p>
+            </div>
+
+            <div class="form-group">
+              <label>{{'NEWS.SUB_TITLE' | translate}}</label>
+              <input matInput placeholder="{{'NEWS.SUBTITLE' | translate}}" type="text"  formControlName="description">
+              <p class="error-message" *ngIf="addEditNewsForm.controls.description.touched && addEditNewsForm.controls.description.errors?.required">Description is required</p>
+            </div>
+
+            <div class="form-group">
+              <label>{{'NEWS.CONTENT' | translate}}</label>
+              <!-- <textarea matInput placeholder="{{'NEWS.CONTENT' | translate}}" formControlName="content" rows="10"></textarea> -->
+              <ckeditor [editor]="Editor" formControlName="content"></ckeditor>
+              <p class="error-message" *ngIf="addEditNewsForm.controls.content.touched && (addEditNewsForm.controls.content.errors?.required || addEditNewsForm.controls.content.errors?.whitespace)">Content is required</p>
+              <p class="word-count">{{ addEditNewsForm.controls.content.value.trim().length }} {{ addEditNewsForm.controls.content.value.trim().length > 1 ? 'characters' : 'character '}}</p>
+              <p class="word-count">{{ countWords(addEditNewsForm.controls.content.value) }}</p>
+            </div>
+
+            <div class="form-group">
+              <label>{{'NEWS.URL_TO_MEDIA' | translate}}</label>
+              <input matInput placeholder="{{'NEWS.URL_TO_MEDIA' | translate}}" type="text"  formControlName="urlToMedia">
+              <p class="error-message" *ngIf="addEditNewsForm.controls.urlToMedia.touched && addEditNewsForm.controls.urlToMedia.errors?.required">Url to media is required</p>
+              <p class="error-message mt-10" *ngIf="addEditNewsForm.controls.urlToMedia.touched && addEditNewsForm.controls.urlToMedia.errors?.pattern && addEditNewsForm.controls.urlToMedia.value">Url to media must be a valid url</p>
+              <p class="error-message" *ngIf="addEditNewsForm.controls.urlToMedia.touched && addEditNewsForm.controls.urlToMedia.errors?.invalidExtension && addEditNewsForm.controls.urlToMedia.value">Url to Media must be either image or video</p>
+            </div>
+
+            <div class="form-group">
+              <label>{{'NEWS.SPORT' | translate}}</label>
+              <app-sport-select [sportControl]="addEditNewsForm.controls.sport" hideAll='true'></app-sport-select>
+              <p class="error-message" *ngIf="addEditNewsForm.controls.sport.touched && addEditNewsForm.controls.sport.errors?.required">Sport is required</p>
+            </div>
+
+            <div formArrayName="tags" *ngIf="addEditNewsForm.controls.sport.value">
+              <div class="form-group">
+                <label>{{ 'NEWS.TAGS' | translate }}</label>
+              </div>
+              <div *ngFor="let item of getTagControl(); let i = index">
+                <div [formGroup]="item">
+                  <div class="form-group">
+                    <div class="label-delete-wrapper">
+                      <!-- <label>{{ 'ATHLETE.TEAM' | translate }} {{ i + 1 }}</label> -->
+                      <button *ngIf="i > 0" type="button" mat-flat-button color="primary" (click)="removeTag(i)">
+                        <i class="fa fa-minus"></i> Remove Tag
+                      </button>
+                    </div>
+                      <div class="form-group">
+                        <label>{{ 'NEWS.TYPE' | translate }}</label>
+                        <mat-select formControlName="type" placeholder="{{ 'NEWS.TYPE' | translate }}" name="type" id="type" (selectionChange)="typeChanged(i)">
+                          <mat-option *ngFor="let type of tagTypes" [value]="type.value">
+                            {{ type.key }}
+                          </mat-option>
+                        </mat-select>
+                        <p class="error-message mt-10" *ngIf="item.controls.type.touched && item.controls.type.errors?.required">Type is required</p>
+                      </div>
+                      <ng-container *ngIf="item.controls.type.value && item.controls.type.value === 'SPORT'">
+                        <div class="form-group">
+                          <label>{{'NEWS.SPORT' | translate}}</label>
+                          <app-sport-select [sportControl]="item.controls.idRef" hideAll='true'></app-sport-select>
+                          <p class="error-message" *ngIf="item.controls.idRef.touched && item.controls.idRef.errors?.required">Sport is required</p>
+                        </div>
+                      </ng-container>
+                      <ng-container *ngIf="item.controls.type.value && item.controls.type.value === 'TEAM'">
+                        <div class="form-group">
+                          <label>{{'NEWS.TEAM' | translate}}</label>
+                          <app-team-autocomplete [teamControl]="item.controls.idRef" State="edit" [sport]="addEditNewsForm.controls.sport.value"></app-team-autocomplete>
+                          <p class="error-message" *ngIf="item.controls.idRef.touched && item.controls.idRef.errors?.required">Team is required</p>
+                        </div>
+                      </ng-container>
+                      <ng-container *ngIf="item.controls.type.value && item.controls.type.value === 'ATHLETE'">
+                        <div class="form-group">
+                          <label>{{'NEWS.ATHLETE' | translate}}</label>
+                          <app-athlete-autocomplete [teamControl]="item.controls.idRef" State="edit" [sport]="addEditNewsForm.controls.sport.value"></app-athlete-autocomplete>
+                          <p class="error-message" *ngIf="item.controls.idRef.touched && item.controls.idRef.errors?.required">Athlete is required</p>
+                        </div>
+                      </ng-container>
+                      <ng-container *ngIf="item.controls.type.value && item.controls.type.value === 'MEDIA'">
+                        <div class="form-group">
+                          <label>{{'NEWS.MEDIA' | translate}}</label>
+                          <app-media-autocomplete [teamControl]="item.controls.idRef" State="edit" [sport]="addEditNewsForm.controls.sport.value"></app-media-autocomplete>
+                          <p class="error-message" *ngIf="item.controls.idRef.touched && item.controls.idRef.errors?.required">Media is required</p>
+                        </div>
+                      </ng-container>
+                      <ng-container *ngIf="item.controls.type.value && item.controls.type.value === 'PEOPLE'">
+                        <div class="form-group">
+                          <label>{{'NEWS.PEOPLE' | translate}}</label>
+                          <app-people-autocomplete [teamControl]="item.controls.idRef" State="edit" [sport]="addEditNewsForm.controls.sport.value"></app-people-autocomplete>
+                          <p class="error-message" *ngIf="item.controls.idRef.touched && item.controls.idRef.errors?.required">People is required</p>
+                        </div>
+                      </ng-container>
+                      <ng-container *ngIf="item.controls.type.value && item.controls.type.value === 'ASSOCIATION'">
+                        <div class="form-group">
+                          <label>{{'NEWS.ASSOCIATION' | translate}}</label>
+                          <app-association-autocomplete [teamControl]="item.controls.idRef" State="edit" [sport]="addEditNewsForm.controls.sport.value"></app-association-autocomplete>
+                          <p class="error-message" *ngIf="item.controls.idRef.touched && item.controls.idRef.errors?.required">Association is required</p>
+                        </div>
+                      </ng-container>
+                      <ng-container *ngIf="item.controls.type.value && item.controls.type.value === 'COMPETITION'">
+                        <div class="form-group">
+                          <label>{{'NEWS.COMPETITION' | translate}}</label>
+                          <app-competition-autocomplete [competitionControl]="item.controls.idRef" State="edit" [selectedSport]="{ sport: addEditNewsForm.controls.sport.value }"></app-competition-autocomplete>
+                          <p class="error-message" *ngIf="item.controls.idRef.touched && item.controls.idRef.errors?.required">Competition is required</p>
+                        </div>
+                      </ng-container>
+                      <ng-container *ngIf="item.controls.type.value && item.controls.type.value === 'GENERAL'">
+                        <div class="form-group">
+                          <label>{{'NEWS.KEYWORD' | translate}}</label>
+                          <input matInput placeholder="{{'NEWS.KEYWORD' | translate}}" type="text"  formControlName="keyword">
+                          <p class="error-message" *ngIf="item.controls.keyword.touched && item.controls.keyword.errors?.required">Keyword is required</p>
+                        </div>
+                      </ng-container>
+                  </div>
+                </div>
+              </div>
+              <div class="add-team text-center">
+                <button type="button" mat-flat-button color="primary" (click)="addTag()">
+                 <i class="fa fa-plus"></i> Add Tag
+                </button>
+              </div>
+            </div>
+            <div class="form-group text-center add-news">
+              <button type="submit" mat-flat-button color="primary">{{loading? 'FORM.SAVING' : 'FORM.SUBMIT' | translate}}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

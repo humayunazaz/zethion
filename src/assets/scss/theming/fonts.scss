@@ -1,0 +1,94 @@
+@import '~@angular/material/theming';
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../../fonts/Regular/Lato-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LatoBold';
+  src: url('../../fonts/Bold/Lato-Bold.ttf') format('truetype');
+  font-weight: bolder;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LatoBlack';
+  src: url('../../fonts/Black/Lato-Black.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
+
+// primary font
+$primary_font: 'Lato';
+
+$custom-typography: mat-typography-config($font-family: $primary-font);
+@include mat-core($custom-typography);
+
+
+// font-weight
+$font-thin:100;
+$font-light:300;
+$font-regular:400;
+$font-bold:700;
+$font-black:900;
+// Font size
+$font-xs:12px;
+$font-sm: 14px;
+$font-size-primary: 16px;
+$font-md: 18px;
+$font-lg: 20px;
+
+
+$font-size-h1: 3.3125rem;
+$font-size-h2: 2.25rem !default;
+$font-size-h3: 1.5625rem;
+$font-size-h4: 1.125rem !default;
+$font-size-h5: 1.0625rem !default;
+$font-size-h6: 0.75rem !default;
+$font-paragraph: 14px !default;
+// $font-size-navbar:             16px !default;
+$font-size-small: 12px !default;
+
+
+h1,
+.h1 {
+  font-size: $font-size-h1;
+  line-height: 1.15em;
+}
+
+h2,
+.h2 {
+  font-size: $font-size-h2;
+}
+
+h3,
+.h3 {
+  font-size: $font-size-h3;
+  line-height: 1.4em;
+  margin: 20px 0 10px;
+}
+
+h4,
+.h4 {
+  font-size: $font-size-h4;
+  line-height: 1.4em;
+  // font-weight: 300;
+}
+
+h5,
+.h5 {
+  font-size: $font-size-h5;
+  line-height: 1.4em;
+  margin-bottom: 15px;
+}
+
+h6,
+.h6 {
+  font-size: $font-size-h6;
+  //text-transform: uppercase;
+  // font-weight: $font-weight-bold;
+}

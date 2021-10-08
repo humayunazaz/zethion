@@ -1,0 +1,128 @@
+@import 'sportbusters';
+
+table.table {
+  &.resizing {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: col-resize;
+  }
+
+  color: white;
+
+  th img {
+    display: block;
+    height: 25px !important;
+  }
+
+}
+
+.checkbox-icon {
+  display: block;
+  height: 35px !important;
+}
+
+@media (#{$bp-gt-992}) {
+  .fixed {
+    position: fixed;
+    right: 20px;
+  }
+}
+
+label {
+  border-bottom: 1px solid darkgrey;
+}
+
+
+
+.social-automatic {
+  color: $color-automatic-insert;
+  cursor: pointer;
+}
+
+.social-trash {
+  color: $color-grey-trash;
+  cursor: pointer;
+}
+
+td.social-action i {
+  padding-left: 5px;
+}
+
+.load-previous-data {
+  color: $color-grey-trash;
+  cursor: pointer;
+}
+
+.load-next-data {
+  color: $color-grey-trash;
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+}
+
+.translate-paging>td:hover {
+  background: none !important
+}
+
+td:hover {
+  background-color: $color-grey-trash;
+  ;
+}
+
+td input {
+  color: white;
+}
+
+td input:focus {
+  padding-top: 5x;
+  padding-bottom: 5px;
+  min-width: 100px;
+}
+
+.nation-logo {
+  width: 25px !important;
+}
+
+mat-checkbox {
+  margin-right: 15px;
+}
+
+.trash,
+.add,
+.edit {
+  color: $color-grey-trash;
+  cursor: pointer;
+}
+
+.add,
+.trash {
+  margin-right: 5px;
+}
+
+.table-action:hover {
+  background: none !important
+}
+
+.mat-header-cell {
+  position: relative;
+
+  .resize-holder {
+    cursor: col-resize;
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    right: -10px;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+.mat-cell,
+.mat-header-cell {
+
+  // border-right: 2px solid rgba(255, 255, 255, 0.5);
+  &:not(:nth-child(1)) {
+    padding: 0 10px !important;
+  }
+}

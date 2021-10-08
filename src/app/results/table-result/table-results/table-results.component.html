@@ -1,0 +1,57 @@
+<form>
+  <mat-form-field *ngIf="data.length > 0"
+                  class="w-100"
+                  floatLabel="never">
+    <input matInput
+           type="text"
+           class="form-control"
+           name="searchString"
+           placeholder="Type to search..."
+           [(ngModel)]="searchString">
+  </mat-form-field>
+</form>
+<div class="content table-responsive"
+     *ngIf="data">
+  <div *ngFor="let row of data | groupBy:'nation'">
+    <div *ngFor="let subrow of row.value | groupBy:'tournamentId'">
+      <table class="table no-lines"
+             *ngIf="(subrow.value | filter : ['homeTeam', 'awayTeam'] : searchString).length">
+        <thead>
+          <tr>
+            <td colspan="5"
+                class="text-left flag tournament size-medium">
+              <img class="nation-logo"
+                   src="./assets/img/flags/{{row.key}}.png"
+                   alt=""> {{subrow.value[0].tournamentName}} </td>
+            <td colspan="1">
+              <app-classifications-icon (click)="showClassifications(subrow.value)"></app-classifications-icon>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of subrow.value | filter : ['homeTeam', 'awayTeam'] : searchString; let i = index"
+              (click)='showDetail(item)'
+              [ngClass]="{'hover-highlight': item.isStatistics != 0}"
+              id="{{row.key}}">
+            <td class="text-left logo">
+              <img class="team-logo"
+                   src="{{url_logo_teams}}/{{item.homeTeamCode}}.png"
+                   alt=""
+                   (error)="teamLogoMissing($event)" />
+            </td>
+            <td class="text-right team size-small"> {{item.homeTeam}} </td>
+            <td class="text-right score size-small"> {{item.homeScore}} </td>
+            <td class="text-left score size-small"> {{item.awayScore}} </td>
+            <td class="text-left team size-small"> {{item.awayTeam}} </td>
+            <td class="text-right logo logo-sm">
+              <img class="team-logo"
+                   src="{{url_logo_teams}}/{{item.awayTeamCode}}.png"
+                   alt=""
+                   (error)="teamLogoMissing($event)" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

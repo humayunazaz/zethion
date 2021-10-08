@@ -1,0 +1,114 @@
+<div class="table-responsive classifications-table">
+  <div class="group-controls"
+       (click)="toggleExpandedColumns()">
+    <!-- <span *ngIf="showExpander"
+          class="material-icons"
+          [ngClass]="{flipped: !expandedColumns}"> menu_open </span> -->
+  </div>
+  <div *ngFor="let groupData of classificationStageData">
+    <div class="group-header">
+      <div class="group-name">{{ groupData.group.group }}</div>
+    </div>
+    <table class="table"
+           *ngIf="groupData"
+           style="table-layout: fixed;">
+      <thead>
+        <!-- just for column sizing -->
+        <tr>
+          <td class="n-c"></td>
+          <td [ngClass]="{'quarter': !expandedColumns}"></td>
+          <td class="b-c"
+              [ngClass]="{'n-c': expandedColumns}"></td>
+          <td [ngClass]="{'n-c': expandedColumns}"></td>
+          <td [ngClass]="{'n-c': expandedColumns}"></td>
+          <td [ngClass]="{'n-c': expandedColumns}"></td>
+          <td [ngClass]="{'n-c': expandedColumns}"></td>
+          <td [ngClass]="{'n-c': expandedColumns}"></td>
+          <td [ngClass]="{'n-c': expandedColumns}"></td>
+          <ng-container *ngIf="expandedColumns">
+            <td class="n-c"></td>
+            <td class="n-c"></td>
+            <td class="n-c"></td>
+            <td class="n-c"></td>
+            <td class="n-c"></td>
+            <td class="n-c"></td>
+            <td class="n-c"></td>
+            <td class="n-c"></td>
+            <td class="n-c"></td>
+            <td class="n-c"></td>
+            <td class="n-c"></td>
+            <td class="n-c"></td>
+          </ng-container>
+        </tr>
+        <tr class="transparent-header"
+            *ngIf="expandedColumns">
+          <td colspan="2">
+          </td>
+          <td></td>
+          <td colspan="6">Total</td>
+          <td colspan="6">Home</td>
+          <td colspan="6">Away</td>
+          <!-- <td colspan="6" class="group-controls-td">Total <div class="group-controls"
+                     (click)="toggleExpandedColumns()">
+                  <span class="material-icons"
+                        [ngClass]="{flipped: !expandedColumns}"> menu_open </span>
+                </div>
+              </td> -->
+        </tr>
+        <tr class="primary-header">
+          <td class="b-c n-c">#</td>
+          <td class="b-c left-aligned"
+              [ngClass]="{'quarter': !expandedColumns}">Team</td>
+          <td class="n-c b-c">P</td>
+          <td class="bl n-c">G</td>
+          <td class="n-c">W</td>
+          <td class="n-c">D</td>
+          <td class="n-c">L</td>
+          <td class="n-c">SG</td>
+          <td class="n-c">CG</td>
+          <ng-container *ngIf="expandedColumns">
+            <td class="bl n-c">G</td>
+            <td class="n-c">W</td>
+            <td class="n-c">D</td>
+            <td class="n-c">L</td>
+            <td class="n-c">SG</td>
+            <td class="n-c">CG</td>
+            <td class="bl n-c">G</td>
+            <td class="n-c">W</td>
+            <td class="n-c">D</td>
+            <td class="n-c">L</td>
+            <td class="n-c">SG</td>
+            <td class="n-c">CG</td>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let teamData of groupData.teamStandings; let i = index">
+          <td class="b-c">{{i+1}}</td>
+          <td class="b-c left-aligned">{{teamData.team.name}}</td>
+          <td class="b-c">{{teamData.totalPoints}}</td>
+          <td class="bl">{{teamData.totalGames}}</td>
+          <td>{{teamData.totalWins}}</td>
+          <td>{{teamData.totalDraws}}</td>
+          <td>{{teamData.totalLosts}}</td>
+          <td>{{teamData.totalScoredGoals}}</td>
+          <td>{{teamData.totalConcededGoals}}</td>
+          <ng-container *ngIf="expandedColumns">
+            <td class="bl fn-c">{{teamData.totalHomeGames}}</td>
+            <td class="fn-c">{{teamData.homeWins}}</td>
+            <td class="fn-c">{{teamData.homeDraws}}</td>
+            <td class="fn-c">{{teamData.homeLosts}}</td>
+            <td class="fn-c">{{teamData.homeScoredGoals}}</td>
+            <td class="fn-c">{{teamData.homeConcededGoals}}</td>
+            <td class="bl fn-c">{{teamData.totalAwayGames}}</td>
+            <td class="fn-c">{{teamData.awayWins}}</td>
+            <td class="fn-c">{{teamData.awayDraws}}</td>
+            <td class="fn-c">{{teamData.awayLosts}}</td>
+            <td class="fn-c">{{teamData.awayScoredGoals}}</td>
+            <td class="fn-c">{{teamData.awayConcededGoals}}</td>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="container">
+  <mat-dialog-content class="cookie-consent-modal">
+    <div class="card-content">
+      <p>{{ 'COOKIE.DESCRIPTION' | translate}}</p>
+      <div class="cookiePageLink">
+        <p> <span (click)="goToPolicy()">{{ 'COOKIE.TO_POLICY' | translate}}</span></p>
+      </div>
+      <div class="actionButtons">
+        <button class="btn" (click)="openPrivacyDailog()">{{ 'COOKIE.CUSTOMIZATION' | translate}}</button>
+        <button class="btn" (click)="acceptAllCookies()">{{ 'COOKIE.ACCEPT_ALL' | translate}}</button>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

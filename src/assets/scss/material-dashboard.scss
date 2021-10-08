@@ -1,0 +1,32 @@
+
+
+// Theme Includes
+@import "theming/breakpoints";
+@import "theming/variables";
+@import "theming/colors";
+@import "theming/fonts";
+@import "theming/buttons";
+@import "theming/tables";
+@import "theming/forms";
+@import "theming/dialogs";
+@import "theming/animations";
+@import "theming/helpers";
+@import "theming/dropdowns";
+@import "theming/timeline";
+@import "theming/sidebar-and-main-panel";
+// @import "theming/sportbusters-theme";
+@import "theming/nav";
+
+// Plugins
+@import "plugins/chartist";
+@import "plugins/owl-carousel";
+//  @import "~chartist/dist/scss/chartist";
+//  @import "plugins/perfect-scrollbar";
+
+
+body {
+  font-family: $primary_font;
+  // font-size: $font-size-primary;
+  font-weight: $font-regular;
+  background-color: black;
+}

@@ -1,0 +1,259 @@
+@import 'sportbusters';
+
+.top-menu-row {
+
+  @media only screen and (#{$bp-lt-768}) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.top-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+
+  @media only screen and (#{$bp-lt-768}) {
+    position: fixed;
+  }
+
+  @media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+      top: -40px;
+
+      @media only screen and (#{$bp-lt-768}) {
+        top: 0;
+      }
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    color: #fff;
+    width: 150px;
+    margin-left: 20px;
+
+    @media only screen and (#{$bp-lt-768}) {
+      margin-left: 16px;
+    }
+
+    .numbers {
+      cursor: pointer;
+
+      &.active {
+        color: #a68a43;
+        cursor: default;
+      }
+    }
+  }
+
+  .icon-sb-close {
+    font-size: 22px;
+    margin-right: 35px;
+    cursor: pointer;
+
+    @media only screen and (#{$bp-lt-768}) {
+      margin-right: 16px;
+    }
+
+    .path1,
+    .path2 {
+      &::before {
+        color: #a68a43;
+      }
+    }
+  }
+}
+
+
+.stories-content {
+  color: white;
+  font-family: "Lato", sans-serif;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+
+  @media only screen and (#{$bp-lt-768}) {
+    padding-top: 40px;
+  }
+
+  .story-item {
+    height: calc(92vh - 40px);
+    overflow-y: scroll;
+    margin-top: 40px;
+
+    @media only screen and (#{$bp-lt-768}) {
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0;
+    }
+
+    .left-section {
+      padding-left: 30px;
+      padding-right: 30px;
+      margin-top: 10px;
+
+      &.fixed {
+        position: fixed;
+        width: 32%;
+        top: 0;
+
+        @media only screen and (#{$bp-lt-768}) {
+          position: relative;
+          width: 100%;
+        }
+      }
+
+      @media only screen and (#{$bp-lt-768}) {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .left-button-text-wrapper {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+
+        @media only screen and (#{$bp-lt-768}) {
+          margin-left: 0px;
+        }
+
+        .icon-sb-left {
+          font-size: 20px;
+          margin-right: 10px;
+          cursor: pointer;
+
+          .path1,
+          .path2 {
+            &::before {
+              color: #a68a43;
+            }
+          }
+        }
+
+        .interested-text {
+          color: #c7b273;
+        }
+      }
+
+      .share-like-ratings-wrapper {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: -1px;
+
+        @media only screen and (#{$bp-lt-768}) {
+          margin-left: 0px;
+        }
+
+        .ratings-wrapper {
+          display: flex;
+          align-items: center;
+
+          @media only screen and (#{$bp-lt-768}) {
+            margin-left: 0px;
+          }
+
+          .ratings-stars {
+
+            &.is-rating {
+              cursor: pointer;
+
+              i {
+                opacity: 0.5;
+
+                &.hover {
+                  opacity: 1;
+                }
+              }
+            }
+
+            i {
+              margin-right: 5px;
+              color: #c7b273;
+              font-size: 18px;
+            }
+          }
+
+          .ratings-text {
+            color: #c7b273;
+            font-size: 18px;
+          }
+
+        }
+
+
+        .share-like-wrapper {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+        }
+      }
+
+      .story-report-wrapper {
+        margin-top: 20px;
+
+
+        @media only screen and (#{$bp-lt-768}) {
+          flex-wrap: nowrap;
+          overflow-x: scroll;
+          scrollbar-width: none;
+          -ms-scroll-snap-type: x mandatory;
+          scroll-snap-type: x mandatory;
+          margin-right: 0;
+          margin-left: 0;
+        }
+
+        .story-report {
+          padding: 10px;
+          margin: 0;
+
+          @media only screen and (#{$bp-lt-768}) {
+            flex: 0 0 100%;
+            max-width: 100%;
+            scroll-snap-align: start;
+            padding: 0;
+          }
+
+        }
+      }
+
+      .banner-wrapper {
+
+        @media only screen and (#{$bp-lt-768}) {
+          flex-wrap: nowrap;
+          overflow-x: scroll;
+          scrollbar-width: none;
+          -ms-scroll-snap-type: x mandatory;
+          scroll-snap-type: x mandatory;
+          margin-top: 20px;
+          margin-right: 0;
+          margin-left: 0;
+        }
+
+        .banner {
+          padding-left: 10px;
+          padding-right: 10px;
+          margin: 0;
+
+          @media only screen and (#{$bp-lt-768}) {
+            flex: 0 0 100%;
+            max-width: 100%;
+            scroll-snap-align: start;
+            padding: 0;
+          }
+
+        }
+      }
+    }
+  }
+}

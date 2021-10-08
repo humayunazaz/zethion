@@ -1,0 +1,33 @@
+<div class="playoff-grid">
+  <div class="playoff-group"
+       *ngFor="let groupResults of results; let groupIndex = index">
+    <div class="group-title"><b>{{groupResults.group?.group}}</b></div>
+    <ng-container *ngFor="let matchup of groupResults.results; let matchupIndex = index">
+      <div class="playoff-matchup"
+           [ngStyle]="{'margin-top.rem': getTopMargin(groupIndex, matchupIndex)}"
+           [ngClass]="{'with-content': (matchup.team1 && matchup.team2), 'with-left': matchup.hasLeft, 'not-last-group': !isLastGroup(groupIndex)}">
+        <div class="playoff-team-names">
+          <div [ngClass]="{'qualified': matchup.team1?.qualified}">
+            <img *ngIf="(matchup.team1 && matchup.team2)"
+                 src="{{ASSETS_URL_LOGO_TEAMS}}/{{matchup.team1?.mainCode}}.png"
+                 class="inline-team-logo"
+                 (error)="teamLogoMissing($event)" />{{matchup.team1?.name}}</div>
+          <div [ngClass]="{'qualified': matchup.team2?.qualified}">
+            <img *ngIf="(matchup.team1 && matchup.team2)"
+                 src="{{ASSETS_URL_LOGO_TEAMS}}/{{matchup.team2?.mainCode}}.png"
+                 class="inline-team-logo"
+                 (error)="teamLogoMissing($event)" />{{matchup.team2?.name}}</div>
+        </div>
+        <div *ngFor="let result of matchup.results"
+             class="playoff-matchup-score">
+          <div>{{result.score1}}</div>
+          <div>{{result.score2}}</div>
+        </div>
+      </div>
+      <div class="playoff-connector"
+           *ngIf="(matchup.team1 && matchup.team2) && !isLastGroup(groupIndex)"
+           [ngStyle]="{'top.rem': getConnectorTop(groupIndex, matchupIndex, matchup.isBottom), 'height': getConnectorHeightStr(groupIndex, matchupIndex)}">
+      </div>
+    </ng-container>
+  </div>
+</div>

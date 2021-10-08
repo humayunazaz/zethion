@@ -1,0 +1,33 @@
+<div style="overflow: hidden;">
+  <div class="tournament-header">
+    <div class="tournament-flag"><img class="nation-logo"
+           src="./assets/img/flags/{{tournamentInput.nation}}.png"
+           alt=""></div>
+    <div class="tournament-title">{{tournamentInput.tournamentName}}</div>
+  </div>
+  <div class="tab-container">
+    <div class="button-group margin-auto"
+         style="margin-top: 2px;">
+      <a class="nav-link detail-button"
+         [ngClass]="{ 'active': activeSection==='regulars'}"
+         (click)="activateSection('regulars');"
+         type="button"
+         role="tablist">Regulars</a>
+      <a class="nav-link detail-button"
+         [ngClass]="{ 'active':activeSection==='playoffs'}"
+         (click)="activateSection('playoffs');"
+         type="button"
+         role="tablist">Playoffs</a>
+    </div>
+  </div>
+  <mat-dialog-content>
+    <ng-container *ngIf="(activeSection==='regulars') && classificationStageData">
+        <app-regulars [classificationStageData]=classificationStageData>
+      </app-regulars>
+    </ng-container>
+    <ng-container *ngIf="activeSection==='playoffs'"
+         id="playoffs">
+        <app-playoffs [knockoutStageData]="knockoutStageData"></app-playoffs>
+    </ng-container>
+  </mat-dialog-content>
+</div>

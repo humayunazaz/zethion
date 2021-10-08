@@ -1,0 +1,16 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-2">
+        <app-sport-select (selected)='sportChanged($event)'></app-sport-select>
+      </div>
+      <div class="col-3">
+        <app-competition-autocomplete [competitionControl]="competition" [selectedSport]="selectedSport" (selected)='competitionChanged($event)'></app-competition-autocomplete>
+      </div>
+      <div class="col-1">
+        <app-select-year [data]="yearSelectData"
+                         (selected)='yearChanged($event)'></app-select-year>
+      </div>
+    </div>
+  </div>
+</div>

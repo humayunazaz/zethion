@@ -1,0 +1,77 @@
+<div class="sub-content">
+  <div class="row text-white" #stories>
+    <div class="col-lg-4 col-md-5 col-sm-12 slideImg">
+      <div class="imageLoading spin-center" *ngIf="videoCompleted && !dataService.isLoaded">
+        <div class="w-50 mauto gold">
+          <mat-spinner></mat-spinner>
+        </div>
+      </div>
+      <div id="slideStoriesIndicators" #carousel class="carousel slide" *ngIf="dataService.isLoaded" [class.d-none]="!dataService.isLoaded" (wheel)=onScrollBigSlider($event)>
+        <div class="im-carousel">
+          <ng-container *ngIf="!dataService.isSlideEmpty">
+            <ng-container *ngFor="let p of dataService.contentSlides; let i=index;">
+              <app-stories-slide [item]="p" [index]="i" (opened)="openItem($event)" (error)="onItemError(p)"
+                style="display:contents;"></app-stories-slide>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="dataService.isSlideEmpty">
+            <app-search-report [type]="'tile'"></app-search-report>
+          </ng-container>
+        </div>
+        <a role="button" *ngIf="dataService.contentSlides.length" class="carousel-control-prev"
+          (click)="scrollToPrevSlide()">
+          <span class="icon-sb-left"><span class="path1"></span><span class="path2"></span></span>
+          <span class="sr-only">{{ 'FORM.PREVIOUS' | translate }}</span>
+        </a>
+        <a role="button" *ngIf="dataService.contentSlides.length" class="carousel-control-next"
+          (click)="scrollToNextSlide()">
+          <span class="icon-sb-right"><span class="path1"></span><span class="path2"></span></span>
+          <span class="sr-only">{{ 'FORM.NEXT' | translate }}</span>
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-8 col-md-7 col-sm-12">
+      <div class="stories-optionX col-md-12 body-container" [class.d-none]="!videoCompleted">
+        <div class="tiles-container storiesContainer" infiniteScroll [scrollWindow]="false" [horizontal]="true"
+          [infiniteScrollDistance]="3" (scrolled)="onInfiniteScroll()" (wheel)="mosaicScroll($event)" #desktopMosaicView
+          *ngIf="dataService.isLoaded && !dataService.isSlideEmpty && desktopView && !socialUpdating">
+          <ng-container>
+            <app-stories-content [storiesBoxes]="dataService.storiesBoxes"></app-stories-content>
+          </ng-container>
+        </div>
+        <div class="tiles-container storiesContainer" infiniteScroll [scrollWindow]="true" [horizontal]="false"
+          [infiniteScrollDistance]="3" (scrolled)="onInfiniteScroll()"
+          *ngIf="dataService.isLoaded && !dataService.isSlideEmpty && !desktopView" #mobileView>
+          <ng-container>
+            <app-stories-content [storiesBoxes]="dataService.storiesBoxes"></app-stories-content>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-menu>
+    <ng-container class="menu-left">
+      <nav class="navbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:;" (click)="goToCuriosities()">Curiosities</a>
+          </li>
+          <div class="separator"></div>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/news">News</a>
+          </li>
+        </ul>
+      </nav>
+      <app-shortcut-images #showMenuInvisible style="display: contents;" [currShortcuts]="dataService.currShortcuts" (clicked)="filterContentAndRender(0, 20, [$event], '')"></app-shortcut-images>
+    </ng-container>
+
+    <ng-container class="menu-end-mobile">
+      <app-sport-menu (filterSport)="filterBySport($event)"></app-sport-menu>
+    </ng-container>
+
+    <ng-container class="menu-end">
+      <app-sport-menu (filterSport)="filterBySport($event)"></app-sport-menu>
+    </ng-container>
+
+  </app-menu>
+</div>

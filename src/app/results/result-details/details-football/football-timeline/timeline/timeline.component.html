@@ -1,0 +1,36 @@
+<ul class="timeline time-line-margin-0">
+
+  <hr *ngIf="displaySeparator" class="separator-hr" />
+
+  <li *ngIf="title?.length" style="margin-top: 10px;">
+    <div class="timeline-panel no-dash">
+      <div class="timeline-body">
+        <p>{{ title }}</p>
+      </div>
+    </div>
+  </li>
+  <li *ngFor="let event of events; let index2 = index"
+      [ngClass]="{ 'timeline-inverted': event.team == 'AWAY', 'bottom-li': (event.eventname === 'separator-event') }"
+      [ngStyle]="{'margin-top.px': 5 * event.between }">
+    <div *ngIf="event.team == 'AWAY'"
+         class="timeline-panel">
+      <div class="timeline-body custom-timeline left">
+        <p class="eventPlayer-away">{{ event.minute }}'</p>&nbsp;&nbsp; <img class="eventImg"
+             *ngIf="event.imageUrl"
+             [src]="event.imageUrl">&nbsp;&nbsp; <p class="eventPlayer-away">{{ event.name }} </p>
+      </div>
+    </div>
+    <div *ngIf="event.team == 'HOME'"
+         class="timeline-panel">
+      <div class="timeline-body custom-timeline right">
+        <p class="eventPlayer-home">{{ event.name }}</p> &nbsp;&nbsp; <img class="eventImg"
+             *ngIf="event.imageUrl"
+             [src]="event.imageUrl">&nbsp;&nbsp; <p class="eventPlayer-home">{{ event.minute }}' </p>
+      </div>
+    </div>
+    <div *ngIf="event.eventname === 'separator-event'">
+      <div class="timeline-panel separator-panel">
+      </div>
+    </div>
+  </li>
+</ul>

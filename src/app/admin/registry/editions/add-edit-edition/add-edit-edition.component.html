@@ -1,0 +1,44 @@
+<div class="container">
+  <mat-dialog-content class="translation-modal">
+    <div class="card-content">
+      <h3 class="text-center fo-wt-900 title-content">Add Edition</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <form [formGroup]="addEditionForm" (ngSubmit)="addTournament()">
+            <div class="form-group">
+              <label>{{'REGISTRY.SPORT' | translate}}</label>
+              <app-sport-select [sportControl]="addEditionForm.controls.sport" hideAll='true' (selected)='sportChanged($event)'></app-sport-select>
+              <p class="error-message mt-10" *ngIf="addEditionForm.controls.sport.touched && addEditionForm.controls.sport.errors?.required">Sport is required</p>
+            </div>
+            <div class="form-group">
+              <label>{{'REGISTRY.MANIFESTATION' | translate}}</label>
+              <app-manifest-autocomplete [manifestationControl]="addEditionForm.controls.manifestation" [selectedSport]="selectedSport.sport"></app-manifest-autocomplete>
+              <p class="error-message mt-10" *ngIf="addEditionForm.controls.manifestation.touched && addEditionForm.controls.manifestation.errors?.required">Manifestation is required</p>
+            </div>
+            <div class="form-group">
+              <label>{{ 'TOURNAMENT.PLACE' | translate }}</label>
+              <app-place-autocomplete [placeControl]="addEditionForm.controls.place" (optionSelected)='placeSelected($event)' State="edit">
+              </app-place-autocomplete>
+              <p class="error-message" *ngIf="addEditionForm.controls.place.touched && addEditionForm.controls.place.errors?.required">Place is required</p>
+            </div>
+            <div class="form-group">
+              <label>{{ 'TOURNAMENT.YEAR' | translate }}</label>
+              <mat-select formControlName="year" placeholder="{{ 'TOURNAMENT.YEAR' | translate }}" name="year"
+                id="startingYear">
+                <mat-option *ngFor="let year of years" [value]="year">
+                  {{ year }}
+                </mat-option>
+              </mat-select>
+              <p class="error-message  mt-10" *ngIf="addEditionForm.controls.year.touched && addEditionForm.controls.year.errors?.required">Year is required</p>
+            </div>
+            <div class="add-edition text-center">
+              <button mat-flat-button color="primary" type="submit" [disabled]="loading">
+                {{loading ? 'FORM.SAVING' : 'FORM.SUBMIT' | translate}}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

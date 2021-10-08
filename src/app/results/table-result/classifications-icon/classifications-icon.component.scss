@@ -1,0 +1,94 @@
+
+
+.cls-icon {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 25px;
+}
+
+.cls-icon-bar {
+  width: 3px;
+  height: 17.5px;
+  // margin: 6px 0;
+  -webkit-transition: width 1s ease-out;
+  -moz-transition: width 1s ease-out;
+  -o-transition: width 1s ease-out;
+  transition: all .5s ease-out;
+  margin: 0 1.5px;
+}
+
+.cls-icon-bar-long {
+  @extend .cls-icon-bar;
+  height: 25px;
+}
+
+
+.cls-icon-bar-0 {
+  @extend .cls-icon-bar;
+}
+
+.cls-icon-bar-long-0 {
+  @extend .cls-icon-bar-long;
+}
+
+
+
+.cls-icon-bar-1 {
+  @extend .cls-icon-bar;
+  background: linear-gradient(to top, white 50%, #e46a07 50%);
+  background-size: 100% 200% ;
+  background-position: left top;
+}
+
+.cls-icon-bar-long-1 {
+  @extend .cls-icon-bar-long;
+  background: linear-gradient(to bottom, #e46a07 50%, white 50%);
+  background-size: 100% 200%;
+  background-position: left bottom;
+}
+
+.cls-icon-bar-2 {
+  @extend .cls-icon-bar;
+  background: linear-gradient(to bottom, white 50%, #e46a07 50%);
+  background-size: 100% 200%;
+  background-position: left top;
+  transition: all .5s ease-out;
+}
+
+.cls-icon-bar-long-2 {
+  @extend .cls-icon-bar-long;
+  background: linear-gradient(to top, #e46a07 50%, white 50%);
+  background-size: 100% 200%;
+  background-position: left bottom;
+}
+.cls-icon-background {
+  background: linear-gradient(to top, #e46a07 50%, white 50%);
+  background-size: 100% 200%;
+  background-position: left top;
+  transition: all .5s ease-out;
+}
+
+.cls-icon-background-long {
+  background: linear-gradient(to bottom, white 50%, #e46a07 50%);
+  background-size: 100% 200%;
+  background-position: left bottom;
+  transition: all .5s ease-out;
+}
+
+.delay-1 {
+  transition-delay: .1s;
+}
+
+.delay-2 {
+  transition-delay: .2s;
+}
+
+.delay-3 {
+  transition-delay: .3s;
+}
+
+.delay-4 {
+  transition-delay: .4s;
+}

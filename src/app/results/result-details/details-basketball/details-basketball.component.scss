@@ -1,0 +1,317 @@
+@import 'sportbusters';
+
+* {
+  --text-color: white;
+  --faint-text-color: #bfbfbf;
+  --theme-background: #006062;
+  --theme-background-2: rgba(0, 171, 173, 0.4);
+
+  color: var(--text-color);
+}
+
+.detail-header {
+  width: 70%;
+  color: white;
+  display: flex !important;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.header-item {
+  // font-size: 2vw;
+  // white-space: nowrap;
+  flex: 2;
+  // width: 70%;
+  // flex-wrap: nowrap;
+  // width: auto;
+}
+
+.header-item-left {
+  text-align: right;
+  padding-right: 1rem;
+  flex: 4;
+}
+
+.header-item-right {
+  text-align: left;
+  padding-left: 1rem;
+  flex: 4;
+}
+
+.header-item-score {
+  h4 {
+    font-weight: 500 !important;
+  }
+}
+
+.margin-auto {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.mat-dialog-content {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.tab-content {
+  width: 100%;
+}
+
+.team-logo {
+  height: 10.5vh;
+  width: auto;
+  margin-bottom: 8px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+
+  &.team-logo-left {
+    margin-right: auto;
+  }
+  &.team-logo-right {
+    margin-left: auto;
+  }
+  // margin-right: 3px;
+}
+
+.detail-header-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.ot-designation {
+  text-align: center;
+  margin-top: -10px;
+  font-weight: 400;
+}
+.pt-designation {
+  text-align: center;
+  margin-top: -10px;
+  font-weight: 400;
+
+  &:after {
+    content: "a.p.";
+    position: absolute;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (#{$bp-lt-600}) {
+  .ot-designation {
+    font-size: 0.8rem;
+  }
+  .pt-designation {
+    font-size: 0.8rem;
+    &:after {
+      font-size: 0.5rem;
+      margin-left: 1px;
+    }
+  }
+}
+
+.classifications-table {
+  width: auto !important;
+  table-layout: fixed !important;
+  font-size: 0.9rem;
+  overflow: hidden;
+  margin: 0 15px !important;
+  padding-bottom: 2rem;
+
+  table {
+    width: calc(100% - 1px) !important;
+  }
+
+  thead {
+    background: none;
+    & > tr {
+      & > td {
+        padding-top: var(--table-v-padding);
+        padding-bottom: var(--table-v-padding);
+        &.sep {
+          border-right: var(--td-separator) !important;
+        }
+      }
+      &:nth-child(1) {
+        background: transparent !important;
+        max-height: 0px !important;
+        border: none;
+        & > td {
+          padding: 0 !important;
+        }
+      }
+      &.transparent-header {
+        // background: var(--theme-background);
+        background: transparent;
+        & > td {
+          max-height: 0.8rem !important;
+          padding: 1.5px 0 !important;
+        }
+      }
+      &.primary-header {
+        & > td {
+          background: var(--theme-background-2) !important;
+          // &:nth-child(1) {
+          //   background: transparent !important;
+          // }
+        }
+      }
+    }
+  }
+
+  tbody {
+    & > tr {
+      &:nth-child(even) {
+        & > td {
+          background-color: var(--alternate-line-background);
+        }
+      }
+      & > td {
+        padding-top: var(--table-v-padding);
+        padding-bottom: var(--table-v-padding);
+        &.sep {
+          border-right: var(--td-separator) !important;
+        }
+
+        // &:nth-child(even) {
+        //   color: var(--faint-text-color);
+        // }
+        // &:nth-child(1) {
+        //   color: var(--text-color);
+        // }
+        &:nth-child(2) {
+          // color: var(--text-color);
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  tr,
+  tbody > tr,
+  thead > tr {
+    & > td {
+      text-align: center;
+      &.sp {
+        background: transparent !important;
+        width: 1px !important;
+        max-width: 1px !important;
+      }
+      &.n-c {
+        width: var(--number-td-width) !important;
+        min-width: var(--number-td-min-width) !important;
+        padding-left: 2px !important;
+        padding-right: 2px !important;
+      }
+      &.b-c {
+        // padding-left: 12px !important;
+        // padding-right: 12px !important;
+        width: 2.5rem !important;
+        min-width: 2rem !important;
+        font-weight: 600 !important;
+      }
+      &.fn-c {
+        color: var(--faint-text-color);
+      }
+
+      &.bt {
+        border-top: var(--table-border) !important;
+      }
+      &.bl {
+        border-left: var(--table-border) !important;
+      }
+      &.br {
+        border-right: var(--table-border) !important;
+      }
+      &.quarter {
+        width: 35% !important;
+        min-width: 10rem !important;
+      }
+      &.left-aligned {
+        text-align: left;
+      }
+
+      // &.bb {
+      //   border-bottom: var(--table-border) !important;
+      // }
+    }
+    &:last-child {
+      & > td {
+        &.bb {
+          border-bottom: var(--table-border) !important;
+        }
+      }
+    }
+  }
+}
+
+.group-header {
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  & > div {
+    padding: var(--table-v-padding) var(--table-h-padding) 2px
+    var(--table-h-padding);
+  }
+
+  .group-name {
+    font-weight: 600;
+    text-align: start;
+  }
+}
+
+.group-controls {
+  margin-left: auto;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: fixed;
+  margin-top: -1.5rem;
+}
+
+.flipped {
+  transform: scaleX(-1);
+}
+
+@media (#{$bp-lt-460}) {
+  content,
+  table,
+  table th,
+  table td {
+    font-size: 0.7rem !important;
+  }
+
+  .classifications-table {
+    tr,
+    tbody > tr,
+    thead > tr {
+      & > td {
+        text-align: center;
+        &.n-c {
+          width: auto !important;
+          min-width: auto !important;
+          padding-left: 4px !important;
+          padding-right: 4px !important;
+        }
+      }
+    }
+  }
+}

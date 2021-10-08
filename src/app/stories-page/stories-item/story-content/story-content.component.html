@@ -1,0 +1,58 @@
+<div class="story-content-inner" *ngIf="story">
+  <div class="story-content-body" (visibilityChange)="onAppear($event, 1)" InViewport id="page-1">
+    <div class="title-image-wrapper">
+      <div class="image-overlay-wrapper">
+        <img class="title-image" [src]="titleImage" alt="title-image" />
+      </div>
+      <div class="text-wrapper">
+        <h1 class="title-text">{{ 'STORY.TITLE_' + story.code | translate }}</h1>
+        <h3 class="subtitle-text">{{ 'STORY.SUBTITLE_' + story.code | translate }}</h3>
+      </div>
+    </div>
+    <div *ngIf="randomAds.length > 0" class="innerIframe customIframe">
+      <div [innerHtml]="randomAds[0]"></div>
+    </div>
+    <p class="main-paragraph">{{ 'STORY.' + paragraphs[0].code + '_' + story.code | translate }}</p>
+  </div>
+  <div class="story-content-body" (visibilityChange)="onAppear($event, index + 2)" InViewport *ngFor="let paragraph of paragraphs.slice(1); let index = index"
+    [id]="'page-' + (index + 2)">
+    <ng-container *ngIf="index >= 0 && index < paragraphs.slice(1).length - 1">
+      <img [src]="innerImages[index]" alt="inner-image" class="inner-images">
+    </ng-container>
+    <div *ngIf="randomAds.length > 0 && index >= 0 && index < paragraphs.slice(1).length - 1" class="bottomInnerIframe customIframe">
+      <div [innerHtml]="randomAds[index + 1]"></div>
+    </div>
+    <p class="inner-paragraphs">{{ 'STORY.' + paragraph.code + '_' + story.code | translate }}</p>
+    <ng-container *ngIf="index === paragraphs.slice(1).length - 1">
+      <div class="youtube-wrapper">
+        <iframe [src]="youtubeVideo | sanitizeYoutube" frameborder="0"></iframe>
+      </div>
+      <div class="ratings-wrapper">
+        <div class="like-story-text">
+          {{ 'STORY.LIKE_STORY' | translate }}
+        </div>
+        <div class="ratings-text-wrapper">
+          <div class="ratings-stars is-rating" *ngIf="!story.clientRate">
+            <i class="fa-star" [ngClass]="hoverRating >= 1 ? 'fa hover' : 'far'" (mouseleave)="hoverStar(0)" (mouseenter)="hoverStar(1)"
+              (click)="giveRating(1)"></i>
+            <i class="fa-star" [ngClass]="hoverRating >= 2 ? 'fa hover' : 'far'" (mouseleave)="hoverStar(0)" (mouseenter)="hoverStar(2)"
+              (click)="giveRating(2)"></i>
+            <i class="fa-star" [ngClass]="hoverRating >= 3 ? 'fa hover' : 'far'" (mouseleave)="hoverStar(0)" (mouseenter)="hoverStar(3)"
+              (click)="giveRating(3)"></i>
+            <i class="fa-star" [ngClass]="hoverRating >= 4 ? 'fa hover' : 'far'" (mouseleave)="hoverStar(0)" (mouseenter)="hoverStar(4)"
+              (click)="giveRating(4)"></i>
+            <i class="fa-star" [ngClass]="hoverRating >= 5 ? 'fa hover' : 'far'" (mouseleave)="hoverStar(0)" (mouseenter)="hoverStar(5)"
+              (click)="giveRating(5)"></i>
+          </div>
+          <div class="ratings-stars" *ngIf="story.clientRate">
+            <i *ngFor="let star of ratingStars" [class]="star"></i>
+          </div>
+          <div class="ratings-text" *ngIf="story.rateAverage !== 'NaN'">
+            {{ story.rateAverage }}
+          </div>
+        </div>
+      </div>
+      <paypal-donate></paypal-donate>
+    </ng-container>
+  </div>
+</div>

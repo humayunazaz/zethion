@@ -1,0 +1,120 @@
+<div class="table-responsive classifications-table">
+  <div class="group-header">
+    <div class="group-name">{{detail['h_name']}}</div>
+  </div>
+  <table class="table no-lines"
+         style="table-layout: fixed;">
+    <thead>
+    <tr class="transparent-header">
+    </tr>
+    <tr class="primary-header">
+      <td class="b-c left-aligned">Player</td>
+      <td class="n-c b-c">Min</td>
+      <td class="bl n-c">FGM</td>
+      <td class="n-c">FGA</td>
+      <td class="n-c">FG%</td>
+      <td class="n-c">3PM</td>
+      <td class="n-c">3PA</td>
+      <td class="n-c">3P%</td>
+      <td class="n-c">FTM</td>
+      <td class="n-c">FTA</td>
+      <td class="n-c">FT%</td>
+      <td class="n-c">OREB</td>
+      <td class="n-c">DREB</td>
+      <td class="n-c">REB</td>
+      <td class="n-c">AST</td>
+      <td class="n-c">TOV</td>
+      <td class="n-c">STL</td>
+      <td class="n-c">BLK</td>
+      <td class="n-c">PF</td>
+      <td class="n-c">PTS</td>
+      <td class="n-c">+/-</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let player of dataHome; let i = index">
+      <td class="b-c left-aligned">{{player.compactName}}</td>
+      <td class="n-c b-c">{{player.minutes}}</td>
+      <td class="bl n-c">{{player.fieldGoalsMade}}</td>
+      <td class="n-c">{{player.fieldGoalsAttempted}}</td>
+      <td class="n-c">{{player.fieldGoalsPercentage | number:'1.2-2'}}</td>
+      <td class="n-c">{{player.threePointFieldGoalsMade}}</td>
+      <td class="n-c">{{player.threePointFieldGoalsAttempted}}</td>
+      <td class="n-c">{{player.threePointsPercentage | number:'1.2-2'}}</td>
+      <td class="n-c">{{player.freeThrowsMade}}</td>
+      <td class="n-c">{{player.freeThrowsAttempted}}</td>
+      <td class="n-c">{{player.freeThrowsPercentage | number:'1.2-2'}}</td>
+      <td class="n-c">{{player.offensiveRebounds}}</td>
+      <td class="n-c">{{player.devensiveRebounds}}</td>
+      <td class="n-c">{{player.rebounds}}</td>
+      <td class="n-c">{{player.assists}}</td>
+      <td class="n-c">{{player.turnovers}}</td>
+      <td class="n-c">{{player.steals}}</td>
+      <td class="n-c">{{player.blocks}}</td>
+      <td class="n-c">{{player.personalFouls}}</td>
+      <td class="n-c">{{player.points}}</td>
+      <td class="n-c">??</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="group-header">
+    <div class="group-name">{{detail['a_name']}}</div>
+  </div>
+  <table class="table no-lines"
+         style="table-layout: fixed;">
+    <thead>
+    <tr class="transparent-header">
+    </tr>
+    <tr class="primary-header">
+      <td class="b-c left-aligned">Player</td>
+      <td class="n-c b-c">Min</td>
+      <td class="bl n-c">FGM</td>
+      <td class="n-c">FGA</td>
+      <td class="n-c">FG%</td>
+      <td class="n-c">3PM</td>
+      <td class="n-c">3PA</td>
+      <td class="n-c">3P%</td>
+      <td class="n-c">FTM</td>
+      <td class="n-c">FTA</td>
+      <td class="n-c">FT%</td>
+      <td class="n-c">OREB</td>
+      <td class="n-c">DREB</td>
+      <td class="n-c">REB</td>
+      <td class="n-c">AST</td>
+      <td class="n-c">TOV</td>
+      <td class="n-c">STL</td>
+      <td class="n-c">BLK</td>
+      <td class="n-c">PF</td>
+      <td class="n-c">PTS</td>
+      <td class="n-c">+/-</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let player of dataAway; let i = index">
+      <td class="b-c left-aligned">{{player.compactName}}</td>
+      <td class="n-c b-c">{{player.minutes}}</td>
+      <td class="bl n-c">{{player.fieldGoalsMade}}</td>
+      <td class="n-c">{{player.fieldGoalsAttempted}}</td>
+      <td class="n-c">{{player.fieldGoalsPercentage | number:'1.2-2'}}</td>
+      <td class="n-c">{{player.threePointFieldGoalsMade}}</td>
+      <td class="n-c">{{player.threePointFieldGoalsAttempted}}</td>
+      <td class="n-c">{{player.threePointsPercentage | number:'1.2-2'}}</td>
+      <td class="n-c">{{player.freeThrowsMade}}</td>
+      <td class="n-c">{{player.freeThrowsAttempted}}</td>
+      <td class="n-c">{{player.freeThrowsPercentage | number:'1.2-2'}}</td>
+      <td class="n-c">{{player.offensiveRebounds}}</td>
+      <td class="n-c">{{player.devensiveRebounds}}</td>
+      <td class="n-c">{{player.rebounds}}</td>
+      <td class="n-c">{{player.assists}}</td>
+      <td class="n-c">{{player.turnovers}}</td>
+      <td class="n-c">{{player.steals}}</td>
+      <td class="n-c">{{player.blocks}}</td>
+      <td class="n-c">{{player.personalFouls}}</td>
+      <td class="n-c">{{player.points}}</td>
+      <td class="n-c">??</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

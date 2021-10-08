@@ -1,0 +1,7 @@
+@import 'sportbusters';
+
+@media (#{$bp-lt-460}) {
+  .col-md-12 {
+    padding: 0 !important;
+  }
+}

@@ -1,0 +1,8 @@
+@mixin bmd-disabled() {
+  fieldset[disabled][disabled] &,
+  &.disabled,
+  &:disabled,
+  &[disabled] {
+    @content;
+  }
+}

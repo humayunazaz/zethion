@@ -1,0 +1,109 @@
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-4 order-lg-last fixed">
+    <form>
+
+      <div class="form-group">
+        <label for="teamName">{{'REGISTRY.NAME' | translate}}</label>
+        <input type="text" (keyup)="changeName($event)" class="form-control" id="teamName">
+      </div>
+
+      <div class="form-group">
+        <label>{{'REGISTRY.SPORT' | translate}}</label>
+        <app-sport-select (selected)="sportChanged($event)"></app-sport-select>
+      </div>
+
+      <div class="form-group">
+        <label>{{'REGISTRY.COUNTRY' | translate}}</label>
+        <app-country-select (selected)="countryChanged($event)"></app-country-select>
+      </div>
+
+      <div class="form-group">
+        <label>{{'REGISTRY.GENDER' | translate}}</label>
+        <mat-select placeholder="{{ 'REGISTRY.GENDER' | translate }}" name="gender" id="gender" (selectionChange)="genderChange($event)">
+          <mat-option *ngFor="let gender of genders" [value]="gender.value">
+            {{ gender.key }}
+          </mat-option>
+        </mat-select>
+      </div>
+
+      <div class="form-group">
+        <label>{{'REGISTRY.TYPE' | translate}}</label>
+        <mat-select placeholder="{{ 'REGISTRY.TYPE' | translate }}" name="type" id="type" (selectionChange)="typeChange($event)">
+          <mat-option *ngFor="let athleteType of athleteTypes" [value]="athleteType.value">
+            {{ athleteType.key }}
+          </mat-option>
+        </mat-select>
+      </div>
+
+      <div class="form-group">
+        <label>{{'REGISTRY.STATUS' | translate}}</label>
+        <mat-select placeholder="{{ 'REGISTRY.STATUS' | translate }}" name="status" id="status"
+          (selectionChange)="statusChange($event)">
+          <mat-option *ngFor="let status of statuses" [value]="status.value">
+            {{ status.key }}
+          </mat-option>
+        </mat-select>
+      </div>
+
+
+      <div class="form-group">
+        <button class="btn btn-primary" (click)="addAthlete()">{{'FORM.ADD_ATHLETE' | translate}}</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first" *ngIf="loading">
+    <div class="imageLoading spin-center">
+      <div class="w-50 mauto gold">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first">
+    <div class="table-responsive table-full-width">
+      <table class="table">
+        <thead>
+          <tr class="mat-header-row">
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.FIRST_NAME' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.LAST_NAME' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.COUNTRY' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.SECONDARY_COUNTRY' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.GENDER' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.BIRTH_DATE' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.HEIGHT' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.TYPE' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.SPORT' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'REGISTRY.STATUS' | translate}}</th>
+            <th scope="col">{{'REGISTRY.ACTION' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="!loading">
+          <tr class="mat-row" *ngFor="let athlete of athletes">
+            <td class="mat-cell">{{ athlete.firstName }}</td>
+            <td class="mat-cell">{{ athlete.lastName || '' }}</td>
+            <td class="mat-cell">{{ athlete.country }}</td>
+            <td class="mat-cell">{{ athlete.secondaryCountry || '' }}</td>
+            <td class="mat-cell">{{ athlete.gender }}</td>
+            <td class="mat-cell">{{ athlete.birthDate || '' }}</td>
+            <td class="mat-cell">{{ athlete.height || '' }}</td>
+            <td class="mat-cell">{{ athlete.type }}</td>
+            <td class="mat-cell">{{ athlete.sport }}</td>
+            <td class="mat-cell">{{ athlete.status }}</td>
+            <td class="table-action">
+              <i class="fa fa-edit edit" aria-hidden="true" (click)="edit(athlete)"></i>
+              <i class="fa fa-trash trash" aria-hidden="true" (click)="delete(athlete)"></i>
+            </td>
+          </tr>
+          <tr class="translate-paging">
+            <td>
+              <i *ngIf="page>0" class="fa fa-ellipsis-h load-previous-data" aria-hidden="true" (click)="loadPreviousData()"></i>
+            </td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td>
+              <i class="fa fa-ellipsis-h load-next-data" aria-hidden="true" (click)="loadNextData()"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

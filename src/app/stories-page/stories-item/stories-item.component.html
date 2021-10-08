@@ -1,0 +1,80 @@
+<div class="row top-menu-row">
+  <div class="col-lg-4 col-md-5"></div>
+  <div class="col-lg-8 col-md-7 col-sm-12">
+    <div class="top-menu">
+      <div class="pagination">
+        <div class="page">{{ 'STORY.PAGE' | translate}}</div>
+        <div class="numbers" [ngClass]="currentPage === 1 ? 'active' : null" (click)="navigatePage(1)">1</div>
+        <div class="numbers" [ngClass]="currentPage === 2 ? 'active' : null" (click)="navigatePage(2)">2</div>
+        <div class="numbers" [ngClass]="currentPage === 3 ? 'active' : null" (click)="navigatePage(3)">3</div>
+        <div class="numbers" [ngClass]="currentPage === 4 ? 'active' : null" (click)="navigatePage(4)">4</div>
+        <div class="numbers" [ngClass]="currentPage === 5 ? 'active' : null" (click)="navigatePage(5)">5</div>
+      </div>
+      <span class="icon-sb-close" (click)="goBack()"><span class="path1"></span><span class="path2"></span></span>
+    </div>
+  </div>
+</div>
+<div class="stories-content">
+  <div class="row story-item text-white">
+    <div class="col-lg-4 col-md-5 col-sm-12" *ngIf="story">
+      <div class="left-section fixed">
+        <div class="share-like-ratings-wrapper">
+          <div class="ratings-wrapper" *ngIf="story?.clientRate">
+            <div class="ratings-stars">
+              <i *ngFor="let star of ratingStars" [class]="star"></i>
+            </div>
+            <div class="ratings-text">
+              {{ story.rateAverage }}
+            </div>
+          </div>
+          <div class="ratings-wrapper" *ngIf="!story?.clientRate">
+            <div class="ratings-stars is-rating">
+              <i class="fa-star" [ngClass]="hoverRating >= 1 ? 'fa hover' : 'far'" (mouseleave)="hoverStar(0)" (mouseenter)="hoverStar(1)" (click)="giveRating(1)"></i>
+              <i class="fa-star" [ngClass]="hoverRating >= 2 ? 'fa hover' : 'far'" (mouseleave)="hoverStar(0)" (mouseenter)="hoverStar(2)" (click)="giveRating(2)"></i>
+              <i class="fa-star" [ngClass]="hoverRating >= 3 ? 'fa hover' : 'far'" (mouseleave)="hoverStar(0)" (mouseenter)="hoverStar(3)" (click)="giveRating(3)"></i>
+              <i class="fa-star" [ngClass]="hoverRating >= 4 ? 'fa hover' : 'far'" (mouseleave)="hoverStar(0)" (mouseenter)="hoverStar(4)" (click)="giveRating(4)"></i>
+              <i class="fa-star" [ngClass]="hoverRating >= 5 ? 'fa hover' : 'far'" (mouseleave)="hoverStar(0)" (mouseenter)="hoverStar(5)" (click)="giveRating(5)"></i>
+            </div>
+            <div class="ratings-text" *ngIf="story.rateAverage !== 'NaN'">
+              {{ story.rateAverage }}
+            </div>
+          </div>
+          <div class="share-like-wrapper">
+            <app-social-share [url]="shareUrl"></app-social-share>
+            <app-social-like [isGeneral]="true"></app-social-like>
+          </div>
+        </div>
+        <div class="left-button-text-wrapper">
+          <!-- <span class="icon-sb-left" (click)="goBack()"><span class="path1"></span><span class="path2"></span></span> -->
+          <div *ngIf="relatedStories && relatedStories.length" class="interested-text">{{ 'STORY.MAY_INTEREST' | translate }}</div>
+        </div>
+        <div *ngIf="relatedStories && relatedStories.length" class="row story-report-wrapper">
+          <div *ngFor="let relatedStory of relatedStories; let index = index" class="col-6 story-report">
+            <app-story-report [story]="relatedStory"></app-story-report>
+          </div>
+        </div>
+        <div class="row banner-wrapper">
+          <div class="col-6 banner">
+            <iframe *ngIf="currentLanguage === 'IT'" src="https://rcm-eu.amazon-adsystem.com/e/cm?o=29&p=42&l=ez&f=ifr&linkID=bf2cf71ea58b51758357d96dd9ad513a&t=zethion-21&tracking_id=zethion-21" width="234" height="60" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+            <iframe *ngIf="currentLanguage === 'FR'" src="https://rcm-eu.amazon-adsystem.com/e/cm?o=8&p=42&l=ez&f=ifr&linkID=16298e7b2d481b20c547bdd029b8e80c&t=zethion07-21&tracking_id=zethion07-21" width="234" height="60" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+            <iframe *ngIf="currentLanguage === 'GB' || currentLanguage === 'UK' || currentLanguage === 'EN' || currentLanguage === 'LO' || currentLanguage === 'WA' || currentLanguage === 'NN'" src="https://rcm-eu.amazon-adsystem.com/e/cm?o=2&p=42&l=ez&f=ifr&linkID=2a7ccc4969d447e8b732e82752d0b0da&t=zethion0e-21&tracking_id=zethion0e-21" width="234" height="60" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+            <iframe *ngIf="currentLanguage === 'ES'" src="https://rcm-eu.amazon-adsystem.com/e/cm?o=30&p=42&l=ez&f=ifr&linkID=1e9bf386da63d8649d532f97f72138b8&t=zethion09-21&tracking_id=zethion09-21" width="234" height="60" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+            <iframe *ngIf="currentLanguage === 'DE'" src="https://rcm-eu.amazon-adsystem.com/e/cm?o=3&p=42&l=ez&f=ifr&linkID=98579336c3a5dc836297243579340581&t=zethion00-21&tracking_id=zethion00-21" width="234" height="60" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+            <!--<iframe *ngIf="currentLanguage !== 'FR' && currentLanguage !== 'GB' && currentLanguage !== 'UK' && currentLanguage !== 'EN' && currentLanguage !== 'LO' && currentLanguage !== 'WA' && currentLanguage !== 'NN' && currentLanguage !== 'ES' && currentLanguage !== 'DE' && currentLanguage !== 'IT'" src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=13&l=ez&f=ifr&linkID=df699d389c8b70bd1ba6d22d5d0f5811&t=zethion-20&tracking_id=zethion-20" width="468" height="60" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>-->
+            <iframe *ngIf="currentLanguage !== 'FR' && currentLanguage !== 'GB' && currentLanguage !== 'UK' && currentLanguage !== 'EN' && currentLanguage !== 'LO' && currentLanguage !== 'WA' && currentLanguage !== 'NN' && currentLanguage !== 'ES' && currentLanguage !== 'DE' && currentLanguage !== 'IT'" src="https://rcm-eu.amazon-adsystem.com/e/cm?o=2&p=42&l=ez&f=ifr&linkID=2a7ccc4969d447e8b732e82752d0b0da&t=zethion0e-21&tracking_id=zethion0e-21" width="468" height="60" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8 col-md-7 col-sm-12 story-content">
+      <app-story-content 
+        *ngIf="story" 
+        (isVisible)="highlightPage($event)" 
+        [story]="story" 
+        [ratingStars]="ratingStars"
+        [randomAds]="randomAds"
+      ></app-story-content>
+    </div>
+  </div>
+  <app-menu [storyMenu]="true"></app-menu>
+</div>

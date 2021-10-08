@@ -1,0 +1,30 @@
+<div class="post-container">
+  <!-- <tw-post [href]="twitterItem.postUrl"></tw-post> -->
+  <div class="tw-post-wrapper" (click)="onPostClicked(twitterItem)" (pan)="mobileHover()">
+    <div class="tw-post-wrapper-inner" [class.noThumbnail]="twitterItem.withOutThumbnail" [class.activeHoverTile]="activePanHoverId === twitterItem.postId">
+      <!-- <tw-post [class.isOdd]="isOdd" width="auto" height="auto"></tw-post> -->
+      <div *ngIf="!imageLoaded && !twitterItem.withOutThumbnail" class="imageLoading">
+        <div class="gold">
+          <mat-spinner></mat-spinner>
+        </div>
+      </div>
+      <img src="{{twitterItem.thumbnail}}" [alt]="twitterItem.socialPage.socialPageUsername" class="news-image" [hidden]="!imageLoaded" (error)="notifyImageError(twitterItem)"
+      draggable="false" (load)="onImageLoad()" *ngIf="!twitterItem.withOutThumbnail">
+      <div class="socialName">
+        <h4>{{twitterItem.socialPage.socialPageUsername}}</h4>
+      </div>      
+      <div class="share-like-wrapper">
+        <app-social-share [url]="shareUrl"></app-social-share>
+        <app-social-like [id]="twitterItem.socialPage.idRef" [socialType]="twitterItem.socialPage.pageType" [type]="'social'"></app-social-like>
+      </div>
+      <!-- <div class="socialIcon">
+        <i class="fab fa-twitter icon"></i>
+      </div> -->
+      <div class="twitter-desc-wrapper">
+        <div class="mb-2">
+          <p>{{twitterItem.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

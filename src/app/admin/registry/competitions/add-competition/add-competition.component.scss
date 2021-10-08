@@ -1,0 +1,55 @@
+@import 'sportbusters';
+
+.card-content {
+  color: white;
+  font-family: 'Lato', sans-serif;
+  padding: 8%;
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.translation-modal {
+  padding: 0px;
+  margin: auto !important;
+  min-width: 300px;
+  overflow-x: hidden;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+input {
+  height: 40px;
+  color: white;
+}
+
+.desc-content {
+  padding: 20px 40px;
+}
+
+.title-content {
+  padding: 10px 20px;
+}
+
+mat-radio-button {
+  margin-right: 15px;
+}
+
+@media only screen and (#{$bp-lt-840}) {}
+
+.error-message {
+  font-size: 14px;
+
+  &.mt-10 {
+    margin-top: 10px;
+  }
+}
+
+.add-competition {
+  margin-top: 50px;
+}
+
+.label-delete-wrapper {
+  display: flex;
+  justify-content: space-between;
+}

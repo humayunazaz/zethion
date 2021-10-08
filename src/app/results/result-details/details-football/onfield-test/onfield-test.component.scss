@@ -1,0 +1,767 @@
+.container {
+  z-index: 99999;
+  position: relative;
+}
+
+.display-options {
+  width: 100%;
+  max-width: 840px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  // justify-content: space-around;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  min-height: 50px;
+  border: 2px solid white;
+  border-radius: 5px;
+
+  mat-checkbox {
+    margin-left: 10px;
+  }
+}
+
+.field-wrapper {
+  // font-size: 50px;
+  height: 95vh;
+  display: block;
+  background-color: transparent;
+  color: white;
+  padding: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.position-container {
+  display: block;
+  min-height: 50px;
+  height: auto;
+  width: 100%;
+  max-width: 840px;
+  border: 2px solid white;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  padding: 10px;
+}
+
+.position {
+  // width: 50px;
+  padding-left: 5px;
+  padding-right: 5px;
+  min-width: 30px;
+  width: 70px;
+  height: 30px;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: all-scroll;
+  margin: 5px 5px;
+  // flex-basis: 150px;
+}
+
+// This is specific to the field used:
+//  => the percentage of the image that is out-of-bounds
+* {
+  --sideline-top-margin: 2.65%;
+  --sideline-left-margin: 3.63%;
+}
+
+.onfield-table {
+  margin-top: calc(-2.5% + 1px + var(--sideline-top-margin));
+  height: calc(105% - (2 * var(--sideline-top-margin)));
+  margin-left: calc(-5% + var(--sideline-left-margin));
+  width: calc(110% - (2 * var(--sideline-left-margin)));
+
+  font-size: 0.3rem;
+  table-layout: fixed;
+
+  border-collapse: collapse;
+  border-style: hidden;
+
+  td {
+    border: 1px dotted white;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    &:first-child() {
+      border-left: none;
+      text-align: right;
+      padding-right: 4px;
+    }
+
+    &:last-child() {
+      border-right: none;
+      text-align: left;
+      padding-left: 4px;
+    }
+  }
+
+  tr {
+    line-height: 5%;
+  }
+
+  tr:nth-child(1) {
+    td {
+      border-top: none;
+    }
+  }
+
+  tr:last-child() {
+    td {
+      border-bottom: none;
+    }
+  }
+}
+
+.onfield-wrapper {
+  --dim-x: 410px;
+  --dim-y: 560px;
+
+  display: inline-block;
+  width: var(--dim-x);
+  height: var(--dim-y);
+  vertical-align: middle;
+  background-size: 100% 100%; //var(--dim-x) var(--dim-y);
+  background-repeat: no-repeat;
+  background-image: url(/assets/img/sport/football-field4.png);
+  position: relative;
+}
+
+.field-overlay {
+  position: absolute;
+
+  height: calc(100% - (2 * var(--sideline-top-margin)));
+  width: calc(100% - (2 * var(--sideline-left-margin)));
+  top: calc(0px + var(--sideline-top-margin));
+  left: calc(0px + var(--sideline-left-margin));
+}
+
+.zones-overlay {
+  @extend .field-overlay;
+
+  z-index: 5;
+  // background-color: rgba(0, 0, 255, 0.4);
+}
+
+.player-positions-overlay {
+  @extend .field-overlay;
+
+  z-index: 6;
+  // background-color: rgba(255, 0, 0, 0.4);
+}
+
+.players-overlay {
+  @extend .field-overlay;
+
+  z-index: 7;
+  // background-color: rgba(255, 0, 0, 0.4);
+}
+
+.player {
+  --half-width: 5px;
+  --half-height: var(--half-width);
+  --hoffset-step: 5%; // horizontal offset step
+  --voffset-extra-step: 1.5%; // extra vertical offset for some players
+  --hoffset-extra-step: 1.5%; // extra horzontal offset for some players
+
+  position: absolute;
+  top: calc(10% - var(--half-width));
+  left: calc(10% - var(--half-width));
+  height: calc(2 * var(--half-width));
+  width: calc(2 * var(--half-width));
+  border-radius: 100px;
+  border: 2px solid red;
+  // background-color: blue;
+  cursor: pointer;
+}
+
+.players-overlay {
+  .player {
+    background-color: white;
+  }
+}
+
+/**
+ * All player possible positions on the field
+ */
+
+
+//
+// 1. Home team
+//
+
+.h_gk {
+  @extend .player;
+
+  top: calc(0% - var(--half-height));
+  left: calc(50% - var(--half-width));
+}
+
+.h_sw-c {
+  @extend .player;
+  top: calc(4.5% - var(--half-height) + var(--voffset-extra-step));
+}
+
+.h_sw-c-1 {
+  @extend .h_sw-c;
+  left: calc(50% - var(--half-width) - var(--hoffset-step) - 1%);
+}
+
+.h_sw-c-2 {
+  @extend .h_sw-c;
+  left: calc(50% - var(--half-width));
+}
+
+.h_sw-c-3 {
+  @extend .h_sw-c;
+  left: calc(50% - var(--half-width) + var(--hoffset-step));
+}
+
+.h_df-c {
+  @extend .player;
+  top: calc(10% - var(--half-height));
+}
+
+.h_df-c-1 {
+  @extend .h_df-c;
+  left: calc(50% - var(--half-width) - (2 * var(--hoffset-step)));
+}
+
+.h_df-c-2 {
+  @extend .h_df-c;
+  left: calc(50% - var(--half-width) - var(--hoffset-step));
+}
+
+.h_df-c-3 {
+  @extend .h_df-c;
+  left: calc(50% - var(--half-width));
+}
+
+.h_df-c-4 {
+  @extend .h_df-c;
+  left: calc(50% - var(--half-width) + var(--hoffset-step));
+}
+
+.h_df-c-5 {
+  @extend .h_df-c;
+  left: calc(50% - var(--half-width) + (2 * var(--hoffset-step)));
+}
+
+.h_sb {
+  @extend .player;
+  top: calc(13.5% - var(--half-height));
+  border: 2px solid orange;
+}
+
+.h_sb-r {
+  @extend .h_sb;
+  left: calc(15% - var(--half-width));
+}
+
+.h_sb-l {
+  @extend .h_sb;
+  left: calc(100% - var(--half-width) - 15%);
+}
+
+.h_dmf-c {
+  @extend .player;
+  top: calc(18% - var(--half-height) + var(--voffset-extra-step));
+}
+
+.h_dmf-c-1 {
+  @extend .h_dmf-c;
+  left: calc(50% - var(--half-width) - (3.5 * var(--hoffset-step)));
+}
+
+.h_dmf-c-2 {
+  @extend .h_dmf-c;
+  left: calc(50% - var(--half-width) - (2 * var(--hoffset-step)));
+}
+
+.h_dmf-c-3 {
+  @extend .h_dmf-c;
+  left: calc(50% - var(--half-width));
+}
+
+.h_dmf-c-4 {
+  @extend .h_dmf-c;
+  left: calc(50% - var(--half-width) + (2 * var(--hoffset-step)));
+}
+
+.h_dmf-c-5 {
+  @extend .h_dmf-c;
+  left: calc(50% - var(--half-width) + (3.5 * var(--hoffset-step)));
+}
+
+.h_mf {
+  @extend .player;
+  top: calc(25% - var(--half-height));
+}
+
+.h_mf-c-1 {
+  @extend .h_mf;
+  left: calc(50% - var(--half-width) - (3.5 * var(--hoffset-step)));
+}
+
+.h_mf-c-2 {
+  @extend .h_mf;
+  left: calc(50% - var(--half-width) - (2 * var(--hoffset-step)));
+}
+
+.h_mf-c-3 {
+  @extend .h_mf;
+  left: calc(50% - var(--half-width));
+}
+
+.h_mf-c-4 {
+  @extend .h_mf;
+  left: calc(50% - var(--half-width) + (2 * var(--hoffset-step)));
+}
+
+.h_mf-c-5 {
+  @extend .h_mf;
+  left: calc(50% - var(--half-width) + (3.5 * var(--hoffset-step)));
+}
+
+.h_mf-side {
+  @extend .h_mf;
+  border: 2px solid orange;
+}
+
+.h_mf-r {
+  @extend .h_mf-side;
+  left: calc(50% - var(--half-width) - 27.5%);
+}
+
+.h_mf-l {
+  @extend .h_mf-side;
+  left: calc(50% - var(--half-width) + 27.5%);
+}
+
+.h_amf {
+  @extend .player;
+  top: calc(35% - var(--half-height) + var(--voffset-extra-step));
+}
+
+.h_amf-c-1 {
+  @extend .h_amf;
+  left: calc(50% - var(--half-width) - (3.5 * var(--hoffset-step)));
+}
+
+.h_amf-c-2 {
+  @extend .h_amf;
+  left: calc(50% - var(--half-width) - (2 * var(--hoffset-step)));
+}
+
+.h_amf-c-3 {
+  @extend .h_amf;
+  left: calc(50% - var(--half-width));
+}
+
+.h_amf-c-4 {
+  @extend .h_amf;
+  left: calc(50% - var(--half-width) + (2 * var(--hoffset-step)));
+}
+
+.h_amf-c-5 {
+  @extend .h_amf;
+  left: calc(50% - var(--half-width) + (3.5 * var(--hoffset-step)));
+}
+
+.h_wf-side {
+  @extend .h_amf;
+  border: 2px solid orange;
+}
+
+.h_wf-r {
+  @extend .h_wf-side;
+  left: calc(50% - var(--half-width) - 27.5% - var(--hoffset-extra-step));
+}
+
+.h_wf-l {
+  @extend .h_wf-side;
+  left: calc(50% - var(--half-width) + 27.5% + var(--hoffset-extra-step));
+}
+
+.h_fw-c {
+  @extend .player;
+  top: calc(41% - var(--half-height) + var(--voffset-extra-step));
+}
+
+.h_fw-c-1 {
+  @extend .h_fw-c;
+  left: calc(50% - var(--half-width) - (2 * var(--hoffset-step)));
+}
+
+.h_fw-c-2 {
+  @extend .h_fw-c;
+  left: calc(50% - var(--half-width));
+}
+
+.h_fw-c-3 {
+  @extend .h_fw-c;
+  left: calc(50% - var(--half-width) + (2 * var(--hoffset-step)));
+}
+
+.h_st-c {
+  @extend .player;
+  top: calc(46.5% - var(--half-height));
+}
+
+.h_st-c-1 {
+  @extend .h_st-c;
+  left: calc(50% - var(--half-width) - (2 * var(--hoffset-step)));
+}
+
+.h_st-c-2 {
+  @extend .h_st-c;
+  left: calc(50% - var(--half-width));
+}
+
+.h_st-c-3 {
+  @extend .h_st-c;
+  left: calc(50% - var(--half-width) + (2 * var(--hoffset-step)));
+}
+
+
+//
+// 2. Away team
+//
+
+.away-player {
+  @extend .player;
+  border: 2px solid lightblue;
+}
+
+.a_gk {
+  @extend .away-player;
+
+  top: calc(100% - var(--half-height));
+  left: calc(50% - var(--half-width));
+}
+
+.a_sw-c {
+  @extend .away-player;
+  top: calc(100% - 4.5% - var(--half-height) - var(--voffset-extra-step));
+}
+
+.a_sw-c-3 {
+  @extend .a_sw-c;
+  left: calc(50% - var(--half-width) - var(--hoffset-step));
+}
+
+.a_sw-c-2 {
+  @extend .a_sw-c;
+  left: calc(50% - var(--half-width));
+}
+
+.a_sw-c-1 {
+  @extend .a_sw-c;
+  left: calc(50% - var(--half-width) + var(--hoffset-step));
+}
+
+.a_df-c {
+  @extend .away-player;
+  top: calc(100% - 10% - var(--half-height));
+}
+
+.a_df-c-5 {
+  @extend .a_df-c;
+  left: calc(50% - var(--half-width) - (2 * var(--hoffset-step)));
+}
+
+.a_df-c-4 {
+  @extend .a_df-c;
+  left: calc(50% - var(--half-width) - var(--hoffset-step));
+}
+
+.a_df-c-3 {
+  @extend .a_df-c;
+  left: calc(50% - var(--half-width));
+}
+
+.a_df-c-2 {
+  @extend .a_df-c;
+  left: calc(50% - var(--half-width) + var(--hoffset-step));
+}
+
+.a_df-c-1 {
+  @extend .a_df-c;
+  left: calc(50% - var(--half-width) + (2 * var(--hoffset-step)));
+}
+
+.a_sb {
+  @extend .away-player;
+  top: calc(100% - 13.5% - var(--half-height));
+  border: 2px solid orange;
+}
+
+.a_sb-l {
+  @extend .a_sb;
+  left: calc(15% - var(--half-width));
+}
+
+.a_sb-r {
+  @extend .a_sb;
+  left: calc(100% - var(--half-width) - 15%);
+}
+
+.a_dmf-c {
+  @extend .away-player;
+  top: calc(100% - 18% - var(--half-height) - var(--voffset-extra-step));
+}
+
+.a_dmf-c-5 {
+  @extend .a_dmf-c;
+  left: calc(50% - var(--half-width) - (3.5 * var(--hoffset-step)));
+}
+
+.a_dmf-c-4 {
+  @extend .a_dmf-c;
+  left: calc(50% - var(--half-width) - (2 * var(--hoffset-step)));
+}
+
+.a_dmf-c-3 {
+  @extend .a_dmf-c;
+  left: calc(50% - var(--half-width));
+}
+
+.a_dmf-c-2 {
+  @extend .a_dmf-c;
+  left: calc(50% - var(--half-width) + (2 * var(--hoffset-step)));
+}
+
+.a_dmf-c-1 {
+  @extend .a_dmf-c;
+  left: calc(50% - var(--half-width) + (3.5 * var(--hoffset-step)));
+}
+
+.a_mf {
+  @extend .away-player;
+  top: calc(100% - 25% - var(--half-height));
+}
+
+.a_mf-c-5 {
+  @extend .a_mf;
+  left: calc(50% - var(--half-width) - (3.5 * var(--hoffset-step)));
+}
+
+.a_mf-c-4 {
+  @extend .a_mf;
+  left: calc(50% - var(--half-width) - (2 * var(--hoffset-step)));
+}
+
+.a_mf-c-3 {
+  @extend .a_mf;
+  left: calc(50% - var(--half-width));
+}
+
+.a_mf-c-2 {
+  @extend .a_mf;
+  left: calc(50% - var(--half-width) + (2 * var(--hoffset-step)));
+}
+
+.a_mf-c-1 {
+  @extend .a_mf;
+  left: calc(50% - var(--half-width) + (3.5 * var(--hoffset-step)));
+}
+
+.a_mf-side {
+  @extend .a_mf;
+  border: 2px solid orange;
+}
+
+.a_mf-l {
+  @extend .a_mf-side;
+  left: calc(50% - var(--half-width) - 27.5%);
+}
+
+.a_mf-r {
+  @extend .a_mf-side;
+  left: calc(50% - var(--half-width) + 27.5%);
+}
+
+.a_amf {
+  @extend .away-player;
+  top: calc(100% - 35% - var(--half-height) - var(--voffset-extra-step));
+}
+
+.a_amf-c-5 {
+  @extend .a_amf;
+  left: calc(50% - var(--half-width) - (3.5 * var(--hoffset-step)));
+}
+
+.a_amf-c-4 {
+  @extend .a_amf;
+  left: calc(50% - var(--half-width) - (2 * var(--hoffset-step)));
+}
+
+.a_amf-c-3 {
+  @extend .a_amf;
+  left: calc(50% - var(--half-width));
+}
+
+.a_amf-c-2 {
+  @extend .a_amf;
+  left: calc(50% - var(--half-width) + (2 * var(--hoffset-step)));
+}
+
+.a_amf-c-1 {
+  @extend .a_amf;
+  left: calc(50% - var(--half-width) + (3.5 * var(--hoffset-step)));
+}
+
+.a_wf-side {
+  @extend .a_amf;
+  border: 2px solid orange;
+}
+
+.a_wf-l {
+  @extend .a_wf-side;
+  left: calc(50% - var(--half-width) - 27.5% - var(--hoffset-extra-step));
+}
+
+.a_wf-r {
+  @extend .a_wf-side;
+  left: calc(50% - var(--half-width) + 27.5% + var(--hoffset-extra-step));
+}
+
+.a_fw-c {
+  @extend .away-player;
+  top: calc(100% - 41% - var(--half-height) - var(--voffset-extra-step));
+}
+
+.a_fw-c-3 {
+  @extend .a_fw-c;
+  left: calc(50% - var(--half-width) - (2 * var(--hoffset-step)));
+}
+
+.a_fw-c-2 {
+  @extend .a_fw-c;
+  left: calc(50% - var(--half-width));
+}
+
+.a_fw-c-1 {
+  @extend .a_fw-c;
+  left: calc(50% - var(--half-width) + (2 * var(--hoffset-step)));
+}
+
+.a_st-c {
+  @extend .away-player;
+  top: calc(100% - 46.5% - var(--half-height));
+}
+
+.a_st-c-3 {
+  @extend .a_st-c;
+  left: calc(50% - var(--half-width) - (2 * var(--hoffset-step)));
+}
+
+.a_st-c-2 {
+  @extend .a_st-c;
+  left: calc(50% - var(--half-width));
+}
+
+.a_st-c-1 {
+  @extend .a_st-c;
+  left: calc(50% - var(--half-width) + (2 * var(--hoffset-step)));
+}
+
+
+
+
+
+
+.zones-table {
+  // margin-top: calc(-2.5% + 1px + var(--sideline-top-margin));
+  // height: calc(105% - (2 * var(--sideline-top-margin)));
+  // margin-left: calc(-5% + var(--sideline-left-margin));
+  // width: calc(110% - (2 * var(--sideline-left-margin)));
+
+  height: 100%;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  // border-style: hidden;
+
+  td {
+    border: 3px solid blue;
+    // text-align: center;
+    // vertical-align: middle;
+    // overflow: hidden;
+    box-sizing: border-box;
+
+    &:nth-child(1),
+    &:nth-child(6) {
+      width: 20%;
+    }
+
+    &:nth-child(2),
+    &:nth-child(5) {
+      width: 5%;
+    }
+
+    &:nth-child(3),
+    &:nth-child(4) {
+      width: 25%;
+    }
+  }
+
+  tr {
+
+    &:nth-child(1),
+    &:nth-child(16) {
+      height: calc(10% / 2);
+      line-height: calc(10% / 2);
+    }
+
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(15),
+    &:nth-child(14) {
+      height: calc(10% / 2);
+      line-height: calc(10% / 2);
+    }
+
+    &:nth-child(4),
+    &:nth-child(13) {
+      height: calc(7.5% / 2);
+      line-height: calc(7.5% / 2);
+    }
+
+    &:nth-child(5),
+    &:nth-child(12) {
+      height: calc(17.5% / 2);
+      line-height: calc(17.5% / 2);
+    }
+
+    &:nth-child(6),
+    &:nth-child(11) {
+      height: calc(20% / 2);
+      line-height: calc(20% / 2);
+    }
+
+    &:nth-child(7),
+    &:nth-child(10) {
+      height: calc(10% / 2);
+      line-height: calc(10% / 2);
+    }
+
+    &:nth-child(8),
+    &:nth-child(9) {
+      height: calc(10% / 2);
+      line-height: calc(10% / 2);
+    }
+  }
+}

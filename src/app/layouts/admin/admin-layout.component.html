@@ -1,0 +1,30 @@
+<div id="DashboardID">
+  <!-- <div class="sidebar" data-color="sborange" data-background-color="sboil" data-image="./assets/img/sidebar-1.jpg">
+        <app-sidebar-cmp></app-sidebar-cmp>
+        <div class="sidebar-background" style="background-image: url(assets/img/sidebar-1.jpg)"></div>
+    </div> -->
+  <div class="for-sidebar">
+    <!-- <app-sidebar-cmp></app-sidebar-cmp> -->
+  </div>
+  <div class="bg-transparent  menubar"
+       id="menubar">
+    <app-menubar *ngIf="!isNews()"></app-menubar>
+  </div>
+  <div class="main-panel">
+    <div class="bg-lyre">
+      <video *ngIf="showVideo"
+             autoplay
+             muted
+             playsinline
+             onloadedmetadata="this.muted = true"
+             id="myVideo"
+             (ended)="vidEnded()">
+        <source src="assets/video/first_load.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+    <!-- <app-navbar-cmp></app-navbar-cmp> -->
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<!-- <ngx-loading class="loading-custom" [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading> -->

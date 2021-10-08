@@ -1,0 +1,28 @@
+@import 'sportbusters';
+
+input {
+  color: white !important;
+}
+.a-profile {
+  margin-top: 14px;
+  cursor: pointer;
+}
+.a-align {
+  margin-left: -26px;
+}
+@media (#{$bp-gt-768}) {
+  .mat-align {
+    width: 98%;
+  }
+  .a-align {
+    margin-left: -28px;
+  }
+}
+@media (#{$bp-lt-768}) {
+  .mat-align {
+    width: 100%;
+  }
+  .a-align {
+    margin-left: -18px;
+  }
+}

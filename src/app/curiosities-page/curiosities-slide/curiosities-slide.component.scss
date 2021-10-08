@@ -1,0 +1,108 @@
+@import "sportbusters";
+
+.nd-ratio {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.nd-ratio>* {
+  display: block;
+  bottom: 0;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+
+.nd-ratio--standard:before {
+  padding-top: 60% !important;
+}
+
+.im-carousel__item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+  // display: inline-block;
+
+  // &:after {
+  //   content: '';
+  //   position: absolute;
+  //   left: 0;
+  //   top: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   display: inline-block;
+  //   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  //   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.5)), color-stop(100%, rgba(0, 0, 0, 0)));
+  //   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  //   background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  //   background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  //   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  // }
+
+  img {
+    -webkit-mask-image: linear-gradient(to bottom, black 75%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0.5));
+  }
+
+  .news-source-name {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.4em;
+    color: #a68a43;
+    text-shadow: -0.6px 0 #000000, 0 0.6px #000000, 0.6px 0 #000000, 0 -0.6px #000000;
+
+
+  }
+}
+
+img {
+  height: 92vh !important;
+  object-fit: cover;
+  width: 100%;
+}
+
+.carousel-caption {
+  top: 30%;
+
+  .slide-desc-wrapper {
+    .slide-desc-team {
+      text-transform: uppercase;
+      color: $color-primary;
+      font-weight: bold;
+      font-size: 0.8em;
+    }
+
+    .slide-desc-title {
+      font-weight: 400;
+      font-size: 1.8em;
+      line-height: 1.2em;
+      letter-spacing: initial;
+      text-shadow: -0.6px 0 #000000, 0 0.6px #000000, 0.6px 0 #000000, 0 -0.6px #000000;
+    }
+
+    .slide-desc-subtitle {
+      text-shadow: -0.6px 0 #000000, 0 0.6px #000000, 0.6px 0 #000000, 0 -0.6px #000000;
+      text-align: left;
+    }
+
+    .slide-desc-publishAt {
+      font-weight: 400;
+      font-size: 1em;
+      line-height: 1.0em;
+      letter-spacing: initial;
+      color: #a68a43;
+      text-shadow: -0.6px 0 #000000, 0 0.6px #000000, 0.6px 0 #000000, 0 -0.6px #000000;
+    }
+  }
+}
+
+.share-like-wrapper {
+  z-index: 99999;
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  bottom: unset !important;
+}

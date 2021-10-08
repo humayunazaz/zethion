@@ -1,0 +1,210 @@
+@import 'sportbusters';
+
+.close {
+  display: none;
+}
+
+.card-content {
+  color: white;
+  font-family: 'Lato', sans-serif;
+}
+
+.card-content h1 {
+  font-size: 1.5625rem;
+}
+
+.card-content h1,
+.card-content p {
+  font-family: 'Lato', sans-serif;
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.news-content {
+  overflow-x: hidden;
+  padding: 0px;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.description {
+  margin-top: 15px;
+  width: 60vw;
+}
+
+.title-content {
+  margin-top: 10px;
+  width: 60vw;
+}
+
+.img-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.image-source-name-wrapper {
+  position: relative;
+
+  .news-source-name {
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+    color: #a68a43;
+    text-shadow: -0.6px 0 #000000, 0 0.6px #000000, 0.6px 0 #000000, 0 -0.6px #000000;
+    font-size: 1.2rem;
+  }
+}
+
+.img-content {
+  // width: 100%;
+  width: 60vw;
+  height: 450px;
+  object-fit: cover;
+}
+
+.mat-dialog-content {
+  max-height: 85vh !important;
+}
+
+.description {
+  margin-bottom: 0;
+}
+
+.keepReading {
+  text-align: right;
+  margin: 10px 0;
+  width: 60vw;
+
+  .custom-link {
+    cursor: pointer;
+    color: #c7b273;
+  }
+}
+
+@media only screen and (#{$bp-lt-1200}) {
+
+  .title-content {
+    width: 80vw;
+  }
+
+  .description {
+    font-size: 15px;
+    width: 80vw;
+  }
+
+  .img-content {
+    width: 80vw;
+  }
+
+  .keepReading {
+    width: 80vw;
+  }
+}
+
+@media only screen and (#{$bp-lt-840}) {
+
+  ::ng-deep .custom-dialog-container,
+  .custom-dialog-container-no-scroll {
+    width: 100% !important;
+  }
+
+  .close {
+    display: block;
+    position: absolute;
+    right: 15px;
+    text-shadow: unset;
+    opacity: unset;
+    outline: 0;
+    border: none;
+    top: 6px;
+    z-index: 9999;
+  }
+
+  .share-like-wrapper {
+    position: absolute;
+    left: 15px;
+    top: 6px;
+  }
+
+  .icon-sb-close {
+    font-size: 16px !important;
+  }
+
+  .fa.fa-times {
+    color: #c7b273;
+  }
+
+  ::ng-deep .custom-dialog-container .mat-dialog-container {
+    padding: 0 9px 9px 9px !important;
+  }
+
+  .mat-dialog-content {
+    max-height: 100vh !important;
+    height: 100vh;
+  }
+
+  .title-content {
+    font-size: 1.3rem !important;
+    width: 80vw;
+  }
+
+  .description {
+    font-size: 15px;
+    width: 80vw;
+  }
+
+  .img-content {
+    width: 80vw;
+    height: 23vh;
+  }
+
+  .card-content {
+    margin-bottom: 8vh;
+  }
+
+  .img-div {
+    margin-top: 80px;
+  }
+
+  .image-source-name-wrapper {
+    position: relative;
+
+    .news-source-name {
+      right: 10px;
+    }
+  }
+
+  .keepReading {
+    width: 80vw;
+  }
+}
+
+@media only screen and (#{$bp-lt-840}) and (orientation:landscape) {
+  .img-content {
+    width: 80vw;
+    height: 100%;
+  }
+}
+
+
+/* CSS specific to iOS devices */
+@supports (-webkit-touch-callout: none) {
+  .mat-dialog-content {
+    max-height: 100vh !important;
+    height: 86vh;
+  }
+
+}
+
+.icon-sb-close {
+
+  .path1,
+  .path2 {
+    &::before {
+      color: #a68a43;
+    }
+  }
+}

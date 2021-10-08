@@ -1,0 +1,18 @@
+<ng-container *ngIf="competitionControl">
+  <mat-select placeholder="{{ 'REGISTRY.COMPETITION' | translate }}" [formControl]="competitionControl" name="competition"
+    (selectionChange)="changeCompetition($event.value)">
+    <mat-option *ngFor="let competition of competitions" [value]="competition.id">
+      {{ 'COMPETITION.' + competition.competitionName + "_" + competition.sport + "_" + competition.gender +
+      "_" + competition.country + "_" + competition.level | translate }} - {{ competition.country }}
+    </mat-option>
+  </mat-select>
+</ng-container>
+<ng-container *ngIf="!competitionControl">
+  <mat-select placeholder="{{ 'REGISTRY.COMPETITION' | translate }}" [(ngModel)]="selectedCompetition" name="competition"
+    (selectionChange)="changeCompetition($event.value)">
+    <mat-option *ngFor="let competition of competitions" [value]="competition">
+      {{ 'COMPETITION.' + competition.competitionName + "_" + competition.sport + "_" + competition.gender +
+      "_" + competition.country + "_" + competition.level | translate }} - {{ competition.country }}
+    </mat-option>
+  </mat-select>
+</ng-container>

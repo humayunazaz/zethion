@@ -1,0 +1,58 @@
+<div class="sub-content">
+  <div class="row text-white admin-panel" *ngIf="vidComp">
+    <div fxFlexFill fxLayout="column" style="width:100%;">
+      <router-outlet class="router-flex"></router-outlet>
+    </div>
+  </div>
+  <footer class="fixed-bottom">
+      <app-menu>
+        <ng-container class="menu-left">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+              <div class="collapse navbar-collapse dropup" id="navbarNav">
+                <ul class="navbar-nav admin-header">
+                  <li class="nav-item">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{'SITEMAP.SOCIAL' | translate}} </a>
+                    <ul class="dropdown-menu admin-header" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item" routerLink="social-pages">{{'SITEMAP.SOCIAL_PAGES' | translate}}</a></li>
+                      <!-- <li><a class="dropdown-item" routerLink="section2">{{'SITEMAP.SOCIAL_POSTS' | translate}}</a></li> -->
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="news">{{'SITEMAP.NEWS' | translate}}</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="translations">{{'SITEMAP.TRANSLATIONS' | translate}}</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="section2">{{'SITEMAP.RESULTS' | translate}}</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="tags">{{'SITEMAP.TAGS' | translate}}</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="sportsDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{'SITEMAP.SPORT' | translate}} </a>
+                    <ul class="dropdown-menu admin-header" aria-labelledby="sportsDropDown">
+                      <li><a class="nav-link" routerLink="manifestations">{{'SITEMAP.MANIFESTATIONS' | translate}}</a></li>
+                      <li><a class="nav-link" routerLink="editions">{{'SITEMAP.EDITIONS' | translate}}</a></li>
+                      <li><a class="nav-link" routerLink="competitions">{{'SITEMAP.COMPETITIONS' | translate}}</a></li>
+                      <li><a class="nav-link" routerLink="tournaments">{{'SITEMAP.TOURNAMENTS' | translate}}</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="registryDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{'SITEMAP.REGISTRY' | translate}} </a>
+                    <ul class="dropdown-menu admin-header" aria-labelledby="registryDropdownMenu">
+                      <li><a class="nav-link" routerLink="teams">{{'SITEMAP.TEAMS' | translate}}</a></li>
+                      <li><a class="nav-link" routerLink="athletes">{{'SITEMAP.ATHLETES' | translate}}</a></li>
+                      <li><a class="nav-link" routerLink="medias">{{'SITEMAP.MEDIAS' | translate}}</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </ng-container>
+      </app-menu>
+  </footer>
+</div>
+

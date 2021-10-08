@@ -1,0 +1,116 @@
+@import 'sportbusters';
+
+.detail-header {
+  width: 70%;
+  color: white;
+  display: flex !important;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.header-item {
+  // font-size: 2vw;
+  // white-space: nowrap;
+  flex: 2;
+  // width: 70%;
+  // flex-wrap: nowrap;
+  // width: auto;
+}
+
+.header-item-left {
+  text-align: right;
+  padding-right: 1rem;
+  flex: 4;
+}
+
+.header-item-right {
+  text-align: left;
+  padding-left: 1rem;
+  flex: 4;
+}
+
+.header-item-score {
+  h4 {
+    font-weight: 500 !important;
+  }
+}
+
+.margin-auto {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.mat-dialog-content {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.tab-content {
+  width: 100%;
+}
+
+.team-logo {
+  height: 10.5vh;
+  width: auto;
+  margin-bottom: 8px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+
+  &.team-logo-left {
+    margin-right: auto;
+  }
+  &.team-logo-right {
+    margin-left: auto;
+  }
+  // margin-right: 3px;
+}
+
+.detail-header-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.ot-designation {
+  text-align: center;
+  margin-top: -10px;
+  font-weight: 400;
+}
+.pt-designation {
+  text-align: center;
+  margin-top: -10px;
+  font-weight: 400;
+
+  &:after {
+    content: "a.p.";
+    position: absolute;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (#{$bp-lt-600}) {
+  .ot-designation {
+    font-size: 0.8rem;
+  }
+  .pt-designation {
+    font-size: 0.8rem;
+    &:after {
+      font-size: 0.5rem;
+      margin-left: 1px;
+    }
+  }
+}

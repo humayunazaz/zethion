@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="dialogHeader" mat-dialog-title>
+    <div class="headerContent">
+      <div class="head">
+        <img src="assets/img/logos/text_logo.png" alt="logo" width="120" height="25" class="logo-fondo pl-2 pr-2 d-sm-block">
+      </div>
+      <div class="closeButton">
+        <!-- <i class="fa fa-times custom-link" aria-hidden="true" (click)="onNoClick()"></i> -->
+        <span class="icon-sb-close" (click)="onNoClick()"><span class="path1"></span><span class="path2"></span></span>
+      </div>
+    </div>
+  </div>
+  <mat-dialog-content class="cookie-consent-modal custom-scrollBar">
+    <div class="card-content" *ngIf="!singleCookieMode">
+      <div class="privacySection">
+        <div class="privacySectionContent">
+          <h4>{{ 'COOKIE.COOKIE_PREFERENCE' | translate}}</h4>
+          <p>{{ 'COOKIE.WHAT_COOKIES' | translate}}</p>
+          <p>{{ 'COOKIE.P2' | translate}}</p>
+          <p>{{ 'COOKIE.P3' | translate}}</p>
+
+        </div>
+        <div class="privacyActionButton">
+          <button class="btn" (click)="acceptAllCookies()">{{ 'COOKIE.ACCEPT_ALL' | translate}}</button>
+        </div>
+      </div>
+      <div class="manageConsentSection">
+        <h4>{{ 'COOKIE.COOKIE_PREFERENCE' | translate}}</h4>
+        <div class="singlePreference" *ngFor="let preference of consentPreference">
+          <div class="preferenceHeader">
+            <div class="title">
+              <h5>{{preference.title | translate}}</h5>
+            </div>
+            <div class="slider">
+              <mat-slide-toggle *ngIf="preference.stateChanges" class="example-margin" [checked]="cookiesConsentValues[preference.id]"
+                [color]="primary" (change)="updateCookieValues(preference.id, $event)">
+              </mat-slide-toggle>
+              <p class="remainActive" *ngIf="!preference.stateChanges">{{ 'COOKIE.ALWAYS_ACTIVE' | translate}}</p>
+            </div>
+          </div>
+          <div class="preferenceDescription">
+            <p>{{preference.description | translate}}</p>
+            <h5 (click)="singleCookiesView(preference)" class="custom-link custom-width">{{ 'COOKIE.DETAILS' | translate}}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-content singlePreview" *ngIf="singleCookieMode">
+      <div class="contentHeader">
+        <i class="fas fa-chevron-left custom-link" (click)="goPreviousView()"></i>
+        <h4>{{ 'COOKIE.COOKIES_LIST' | translate}}</h4>
+      </div>
+      <div class="selectedCookieDetail">
+        <h5>{{singleView.title | translate}}</h5>
+        <p>{{ 'COOKIE.VIEW' | translate}}</p>
+        <div class="singleChildCookie" *ngFor="let child of singleView.childCookies">
+          <div class="singleLine">
+            <div class="leftPanel">
+              <p>{{ 'COOKIE.NAME' | translate}}</p>
+            </div>
+            <div class="rightPanel">
+              <p>{{child.name}}</p>
+            </div>
+          </div>
+          <div class="singleLine">
+            <div class="leftPanel">
+              <p>{{ 'COOKIE.HOST' | translate}}</p>
+            </div>
+            <div class="rightPanel">
+              <p>{{child.host}}</p>
+            </div>
+          </div>
+          <div class="singleLine">
+            <div class="leftPanel">
+              <p>{{ 'COOKIE.DURATION' | translate}}</p>
+            </div>
+            <div class="rightPanel">
+              <p>{{child.duration}}</p>
+            </div>
+          </div>
+          <div class="singleLine">
+            <div class="leftPanel">
+              <p>{{ 'COOKIE.TYPE' | translate}}</p>
+            </div>
+            <div class="rightPanel">
+              <p>{{child.type}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <div class="dialogFooter" mat-dialog-actions>
+    <div class="actionButton">
+      <button class="btn" (click)="setCookiesChoice()">{{ 'COOKIE.CONFIRM_CHOICES' | translate}}</button>
+    </div>
+  </div>
+</div>

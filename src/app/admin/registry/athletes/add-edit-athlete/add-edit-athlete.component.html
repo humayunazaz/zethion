@@ -1,0 +1,168 @@
+<div class="container">
+  <mat-dialog-content class="translation-modal">
+    <div class="card-content">
+      <h3 class="text-center fo-wt-900 title-content">Add Athlete</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <form [formGroup]="addEditAthleteForm" (ngSubmit)="submit()">
+            <div class="form-group">
+              <label>{{'REGISTRY.FIRST_NAME' | translate}}</label>
+              <input matInput placeholder="{{'REGISTRY.FIRST_NAME' | translate}}" type="text"  formControlName="firstName">
+              <p class="error-message" *ngIf="addEditAthleteForm.controls.firstName.touched && addEditAthleteForm.controls.firstName.errors?.required">First Name is required</p>
+            </div>
+
+            <div class="form-group">
+              <label>{{'REGISTRY.LAST_NAME' | translate}}</label>
+              <input matInput placeholder="{{'REGISTRY.LAST_NAME' | translate}}" type="text"  formControlName="lastName">
+              <p class="error-message" *ngIf="addEditAthleteForm.controls.lastName.touched && addEditAthleteForm.controls.lastName.errors?.required">Last Name is required</p>
+            </div>
+
+            <div class="form-group">
+              <label>{{'REGISTRY.COUNTRY' | translate}}</label>
+              <app-country-select [countryControl]="addEditAthleteForm.controls.country" hideAll='true'></app-country-select>
+              <p class="error-message" *ngIf="addEditAthleteForm.controls.country.touched && addEditAthleteForm.controls.country.errors?.required">Country is required</p>
+            </div>
+
+            <div class="form-group">
+              <label>{{'REGISTRY.SECONDARY_COUNTRY' | translate}}</label>
+              <app-country-select [countryControl]="addEditAthleteForm.controls.secondaryCountry" hideAll='true'></app-country-select>
+            </div>
+  
+            <div class="form-group">
+              <label>{{'REGISTRY.GENDER' | translate}}</label> <br />
+              <mat-radio-group  aria-label="Select an option" formControlName="gender">
+                <mat-radio-button *ngFor="let gender of genders" [value]="gender.value">{{ 'REGISTRY.' + gender.value | translate }}</mat-radio-button>
+              </mat-radio-group>
+              <p class="error-message" *ngIf="addEditAthleteForm.controls.gender.touched && addEditAthleteForm.controls.gender.errors?.required">Gender is required</p>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field class="w-100 birthdate">
+                <input formControlName="birthDate" readonly matInput [matDatepicker]="birthDatePicker" placeholder="{{ 'REGISTRY.BIRTH_DATE' | translate }}" #pickerInput>
+                <mat-datepicker-toggle matSuffix [for]="birthDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #birthDatePicker disabled="false"></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <label>{{ 'REGISTRY.BIRTH_PLACE' | translate }}</label>
+              <app-place-autocomplete [placeControl]="addEditAthleteForm.controls.birthPlace" State="edit"></app-place-autocomplete>
+            </div>
+            <div class="form-group">
+              <label>{{'REGISTRY.HEIGHT' | translate}}</label>
+              <input matInput placeholder="{{'REGISTRY.HEIGHT' | translate}}" type="text"  formControlName="height">
+            </div>
+
+            <div class="form-group">
+              <label>{{'REGISTRY.SPORT' | translate}}</label>
+              <app-sport-select [sportControl]="addEditAthleteForm.controls.sport" hideAll='true' ></app-sport-select>
+              <p class="error-message" *ngIf="addEditAthleteForm.controls.sport.touched && addEditAthleteForm.controls.sport.errors?.required">Sport is required</p>
+            </div>
+
+            <div class="form-group">
+              <label>{{'REGISTRY.TYPE' | translate}}</label>
+              <mat-select placeholder="{{ 'REGISTRY.TYPE' | translate }}" name="type" id="type" formControlName="type">
+                <mat-option *ngFor="let athleteType of athleteTypes" [value]="athleteType.value">
+                  {{ athleteType.key }}
+                </mat-option>
+              </mat-select>
+              <p class="error-message" *ngIf="addEditAthleteForm.controls.type.touched && addEditAthleteForm.controls.type.errors?.required">Type is required</p>
+            </div>
+
+            <div class="form-group" *ngIf="addEditAthleteForm.controls.type.value === 'PLAYER'">
+              <label>{{'REGISTRY.LATERALITY' | translate}}</label>
+              <mat-select placeholder="{{ 'REGISTRY.LATERALITY' | translate }}" name="laterality" id="laterality" formControlName="laterality">
+                <mat-option *ngFor="let laterality of lateralities" [value]="laterality.value">
+                  {{ laterality.key }}
+                </mat-option>
+              </mat-select>
+            </div>
+
+            <div class="form-group" *ngIf="isEdit">
+              <label>{{'REGISTRY.STATUS' | translate}}</label>
+              <mat-select placeholder="{{ 'REGISTRY.STATUS' | translate }}" name="status" id="status" formControlName="status">
+                <mat-option *ngFor="let status of statuses" [value]="status.value">
+                  {{ status.key }}
+                </mat-option>
+              </mat-select>
+            </div>
+  
+            <div formArrayName="athleteCodes">
+              <div class="form-group">
+                <label>CODES</label>
+              </div>
+              <div *ngFor="let item of getAthleteCodeControl(); let i = index">
+                <div [formGroup]="item">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input matInput placeholder="{{'CODE.SYSTEM' | translate}}" type="text" formControlName="system" (keyup)="changeSystem(i)">
+                        <p class="error-message" *ngIf="item.controls.system.touched && item.controls.system.errors?.required">System is required</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input matInput placeholder="{{'CODE.CODE' | translate}}" type="text" formControlName="code" (keyup)="changeCode(i)">
+                        <p class="error-message" *ngIf="item.controls.code.touched && item.controls.code.errors?.required">Code is required</p>
+                        <p class="error-message mt-10" *ngIf="item.controls.code.touched && item.controls.code.value && item.controls.code.errors?.pattern">Code must be number</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="add-team text-center">
+                        <div class="add-remove-wrapper">
+                          <button type="button" mat-flat-button color="primary" (click)="addAthleteCode()" *ngIf="i === (getAthleteCodeControl().length - 1)">
+                           <i class="fa fa-plus"></i>
+                          </button>
+                          <button  *ngIf="i !== (getAthleteCodeControl().length - 1)" type="button" mat-flat-button color="primary" (click)="removeAthleteCode(i)">
+                            <i class="fa fa-minus"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div formArrayName="teams" *ngIf="addEditAthleteForm.controls.sport.value">
+              <div *ngFor="let item of getTeamControl(); let i = index">
+                <div [formGroup]="item">
+                  <div class="form-group">
+                    <div class="label-delete-wrapper">
+                      <label>{{ 'ATHLETE.TEAM' | translate }} {{ i + 1 }}</label>
+                      <button  *ngIf="i > 0" type="button" mat-flat-button color="primary" (click)="removeTeam(i)">
+                        <i class="fa fa-minus"></i> Remove Team
+                      </button>
+                    </div>
+                    <app-team-autocomplete [teamControl]="item.controls.team" State="edit" [sport]="addEditAthleteForm.controls.sport.value"></app-team-autocomplete>
+                  </div>
+                  <div class="form-group">
+                    <mat-form-field class="w-100 birthdate">
+                      <input formControlName="startDate" readonly matInput [matDatepicker]="startDatePicker" placeholder="{{ 'TEAM.START_DATE' | translate }}" #pickerInput>
+                      <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                      <mat-datepicker #startDatePicker disabled="false"></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <mat-form-field class="w-100 birthdate">
+                      <input formControlName="endDate" readonly matInput [matDatepicker]="endDatePicker" placeholder="{{ 'TEAM.END_DATE' | translate }}" #pickerInput>
+                      <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                      <mat-datepicker #endDatePicker disabled="false"></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="add-team text-center">
+                <button type="button" mat-flat-button color="primary" (click)="addTeam()">
+                 <i class="fa fa-plus"></i> Add Team
+                </button>
+              </div>
+            </div>
+            <div class="form-group text-center add-athlete">
+              <button type="submit" mat-flat-button color="primary">{{loading? 'FORM.SAVING' : 'FORM.SUBMIT' | translate}}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

@@ -1,0 +1,107 @@
+<div class="rightbar mobile-top-left">
+  <!-- <button mat-button [matMenuTriggerFor]="beforeMenu" #levelOneTrigger="matMenuTrigger" (mouseenter)="buttonEnter(levelOneTrigger)"  (mouseleave)="buttonLeave(levelOneTrigger)" class="icon-button" > -->
+  <button #button
+          mat-button
+          [matMenuTriggerFor]="levelOne"
+          #levelOneTrigger="matMenuTrigger"
+          (mouseenter)="buttonEnter(button)"
+          style="z-index:119;"
+          (mouseleave)="buttonLeave(button)"
+          class="icon-button">
+    <img *ngIf="loadComponent == 'FOOTBALL'"
+         class="icon-menu football"
+         [ngClass]="{'football':enteredButton == false, 'football-hover': enteredButton == true || isMatMenuOpen == true}"
+         alt="">
+    <img *ngIf="loadComponent == 'BASKETBALL'"
+         class="icon-menu basketball"
+         [ngClass]="{'basketball':enteredButton == false, 'basketball-hover': enteredButton == true || isMatMenuOpen == true}"
+         alt="">
+    <img *ngIf="loadComponent == 'TENNIS'"
+         class="icon-menu tennis"
+         [ngClass]="{'tennis':enteredButton == false, 'tennis-hover': enteredButton == true || isMatMenuOpen == true}"
+         alt="">
+    <img *ngIf="loadComponent == 'FORMULA1'"
+         class="icon-menu formula"
+         [ngClass]="{'formula':enteredButton == false, 'formula-hover': enteredButton == true || isMatMenuOpen == true}"
+         alt="">
+  </button>
+  <mat-menu #levelOne="matMenu"
+            yPosition="below"
+            class="mat-menu"
+            [hasBackdrop]="false">
+    <span (mouseenter)="menuenter(button)"
+          (mouseleave)="menuLeave(button)">
+      <ul class="nav nav-pills nav-pills-warning sport-menu-list"
+          role="tablist">
+        <li class="nav-item sport-item">
+          <a class="nav-link sport-link active"
+             (click)="loadMyChildComponent('FOOTBALL');"
+             data-toggle="tab"
+             href="#results-football"
+             role="tablist">
+            <img class="sport"
+                 src="https://storage.cloud.google.com/spring-bucket-sb-gcs-admin/img/sport/MENU_ICONS/FOOTBALL.png"
+                 alt="">
+          </a>
+        </li>
+        <li class="nav-item sport-item">
+          <a class="nav-link sport-link"
+             (click)="loadMyChildComponent('BASKETBALL');"
+             data-toggle="tab"
+             href="#results-basketball"
+             role="tablist">
+            <img class="sport"
+                 src="https://storage.cloud.google.com/spring-bucket-sb-gcs-admin/img/sport/MENU_ICONS/BASKETBALL.png"
+                 alt="">
+          </a>
+        </li>
+        <li class="nav-item sport-item">
+          <a class="nav-link sport-link"
+             (click)="loadMyChildComponent('TENNIS');"
+             data-toggle="tab"
+             href="#results-tennis"
+             role="tablist">
+            <img class="sport"
+                 src="https://storage.cloud.google.com/spring-bucket-sb-gcs-admin/img/sport/MENU_ICONS/TENNIS.png"
+                 alt="">
+          </a>
+        </li>
+        <li class="nav-item sport-item">
+          <a class="nav-link sport-link"
+             (click)="loadMyChildComponent('FORMULA1');"
+             data-toggle="tab"
+             href="#results-formual1"
+             role="tablist">
+            <img class="sport"
+                 src="https://storage.cloud.google.com/spring-bucket-sb-gcs-admin/img/sport/MENU_ICONS/FORMULA1.png"
+                 alt="">
+          </a>
+        </li>
+      </ul>
+    </span>
+  </mat-menu>
+</div>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="tab-content tab-space">
+      <div class="tab-pane active"
+           id="results-football"
+           *ngIf="loadComponent == 'FOOTBALL'">
+        <app-results-football></app-results-football>
+      </div>
+      <div class="tab-pane"
+           id="results-basketball"
+           *ngIf="loadComponent == 'BASKETBALL'">
+        <app-results-basketball></app-results-basketball>
+      </div>
+      <div class="tab-pane"
+           id="results-tennis"
+           *ngIf="loadComponent == 'TENNIS'"> Tennis </div>
+      <div class="tab-pane"
+           id="results-formual1"
+           *ngIf="loadComponent == 'FORMULA1'">
+        <app-results-formula1></app-results-formula1>
+      </div>
+    </div>
+  </div>
+</div>

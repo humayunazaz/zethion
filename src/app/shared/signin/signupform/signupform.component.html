@@ -1,0 +1,168 @@
+<mat-card-content class="signup-form">
+  <div class="row formstate"
+       *ngIf="formstate=='form1'">
+    <div class="col-12">
+      <form [formGroup]="signForm1"
+            novalidate>
+        <h3 class="text-center text-white">{{ 'USER.SIGNUP' | translate }}</h3>
+        <div class="form-group form-group-lg">
+          <mat-form-field class="w-100">
+            <input matInput
+                   formControlName="Username"
+                   type="text"
+                   name="username"
+                   placeholder="{{ 'USER.USERNAME' | translate }}"
+                   required>
+            <mat-error> {{ 'USER.USERNAME_REQUIRED' | translate }} </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group form-group-lg">
+          <mat-form-field class="w-100">
+            <input matInput
+                   formControlName="Email"
+                   type="Email"
+                   name="email"
+                   placeholder="{{ 'USER.EMAIL' | translate }}"
+                   required>
+            <mat-error *ngIf="getForm1.Email.hasError('required')"> {{ 'USER.EMAIL_REQUIRED' | translate }} </mat-error>
+            <mat-error *ngIf="getForm1.Email.hasError('email')"> {{ 'USER.EMAIL_WRONG' | translate }} </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group form-group-lg">
+          <mat-form-field class="w-100">
+            <input matInput
+                   formControlName="Password"
+                   type="password"
+                   name="password"
+                   placeholder="{{ 'USER.PASSWORD' | translate }}"
+                   required>
+            <mat-error *ngIf="getForm1.Password.hasError('required')"> {{ 'USER.PASSWORD_REQUIRED' | translate }}
+            </mat-error>
+            <mat-error *ngIf="!getForm1.Password.hasError('required') && getForm1.Password.hasError('pattern')">
+              {{ 'USER.PASSWORD_FORMAT' | translate }} </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group form-group-lg">
+          <mat-form-field class="w-100">
+            <input matInput
+                   formControlName="ConfirmPassword"
+                   type="password"
+                   name="ConfirmPassword"
+                   placeholder="{{ 'USER.RETYPE_PASSWORD' | translate }}"
+                   required />
+            <mat-error
+                       *ngIf="!getForm1.ConfirmPassword.hasError('required') && getForm1.ConfirmPassword.hasError('mustMatch')">
+              {{ 'USER.PASSWORD_MISMATCH' | translate }} </mat-error>
+            <mat-error *ngIf="getForm1.ConfirmPassword.hasError('required')">
+              {{ 'USER.PASSWORD_CONFIRM_REQUIRED' | translate }} </mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row formstate"
+       *ngIf="formstate=='form2'">
+    <div class="col-12">
+      <form [formGroup]="signForm2"
+            class="form-group bmd-form-group is-filled"
+            novalidate>
+        <h3 class="text-center text-white">{{ 'USER.SIGNUP_OPTIONAL' | translate }}</h3>
+        <div class="form-group form-group-lg required_part">
+          <mat-form-field class="w-100">
+            <input matInput
+                   formControlName="Firstname"
+                   type="text"
+                   name="firstname"
+                   placeholder="{{ 'USER.FIRSTNAME' | translate }}"
+                   >
+            <mat-error> {{ 'USER.FIRSTNAME_REQUIRED' | translate }} </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group form-group-lg required_part">
+          <mat-form-field class="w-100">
+            <input matInput
+                   formControlName="Lastname"
+                   type="text"
+                   name="lastname"
+                   placeholder="{{ 'USER.LASTNAME' | translate }}"
+                   >
+            <mat-error> {{ 'USER.LASTNAME_REQUIRED' | translate }} </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group form-group-lg">
+          <app-country-autocomplete (optionSelected)='countrySelected($event)'
+                                    State="edit">
+          </app-country-autocomplete>
+        </div>
+        <div class="form-group form-group-lg">
+          <mat-form-field class="w-100 birthdate">
+            <input matInput
+                   [matDatepicker]="picker"
+                   placeholder="{{ 'USER.BIRTHDAY' | translate }}"
+                   #pickerInput
+                   formControlName="Birthday">
+            <mat-datepicker-toggle matSuffix
+                                   [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker
+                            disabled="false"></mat-datepicker>
+            <mat-error> {{getErrorMessage(pickerInput.value) | translate}} </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group form-group-lg">
+          <app-place-autocomplete (optionSelected)='placeSelected($event)'
+                                  State="edit">
+          </app-place-autocomplete>
+        </div>
+        <div class="form-group form-group-lg">
+          <mat-form-field class="w-100">
+            <input matInput
+                   formControlName="Phonenumber"
+                   type="number"
+                   name="phonenumber"
+                   placeholder="{{ 'USER.PHONENUMBER' | translate }}">
+          </mat-form-field>
+        </div>
+        <div class="form-group form-group-lg">
+          <mat-radio-group aria-label="Select an option"
+                           formControlName="Gender">
+            <label class="example-margin">{{ 'REGISTRY.GENDER' | translate }}</label>
+            <mat-radio-button class="example-gender"
+                              value="M">{{ 'REGISTRY.MALE' | translate }}</mat-radio-button>
+            <mat-radio-button class="example-gender"
+                              value="F">{{ 'REGISTRY.FEMALE' | translate }}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-card-content>
+<br />
+<div class="text-xs-center font-weight-bold font-size-12 d-flex">
+  <div *ngIf="formstate == 'form2'"
+       class="formstate_pre mr-auto">
+    <a href="javascript:void(0)"
+       class="text-white a-hover-log"
+       (click)="callform_pre()"><span class="icon-sb-left"><span class="path1"></span><span class="path2"></span></span>{{ 'FORM.PREVIOUS' | translate }}</a>
+  </div>
+  <div *ngIf="formstate == 'form2'"
+       class="formstate_pre ml-auto">
+    <a href="javascript:void(0)"
+       class="text-white a-hover-log"
+       [class.disabledtag]="!signForm2.valid"
+       (click)="signUp()">{{ 'FORM.CONFIRM' | translate }}</a>
+  </div>
+  <div *ngIf="formstate == 'form1'"
+       class="formstate_next mr-auto">
+    <a href="javascript:void(0)"
+       class="text-white a-hover-log"
+       (click)="callform_back()">{{ 'FORM.BACK_LOGIN' | translate }}</a>
+  </div>
+  <div *ngIf="formstate == 'form1'"
+       class="formstate_next ml-auto">
+    <a href="javascript:void(0)"
+       class="text-white a-hover-log"
+       [class.disabledtag]="!signForm1.valid"
+       (click)="callform_next()">{{ 'FORM.NEXT' | translate }}<span class="icon-sb-right"><span class="path1"></span><span class="path2"></span></span></a>
+
+  </div>
+</div>

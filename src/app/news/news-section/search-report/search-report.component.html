@@ -1,0 +1,86 @@
+<ng-container *ngIf="type === 'tile'">
+  <div class="im-carousel__item nd-ratio nd-ratio--standard slide-{{index}}">
+    <img *ngIf="currentLanguage" [src]="'assets/img/'+ currentLanguage + '-oops.png'" alt="oops">
+    <div class="carousel-caption d-md-block">
+      <div class="slide-desc-wrapper">
+        <div class="title">{{ 'SEARCH.REPORT' | translate}} </div>
+        <div class="search-report-list" *ngIf="isFilterApplied">
+          <div class="filter-name">News/Social: {{ searchReport.socialType }} </div>
+          <div class="filter-name" *ngIf="searchReport.query">Query: {{  searchReport.query }} </div>
+          <div class="filter-name" *ngIf="searchReport.tags">Tags: {{  searchReport.tags }} </div>
+          <div class="filter-name" *ngIf="searchReport.countries">Countries: {{  searchReport.countries }} </div>
+          <div class="filter-name" *ngIf="searchReport.languages">Languages: {{  searchReport.languages }} </div>
+          <div class="filter-name" *ngIf="searchReport.sports">Sports: {{  searchReport.sports }} </div>
+        </div>
+        <div class="search-report-all" *ngIf="!isFilterApplied">
+          All
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="type === 'news'">
+  <div class="news-card">
+    <div class="news-image-wrapper w-100" [class.bottom]="isOdd">
+      <img *ngIf="currentLanguage" [src]="'assets/img/'+ currentLanguage + '-oops.png'" alt="oops">
+    </div>
+    <div class="news-desc-wrapper p-3" [class.text-bottom]="isOdd">
+      <div class="title">{{ 'SEARCH.REPORT' | translate}} </div>
+      <div class="search-report-list" *ngIf="isFilterApplied">
+        <div class="filter-name">News/Social: {{ searchReport.socialType }} </div>
+        <div class="filter-name" *ngIf="searchReport.query">Query: {{  searchReport.query }} </div>
+        <div class="filter-name" *ngIf="searchReport.tags">Tags: {{  searchReport.tags }} </div>
+        <div class="filter-name" *ngIf="searchReport.countries">Countries: {{  searchReport.countries }} </div>
+        <div class="filter-name" *ngIf="searchReport.languages">Languages: {{  searchReport.languages }} </div>
+        <div class="filter-name" *ngIf="searchReport.sports">Sports: {{  searchReport.sports }} </div>
+      </div>
+      <div class="search-report-all" *ngIf="!isFilterApplied">
+        All
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="type === 'stories'">
+  <div class="news-card">
+    <div class="news-image-wrapper w-100" [class.bottom]="isOdd">
+      <img *ngIf="currentLanguage" [src]="'assets/img/'+ currentLanguage + '-oops.png'" alt="oops">
+    </div>
+    <div class="news-desc-wrapper p-3" [class.text-bottom]="isOdd">
+      <div class="title">{{ 'SEARCH.REPORT' | translate}} </div>
+      <div class="search-report-list" *ngIf="isFilterApplied">
+        <div class="filter-name">News/Social: Stories </div>
+        <div class="filter-name" *ngIf="searchReport.query">Query: {{  searchReport.query }} </div>
+        <div class="filter-name" *ngIf="searchReport.tags">Tags: {{  searchReport.tags }} </div>
+        <div class="filter-name" *ngIf="searchReport.countries">Countries: {{  searchReport.countries }} </div>
+        <div class="filter-name" *ngIf="searchReport.languages">Languages: {{  searchReport.languages }} </div>
+        <div class="filter-name" *ngIf="searchReport.sports">Sports: {{  searchReport.sports }} </div>
+      </div>
+      <div class="search-report-all" *ngIf="!isFilterApplied">
+        All
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="type === 'social'">
+  <div class="post-container">
+    <div class="social-post-wrapper">
+      <div class="social-post-wrapper-inner">
+        <img *ngIf="currentLanguage" [src]="'assets/img/'+ currentLanguage + '-oops.png'" alt="oops" class="news-image">
+        <div class="social-desc-wrapper">
+          <div class="title">{{ 'SEARCH.REPORT' | translate}} </div>
+          <div class="search-report-list" *ngIf="isFilterApplied">
+            <div class="filter-name">News/Social: {{ searchReport.socialType }} </div>
+            <div class="filter-name" *ngIf="searchReport.query">Query: {{  searchReport.query }} </div>
+            <div class="filter-name" *ngIf="searchReport.tags">Tags: {{  searchReport.tags }} </div>
+            <div class="filter-name" *ngIf="searchReport.countries">Countries: {{  searchReport.countries }} </div>
+            <div class="filter-name" *ngIf="searchReport.languages">Languages: {{  searchReport.languages }} </div>
+            <div class="filter-name" *ngIf="searchReport.sports">Sports: {{  searchReport.sports }} </div>
+          </div>
+          <div class="search-report-all" *ngIf="!isFilterApplied">
+            All
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

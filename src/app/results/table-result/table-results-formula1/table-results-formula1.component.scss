@@ -1,0 +1,46 @@
+@import 'sportbusters';
+
+td.position {
+  width: 7% !important;
+}
+
+td.Extposition {
+  width: 19% !important;
+}
+
+td.name {
+  width: 20% !important;
+}
+
+td.team {
+  width: 18% !important;
+}
+
+td.fullName {
+  width: 25% !important;
+}
+
+td.time {
+  width: 15% !important;
+}
+
+td.laps {
+  width: 10% !important;
+}
+
+@media (#{$bp-lt-460}) {
+  .nav-pills .nav-item {
+    i {
+      font-size: 1rem;
+    }
+    a {
+      font-size: 0.6rem;
+    }
+  }
+
+  .tab-content,
+  table,
+  table th {
+    font-size: 0.6rem;
+  }
+}

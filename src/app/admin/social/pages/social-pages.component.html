@@ -1,0 +1,123 @@
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-4 order-lg-last fixed">
+    <form [formGroup]="formFilter">
+      <div class="form-group">
+        <label for="socialPageName">{{'REGISTRY.NAME' | translate}}</label>
+        <input type="text"
+               (ngModelChange)="changeName($event)"
+               class="form-control"
+               formControlName="name"
+               id="socialPageName">
+      </div>
+      <div class="form-group">
+        <label for="socialPageType">{{'REGISTRY.TYPE' | translate}}</label>
+        <mat-select
+          id="socialPageType"
+          name="type"
+          formControlName="type"
+          [(ngModel)]="socialType"
+          (selectionChange)="changeType($event)">
+          <mat-option *ngFor="let type of socialTypes" [value]="type">
+            {{ 'REGISTRY.' + type | translate }}
+          </mat-option>
+        </mat-select>
+      </div>
+      <div class="form-group">
+        <label for="social">{{'REGISTRY.SOCIAL' | translate}}</label>
+        <mat-select
+          appearance="fill"
+          id="social"
+          name="social" multiple
+          formControlName="social"
+          [(ngModel)]="selectedSocials"
+          [disabled]="noFilterSocial.value"
+          (selectionChange)="changeSocials($event)">
+          <mat-option *ngFor="let social of socials"
+                      [value]="social">
+            {{ 'SOCIAL.' + social | translate }}
+          </mat-option>
+        </mat-select>
+      </div>
+      <div class="form-group">
+        <mat-checkbox [formControl]="noFilterSocial" (change)="switchNofilterSocial($event)">
+          {{'REGISTRY.NO_FILTER_SOCIAL' | translate}}
+        </mat-checkbox>
+      </div>
+      <div class="form-group">
+        <label for="social">{{'REGISTRY.SPORT' | translate}}</label>
+        <app-sport-select (selected)='sportChanged($event)'></app-sport-select>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first" *ngIf="loading">
+    <div class="imageLoading spin-center"><div class="w-50 mauto gold"><mat-spinner></mat-spinner></div></div>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first">
+    <div class="table-responsive table-full-width">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">{{'REGISTRY.ID' | translate}}</th>
+            <th scope="col">{{'REGISTRY.NAME' | translate}}</th>
+            <th scope="col">{{'REGISTRY.TYPE' | translate}}</th>
+            <th scope="col">{{'REGISTRY.SPORT' | translate}}</th>
+            <th scope="col">
+              <img class="logo_slid_left" src="../../assets/img/logos/facebook.png" alt="facebook.png">
+            </th>
+            <th scope="col">
+              <img class="logo_slid_left" src="../../assets/img/logos/twitter.png" alt="facebook.png">
+            </th>
+            <th scope="col">
+              <img class="logo_slid_left" src="../../assets/img/logos/instagram.png" alt="facebook.png">
+            </th>
+            <th scope="col">
+              <img class="logo_slid_left" src="../../assets/img/logos/official.png" alt="facebook.png">
+            </th>
+            <th scope="col">{{'REGISTRY.ACTION' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="!loading">
+          <tr *ngFor="let item of data">
+            <td>{{item.id}}</td>
+            <td *ngIf="item.type === 'ATHLETE' || item.type === 'PEOPLE' || item.type === 'MEDIA'">{{item.name}}</td>
+            <td *ngIf="item.type === 'TEAM'">{{'TEAM.' + item.name | translate}}</td>
+            <td *ngIf="item.type === 'LEAGUE'">{{'LEAGUE.' + item.name | translate}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.sport}}</td>
+            <td>
+              <i class="fa fa-check social-check" aria-hidden="true" *ngIf="item.pages.FACEBOOK"></i>
+              <i class="fa fa-plus social-add" aria-hidden="true" *ngIf="!item.pages.FACEBOOK"></i>
+            </td>
+            <td>
+              <i class="fa fa-check social-check" aria-hidden="true" *ngIf="item.pages.TWITTER"></i>
+              <i class="fa fa-plus social-add" aria-hidden="true" *ngIf="!item.pages.TWITTER"></i>
+            </td>
+            <td>
+              <i class="fa fa-check social-check" aria-hidden="true" *ngIf="item.pages.INSTAGRAM"></i>
+              <i class="fa fa-plus social-add" aria-hidden="true" *ngIf="!item.pages.INSTAGRAM"></i>
+            </td>
+            <td>
+              <i class="fa fa-check social-check" aria-hidden="true" *ngIf="item.pages.OFFICIAL"></i>
+              <i class="fa fa-plus social-add" aria-hidden="true" *ngIf="!item.pages.OFFICIAL"></i>
+            </td>
+            <td class="social-action">
+              <i class="fa fa-magic social-automatic" aria-hidden="true" (click)="tryAutomaticPagesSetting(item)"></i>
+              <i class="fa fa-trash social-trash" aria-hidden="true"></i>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <i *ngIf="page>0" class="fa fa-ellipsis-h load-previous-data" aria-hidden="true" (click)="loadPreviousData()"></i>
+            </td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td>
+              <i class="fa fa-ellipsis-h load-next-data" aria-hidden="true" (click)="loadNextData()"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

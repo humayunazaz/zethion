@@ -1,0 +1,57 @@
+<div class="details-data">
+  <h2 class="detail-item-header">Q1 Score</h2>
+  <div class="row scores">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="shots-home" [ngStyle]="{'width.%': rate * data['h_q1Score']}" *ngIf="data['h_q1Score'] != 0 && data['h_q1Score'] != undefined">{{data['h_q1Score']}}</div>
+      <div class="shots-home" [ngStyle]="{'width.%': 2.5}" *ngIf="data['h_q1Score'] == 0 || data['h_q1Score'] == undefined"></div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="shots-away" [ngStyle]="{'width.%':  rate * data['a_q1Score']}" *ngIf="data['a_q1Score'] != 0 && data['a_q1Score'] != undefined">{{data['a_q1Score']}}</div>
+      <div class="shots-away" [ngStyle]="{'width.%': 2.5}" *ngIf="data['a_q1Score'] == 0 || data['a_q1Score'] == undefined"></div>
+    </div>
+  </div>
+  <h2 class="detail-item-header">Q2 Score</h2>
+  <div class="row scores">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="shots-home" [ngStyle]="{'width.%': rate * data['h_q2Score']}" *ngIf="data['h_q2Score'] != 0 && data['h_q2Score'] != undefined">{{data['h_q2Score']}}</div>
+      <div class="shots-home" [ngStyle]="{'width.%': 2.5}" *ngIf="data['h_q2Score'] == 0 || data['h_q2Score'] == undefined"></div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="shots-away" [ngStyle]="{'width.%':  rate * data['a_q2Score']}" *ngIf="data['a_q2Score'] != 0 && data['a_q2Score'] != undefined">{{data['a_q2Score']}}</div>
+      <div class="shots-away" [ngStyle]="{'width.%': 2.5}" *ngIf="data['a_q2Score'] == 0 || data['a_q2Score'] == undefined"></div>
+    </div>
+  </div>
+  <h2 class="detail-item-header">Q3 Score</h2>
+  <div class="row scores">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="shots-home" [ngStyle]="{'width.%': rate * data['h_q3Score']}" *ngIf="data['h_q3Score'] != 0 && data['h_q3Score'] != undefined">{{data['h_q3Score']}}</div>
+      <div class="shots-home" [ngStyle]="{'width.%': 2.5}" *ngIf="data['h_q3Score'] == 0 || data['h_q3Score'] == undefined"></div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="shots-away" [ngStyle]="{'width.%':  rate * data['a_q3Score']}" *ngIf="data['a_q3Score'] != 0 && data['a_q3Score'] != undefined">{{data['a_q3Score']}}</div>
+      <div class="shots-away" [ngStyle]="{'width.%': 2.5}" *ngIf="data['a_q3Score'] == 0 || data['a_q3Score'] == undefined"></div>
+    </div>
+  </div>
+  <h2 class="detail-item-header">Q4 Score</h2>
+  <div class="row scores">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="shots-home" [ngStyle]="{'width.%': rate * data['h_q4Score']}" *ngIf="data['h_q4Score'] != 0 && data['h_q4Score'] != undefined">{{data['h_q4Score']}}</div>
+      <div class="shots-home" [ngStyle]="{'width.%': 2.5}" *ngIf="data['h_q4Score'] == 0 || data['h_q4Score'] == undefined"></div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="shots-away" [ngStyle]="{'width.%':  rate * data['a_q4Score']}" *ngIf="data['a_q4Score'] != 0 && data['a_q4Score'] != undefined">{{data['a_q4Score']}}</div>
+      <div class="shots-away" [ngStyle]="{'width.%': 2.5}" *ngIf="data['a_q4Score'] == 0 || data['a_q4Score'] == undefined"></div>
+    </div>
+  </div>
+  <h2 class="detail-item-header">Final Score</h2>
+  <div class="row scores">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="shots-home" [ngStyle]="{'width.%': rate * data['h_score']}" *ngIf="data['h_score'] != 0 && data['h_score'] != undefined">{{data['h_score']}}</div>
+      <div class="shots-home" [ngStyle]="{'width.%': 2.5}" *ngIf="data['h_score'] == 0 || data['h_score'] == undefined"></div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="shots-away" [ngStyle]="{'width.%':  rate * data['a_score']}" *ngIf="data['a_score'] != 0 && data['a_score'] != undefined">{{data['a_score']}}</div>
+      <div class="shots-away" [ngStyle]="{'width.%': 2.5}" *ngIf="data['a_score'] == 0 || data['a_score'] == undefined"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,376 @@
+@import "sportbusters";
+
+.curiosities-main-content {
+  color: white;
+  font-family: "Lato", sans-serif;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+
+::ng-deep .main-panel.ps.fadein {
+  height: 100%;
+  min-height: 100%;
+  overflow-y: hidden !important;
+}
+
+button {
+  background-color: transparent;
+  border: 3px solid $color-primary;
+  display: block;
+  font-size: 18px;
+  left: 0;
+  margin: 0 auto;
+  padding: 8px 16px;
+  position: absolute;
+  right: 0;
+  top: 38%;
+  border-radius: 50%;
+  width: 50px;
+  z-index: 99;
+}
+
+.sub-content {
+  color: white;
+  font-family: "Lato", sans-serif;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+/* Slider */
+.slideImg {
+  opacity: 1;
+  cursor: pointer;
+  transition: opacity 0.5s;
+}
+
+.slideImg:hover {
+  opacity: 0.7;
+}
+
+/* End Slider */
+
+/* News Card Style */
+.row {
+  margin: 0;
+}
+
+.col-lg-4,
+.col-md-4,
+.col-md-8,
+.col-sm-12 {
+  padding: 0 !important;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sub-content {
+  position: relative;
+  height: 100vh;
+  background: transparent;
+}
+
+::ng-deep .carousel .carousel-indicators li {
+  width: 25px;
+  height: auto;
+  border: 0px;
+  border-bottom: 1px solid $color-white;
+}
+
+.carousel.slide {
+  background: transparent !important;
+}
+
+.newsSliderNavigation {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+.imageLoading {
+  padding-top: 8vh;
+}
+
+.mauto {
+  margin: 0 auto;
+}
+
+mat-spinner {
+  margin: 0 auto;
+  width: 50px !important;
+  height: 50px !important;
+}
+
+::ng-deep .mat-progress-spinner svg {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.body-container {
+  position: relative;
+  margin: 0 auto;
+  display: block;
+  white-space: nowrap;
+  width: 100vw;
+  height: 92vh !important;
+  overflow-x: hidden;
+}
+
+::ng-deep .desc-team {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lens {
+  width: 11%;
+  padding: .5rem;
+}
+
+.adv-search {
+  width: 100%;
+  max-width: 30px;
+  margin-left: 0px;
+  cursor: pointer;
+}
+
+/* =============== Tablet layout. =============== */
+@media (#{$bp-gt-768}) and (#{$bp-lt-840}) {
+  ::ng-deep .tile-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (#{$bp-lt-768}) {
+  .carousel-indicators {
+    display: none;
+  }
+
+  .hs_item .curiosities-image-wrapper {
+    position: relative !important;
+    height: 100%;
+  }
+
+  .hs_item .curiosities-desc-wrapper {
+    position: absolute;
+    bottom: 0px;
+    background: #00000045;
+    padding: 0.6rem 0.7rem 1.2rem 0.7rem !important;
+    height: unset;
+  }
+
+  .sub-content .curiosities-card {
+    height: 27vh;
+    background: $color-black;
+  }
+
+  .curiosities-desc-wrapper {
+    width: 100%;
+    font-size: 0.9em;
+  }
+
+  .desc-team {
+    margin-bottom: unset !important;
+  }
+
+  .curiosities-desc-wrapper .desc-title {
+    line-height: 1.3em;
+  }
+
+  .hs_item .curiosities-image-wrapper img {
+    height: 100% !important;
+  }
+
+  .hs_item .curiosities-image-wrapper video {
+    height: 100% !important;
+  }
+
+  .slideNews {
+    height: 70vh !important;
+  }
+
+  .newsSliderNavigation {
+    display: none;
+  }
+
+  .slideImg img {
+    height: 26vh !important;
+  }
+
+  .body-container {
+    height: 66vh !important;
+  }
+
+  .slide-desc-wrapper .slide-desc-title {
+    font-size: 1.2em;
+    margin-top: unset !important;
+  }
+
+  .row.desc-publishAt {
+    display: none !important;
+  }
+
+  .slideImg:hover {
+    opacity: unset;
+  }
+}
+
+@media (#{$bp-lt-1024}) {
+  .shortCutImgCont {
+    display: none !important;
+  }
+}
+
+.newsLoader {
+  height: 100vh;
+}
+
+// .tiles-container {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   overflow-x: hidden;
+//   overflow-y: inherit;
+// }
+::ng-deep .tile-wrapper {
+  width: 100%;
+  padding: 0;
+}
+
+
+.curiosities-option.col-md-12.col-sm-12 {
+  position: relative;
+  margin: 0 auto;
+  display: block;
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+  height: 100vh;
+}
+
+.tiles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: inherit;
+}
+
+// @media screen and (orientation: landscape) {
+//   .body-container {
+//     position: relative;
+//     margin: 0 auto;
+//     display: block;
+//     overflow-y: hidden;
+//     overflow-x: auto;
+//     white-space: nowrap;
+//     height: 92vh !important;
+//   }
+//   .tiles-container {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+//     float: left;
+//     display: inline-flex;
+//     overflow-x: inherit;
+//     overflow-y: hidden;
+//     margin: 0em;
+//     clear: both;
+//     min-width: 100px;
+//     height: 92vh !important;
+//   }
+//   .tile-wrapper {
+//     height: 100vh;
+//     width: 33.33333333%;
+//     display: inline-flex;
+//     position: relative;
+//     padding: 0 !important;
+//   }
+// }
+.col-md-4.hs_item.tile-wrapper>div {
+  overflow: hidden;
+}
+
+.curiosities-optionX.col-md-12.body-container,
+.tiles-container {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  scrollbar-width: none;
+}
+
+.spin-center {
+  height: 22%;
+  /* overflow: auto; */
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+::ng-deep .w-50.mauto.gold mat-spinner svg circle {
+  stroke: $color-primary !important;
+}
+
+/* sample slider */
+
+// .nd-ratio {
+// 	display: block;
+// 	position: relative;
+// 	width: 100%;
+// }
+
+// .nd-ratio>* {
+// 	display: block;
+// 	bottom: 0;
+// 	max-width: 100%;
+// 	max-height: 100%;
+// 	margin: auto;
+// }
+
+// .nd-ratio--standard:before {
+// 	padding-top: 60%!important;
+// }
+
+.im-carousel {
+  display: flex !important;
+  overflow-y: hidden;
+  scroll-behavior: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.im-carousel {
+  height: 92vh;
+
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  scrollbar-width: none;
+}
+
+// .im-carousel__item {
+// 	flex: 0 0 auto;
+// 	scroll-snap-align: start;
+// 	scroll-snap-stop: always;
+// }
+
+.curiosities-autocomplete {
+  margin-right: 10px;
+}
+
+::ng-deep .carousel-caption {
+  top: 40% !important;
+}

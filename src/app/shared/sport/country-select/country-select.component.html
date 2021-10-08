@@ -1,0 +1,16 @@
+<ng-container *ngIf="!countryControl">
+  <mat-select placeholder="{{ 'REGISTRY.COUNTRY' | translate }}" [(ngModel)]="selectedCountry" name="country"
+    (selectionChange)="changeCountry($event.value)">
+    <mat-option *ngFor="let country of countries" [value]="country.code">
+      {{ 'COUNTRY.' + country.code | translate }}
+    </mat-option>
+  </mat-select>
+</ng-container>
+<ng-container *ngIf="countryControl">
+  <mat-select placeholder="{{ 'REGISTRY.COUNTRY' | translate }}" [formControl]="countryControl" name="country"
+    (selectionChange)="changeCountry($event.value)">
+    <mat-option *ngFor="let country of countries" [value]="country.code">
+      {{ 'COUNTRY.' + country.code | translate }}
+    </mat-option>
+  </mat-select>
+</ng-container>

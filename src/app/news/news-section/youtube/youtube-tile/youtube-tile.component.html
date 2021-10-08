@@ -1,0 +1,31 @@
+<div class="post-container">
+  <!-- <yt-post [href]="youtubeItem.postUrl"></tw-post> -->
+  <div class="yt-post-wrapper" (click)="onPostClicked(youtubeItem)" (pan)="mobileHover()">
+    <div class="yt-post-wrapper-inner" [class.noThumbnail]="youtubeItem.withOutThumbnail" [class.activeHoverTile]="activePanHoverId === youtubeItem.postId">
+      <!-- <yt-post [class.isOdd]="isOdd" width="auto" height="auto"></yt-post> -->
+      <div *ngIf="!imageLoaded && !youtubeItem.withOutThumbnail" class="imageLoading">
+        <div class="gold">
+          <mat-spinner></mat-spinner>
+        </div>
+      </div>
+      <img src="{{youtubeItem.thumbnail}}" [alt]="youtubeItem.socialPage.socialPageUsername" class="news-image" [hidden]="!imageLoaded" (error)="notifyImageError(youtubeItem)"
+      draggable="false" (load)="onImageLoad()" *ngIf="!youtubeItem.withOutThumbnail">
+      <div class="socialName">
+        <h4>{{youtubeItem.socialPage.socialPageUsername}}</h4>
+      </div>
+      <div class="share-like-wrapper">
+        <app-social-share [url]="shareUrl"></app-social-share>
+        <app-social-like [id]="youtubeItem.socialPage.idRef" [socialType]="youtubeItem.socialPage.pageType" [type]="'social'"></app-social-like>
+      </div>
+      <!-- <div class="socialIcon">
+        <i class="fab fa-youtube icon"></i>
+      </div> -->
+      <div class="youtube-desc-wrapper">
+        <div class="mb-2">
+          <p class="description">{{youtubeItem.description}}</p>
+          <p class="sub-description">{{youtubeItem.subDescription}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

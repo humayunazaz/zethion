@@ -1,0 +1,86 @@
+<div class="container">
+  <mat-dialog-content class="translation-modal">
+    <div class="card-content">
+      <h3 class="text-center fo-wt-900 title-content">Manage Tag</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <form [formGroup]="addEditTagForm" (ngSubmit)="addEditTag()">
+            <div class="form-group">
+              <label for="keyword">{{'TAG.KEYWORD' | translate}}</label>
+              <input matInput type="text" placeholder="{{'MEDIA.URL' | translate}}" formControlName="keyword" id="keyword">
+              <p class="error-message mt-10" *ngIf="addEditTagForm.controls.keyword.touched && addEditTagForm.controls.keyword.errors?.required">Keyword is required</p>
+            </div>
+            <div class="form-group">
+              <label>{{ 'TAG.TYPE' | translate }}</label>
+              <mat-select formControlName="type" placeholder="{{ 'TAG.TYPE' | translate }}" name="type" id="type" (selectionChange)="typeChanged()">
+                <mat-option *ngFor="let type of tagTypes" [value]="type.value">
+                  {{ type.key }}
+                </mat-option>
+              </mat-select>
+              <p class="error-message mt-10" *ngIf="addEditTagForm.controls.type.touched && addEditTagForm.controls.type.errors?.required">Type is required</p>
+            </div>
+            <ng-container *ngIf="addEditTagForm.controls.type.value && addEditTagForm.controls.type.value !== 'GENERAL'">
+              <div class="form-group">
+                <label>{{'TAG.SPORT' | translate}}</label>
+                <app-sport-select [sportControl]="addEditTagForm.controls.sport" hideAll='true' (selected)="sportsChanged($event)"></app-sport-select>
+                <p class="error-message mt-10" *ngIf="addEditTagForm.controls.sport.touched && addEditTagForm.controls.sport.errors?.required">Sport is required</p>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="addEditTagForm.controls.type.value && addEditTagForm.controls.type.value === 'TEAM' && addEditTagForm.controls.sport.value">
+              <div class="form-group">
+                <label>{{'TAG.TEAM' | translate}}</label>
+                <app-team-autocomplete [teamControl]="addEditTagForm.controls.subject" State="edit" [sport]="addEditTagForm.controls.sport.value"></app-team-autocomplete>
+                <p class="error-message" *ngIf="addEditTagForm.controls.subject.touched && addEditTagForm.controls.subject.errors?.required">Team is required</p>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="addEditTagForm.controls.type.value && addEditTagForm.controls.type.value === 'ATHLETE' && addEditTagForm.controls.sport.value">
+              <div class="form-group">
+                <label>{{'TAG.ATHLETE' | translate}}</label>
+                <app-athlete-autocomplete [teamControl]="addEditTagForm.controls.subject" State="edit" [sport]="addEditTagForm.controls.sport.value"></app-athlete-autocomplete>
+                <p class="error-message" *ngIf="addEditTagForm.controls.subject.touched && addEditTagForm.controls.subject.errors?.required">Athlete is required</p>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="addEditTagForm.controls.type.value && addEditTagForm.controls.type.value === 'MEDIA' && addEditTagForm.controls.sport.value">
+              <div class="form-group">
+                <label>{{'TAG.MEDIA' | translate}}</label>
+                <app-media-autocomplete [teamControl]="addEditTagForm.controls.subject" State="edit" [sport]="addEditTagForm.controls.sport.value"></app-media-autocomplete>
+                <p class="error-message" *ngIf="addEditTagForm.controls.subject.touched && addEditTagForm.controls.subject.errors?.required">Media is required</p>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="addEditTagForm.controls.type.value && addEditTagForm.controls.type.value === 'PEOPLE' && addEditTagForm.controls.sport.value">
+              <div class="form-group">
+                <label>{{'TAG.PEOPLE' | translate}}</label>
+                <app-people-autocomplete [teamControl]="addEditTagForm.controls.subject" State="edit" [sport]="addEditTagForm.controls.sport.value"></app-people-autocomplete>
+                <p class="error-message" *ngIf="addEditTagForm.controls.subject.touched && addEditTagForm.controls.subject.errors?.required">People is required</p>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="addEditTagForm.controls.type.value && addEditTagForm.controls.type.value === 'ASSOCIATION' && addEditTagForm.controls.sport.value">
+              <div class="form-group">
+                <label>{{'TAG.ASSOCIATION' | translate}}</label>
+                <app-association-autocomplete [teamControl]="addEditTagForm.controls.subject" State="edit" [sport]="addEditTagForm.controls.sport.value"></app-association-autocomplete>
+                <p class="error-message" *ngIf="addEditTagForm.controls.subject.touched && addEditTagForm.controls.subject.errors?.required">Association is required</p>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="addEditTagForm.controls.type.value && addEditTagForm.controls.type.value === 'COMPETITION' && addEditTagForm.controls.sport.value">
+              <div class="form-group">
+                <label>{{'TAG.COMPETITION' | translate}}</label>
+                <app-competition-autocomplete [competitionControl]="addEditTagForm.controls.subject" State="edit" [selectedSport]="selectedSport"></app-competition-autocomplete>
+                <p class="error-message" *ngIf="addEditTagForm.controls.subject.touched && addEditTagForm.controls.subject.errors?.required">Competition is required</p>
+              </div>
+            </ng-container>
+            <div class="form-group">
+              <label for="imageUrl">{{'TAG.IMAGE_URL' | translate}}</label>
+              <input matInput type="text" placeholder="{{'TAG.IMAGE_URL' | translate}}" formControlName="imageUrl" id="imageUrl">
+              <p class="error-message mt-10" *ngIf="addEditTagForm.controls.imageUrl.touched && addEditTagForm.controls.imageUrl.errors?.pattern && addEditTagForm.controls.imageUrl.value">Image must be a valid url</p>
+            </div>
+            <div class="add-tag text-center">
+              <button mat-flat-button color="primary" type="submit" [disabled]="loading">
+                {{loading ? 'FORM.SAVING' : 'FORM.SUBMIT' | translate}}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

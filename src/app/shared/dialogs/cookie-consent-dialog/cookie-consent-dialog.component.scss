@@ -1,0 +1,41 @@
+@import 'sportbusters';
+
+.card-content {
+    color: white;
+
+}
+
+.cdk-overlay-dark-backdrop {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.info-modal {
+    padding: 0px;
+    margin: auto !important;
+    min-width: 300px;
+    overflow-x: hidden;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.desc-content {
+    padding: 20px 40px;
+}
+
+.title-content {
+    padding: 10px 20px;
+}
+
+
+::ng-deep .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+    opacity: 0.1 !important;
+}
+
+.cookiePageLink{
+    p {
+        text-align: right;
+        span {
+            cursor: pointer;
+            color: #c7b273;
+        }
+    }
+}

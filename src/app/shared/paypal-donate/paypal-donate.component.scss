@@ -1,0 +1,14 @@
+.paypal-donate {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  form {
+    margin-left: 10px;
+
+    input {
+      width: 100px;
+    }
+  }
+}

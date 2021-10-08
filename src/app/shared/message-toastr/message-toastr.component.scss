@@ -1,0 +1,31 @@
+h3 {
+  margin: 0;
+  font-size: 22px;
+  color: #c1ab6b;
+  text-transform: #c1ab6b;
+}
+
+p {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+button {
+  position: relative;
+  outline: 0;
+  border: none;
+
+  .icon-sb-close {
+    font-size: 15px;
+    position: absolute;
+    top: -18px;
+    right: -18px;
+
+    .path1,
+    .path2 {
+      &::before {
+        color: #a68a43;
+      }
+    }
+  }
+}

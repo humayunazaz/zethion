@@ -1,0 +1,16 @@
+.error-message {
+  font-size: 14px;
+
+  &.mt-10 {
+    margin-top: 10px;
+  }
+}
+
+.add-edition {
+  margin-top: 50px;
+}
+
+.label-delete-wrapper {
+  display: flex;
+  justify-content: space-between;
+}

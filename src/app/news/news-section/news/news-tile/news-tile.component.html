@@ -1,0 +1,33 @@
+<div class="news-card" (click)="openNews()">
+  <div class="news-image-wrapper w-100" [class.bottom]="isBottom" *ngIf="newsItem.mediaType === 'IMAGE'">
+    <div *ngIf="!imageLoaded" class="text-center imageLoading">
+      <div class="w-50 mauto gold">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+    <img src="{{newsItem.urlToMedia}}" [alt]="newsItem.title" class="news-image" [hidden]="!imageLoaded"
+      (error)="notifyImageError(newsItem)" draggable="false" (load)="onImageLoad()">
+      <div class="name-social-wrapper">
+        <div class="news-source-name">{{ newsItem.sourceName }}</div>
+        <!-- <div class="share-like-wrapper">
+          <app-social-share [url]="shareUrl"></app-social-share>
+          <app-social-like [id]="newsItem.sourceId" [type]="'news'"></app-social-like>
+        </div> -->
+      </div>
+  </div>
+  <div class="news-image-wrapper w-100" [class.bottom]="isBottom" *ngIf="newsItem.mediaType === 'VIDEO'">
+    <div class="playButton">
+      <button class="active"><i class="fa fa-play"></i></button>
+    </div>
+    <video [class.d-none]="displayVideoThumb" muted playsinline onloadedmetadata="this.muted = true" class="newsVideo">
+      <source src="{{newsItem.urlToMedia}}" type="video/mp4">
+    </video>
+    <img src="{{newsItem.urlToMedia.split('.').slice(0, -1).join('.')}}_THUMBNAIL.jpg" alt="{{newsItem.source}}"
+      class="news-image" [class.d-none]="!displayVideoThumb" draggable="false" (error)="onVideoThumbError()">
+  </div>
+  <div class="news-desc-wrapper p-3" [class.text-bottom]="isBottom">
+    <div class="mb-2 desc-team">{{newsItem.source}}</div>
+    <div class="desc-title">{{newsItem.title}}</div>
+    <div class="desc-publishAt">{{newsItem.publishedAt | date}}</div>
+  </div>
+</div>

@@ -1,0 +1,261 @@
+@import 'sportbusters';
+
+
+.story-content-inner {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+
+  @media only screen and (#{$bp-lt-768}) {
+    flex-wrap: wrap;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .story-content-body {
+    margin-top: 120px;
+
+    @media only screen and (#{$bp-lt-768}) {
+      margin-top: 40px;
+    }
+
+    &:first-child {
+      margin-top: 0;
+
+      @media only screen and (#{$bp-lt-768}) {
+        margin-top: 40px;
+      }
+    }
+
+    &:last-child {
+
+      @media only screen and (#{$bp-lt-768}) {
+        padding-bottom: 120px;
+      }
+    }
+
+    .paypal-donate {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      form {
+        margin-left: 10px;
+
+        input {
+          width: 100px;
+        }
+      }
+    }
+  }
+
+  .title-image-wrapper {
+    position: relative;
+
+    .image-overlay-wrapper {
+      filter: brightness(0.6);
+
+      .title-image {
+        width: 100%;
+        height: 50vh;
+        object-fit: cover;
+        -webkit-mask-image: linear-gradient(to bottom, black 75%, rgba(0, 0, 0, 0) 100%);
+        mask-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0.5));
+      }
+    }
+
+    .text-wrapper {
+      position: absolute;
+      // bottom: 150px;
+      left: 30px;
+      width: 65%;
+      text-shadow: -0.6px 0 #000000, 0 0.6px #000000, 0.6px 0 #000000, 0 -0.6px #000000;
+      top: 50%;
+      transform: translateY(-50%);
+
+      .title-text {
+        color: #c7b273;
+        font-size: 34px;
+      }
+
+      .subtitle-text {
+        color: #fff;
+        font-size: 26px;
+        margin-top: 20px;
+      }
+
+      @media only screen and (#{$bp-lt-768}) {
+        bottom: 60px;
+      }
+
+      @media only screen and (#{$bp-lt-768}) and (orientation: landscape) {
+        bottom: 0px;
+      }
+
+      @media only screen and (max-width: 812px) and (orientation: landscape) {
+        bottom: 0px;
+      }
+    }
+
+
+  }
+
+  .main-paragraph {
+    margin-top: 20px;
+    padding: 0 30px;
+    margin-bottom: 0;
+    text-align: justify;
+    font-size: 1.1vw;
+
+
+    @media only screen and (#{$bp-lt-768}),
+    all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape),
+    all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait),
+    all and (device-width: 834px) and (device-height: 1112px) and (orientation:portrait),
+    all and (device-width: 1112px) and (device-height: 834px) and (orientation:landscape),
+    all and (device-width: 1024px) and (device-height: 1366px) and (orientation:portrait),
+    all and (device-width: 1366px) and (device-height: 1024px) and (orientation:landscape) {
+      margin-top: 30px;
+      padding: 0;
+      font-size: 16px;
+    }
+
+    @media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape),
+    all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait),
+    all and (device-width: 834px) and (device-height: 1112px) and (orientation:portrait),
+    all and (device-width: 1112px) and (device-height: 834px) and (orientation:landscape),
+    all and (device-width: 1024px) and (device-height: 1366px) and (orientation:portrait),
+    all and (device-width: 1366px) and (device-height: 1024px) and (orientation:landscape) {
+      padding: 0 10px;
+    }
+  }
+
+  .inner-paragraphs {
+    padding: 0 30px;
+    margin-bottom: 0;
+    text-align: justify;
+    font-size: 1.1vw;
+
+
+    @media only screen and (#{$bp-lt-768}),
+    all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape),
+    all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait),
+    all and (device-width: 834px) and (device-height: 1112px) and (orientation:portrait),
+    all and (device-width: 1112px) and (device-height: 834px) and (orientation:landscape),
+    all and (device-width: 1024px) and (device-height: 1366px) and (orientation:portrait),
+    all and (device-width: 1366px) and (device-height: 1024px) and (orientation:landscape) {
+      margin-top: 30px;
+      padding: 0;
+      font-size: 16px;
+    }
+
+    @media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape),
+    all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait),
+    all and (device-width: 834px) and (device-height: 1112px) and (orientation:portrait),
+    all and (device-width: 1112px) and (device-height: 834px) and (orientation:landscape),
+    all and (device-width: 1024px) and (device-height: 1366px) and (orientation:portrait),
+    all and (device-width: 1366px) and (device-height: 1024px) and (orientation:landscape) {
+      padding: 0 10px;
+    }
+  }
+
+  .inner-images {
+    width: 450px;
+    height: 100%;
+    float: left;
+    margin-top: 50px;
+    object-fit: cover;
+    shape-outside: padding-box;
+    padding: 0 30px;
+
+    @media only screen and (#{$bp-lt-768}) {
+      width: 100%;
+      margin-top: 30px;
+      float: none;
+      shape-outside: none;
+      padding: 0;
+    }
+  }
+
+  .youtube-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+
+    iframe {
+      height: 400px;
+      width: 800px;
+
+      @media only screen and (#{$bp-lt-768}) {
+        width: 100%;
+      }
+    }
+
+  }
+
+  .ratings-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+
+    .ratings-text-wrapper {
+      display: flex;
+      align-items: center;
+
+      .ratings-stars {
+
+        &.is-rating {
+          cursor: pointer;
+
+          i {
+            opacity: 0.5;
+
+            &.hover {
+              opacity: 1;
+            }
+          }
+        }
+
+        i {
+          margin-right: 5px;
+          color: #c7b273;
+        }
+      }
+
+      .ratings-text {
+        color: #c7b273;
+      }
+
+    }
+
+  }
+
+}
+.innerIframe{
+  float: right;
+  padding: 0 30px;
+  margin-top: 70px;
+  height: 100%;
+  shape-outside: padding-box;
+  padding-left: 10px;
+}
+.bottomInnerIframe{
+  float: right;
+  margin-top: 15%;
+  padding: 0 30px;
+  height: 100%;
+  shape-outside: padding-box;
+  padding-left: 10px;
+}
+@media only screen and (#{$bp-lt-768}) {
+  .customIframe{
+    margin-top: 35px;
+    padding: 0 10px;
+  }
+}

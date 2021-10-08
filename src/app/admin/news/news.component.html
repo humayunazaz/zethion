@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-4 order-lg-last fixed">
+    <form>
+
+
+      <div class="form-group">
+        <label>{{'REGISTRY.SPORT' | translate}}</label>
+        <app-sport-select (selected)="sportChanged($event)"></app-sport-select>
+      </div>
+
+      <div class="form-group">
+        <label>{{'REGISTRY.COUNTRY' | translate}}</label>
+        <mat-select (selectionChange)="countryChanged($event)" placeholder="{{ 'REGISTRY.COUNTRY' | translate }}" name="countryCode" id="countryCode">
+          <mat-option *ngFor="let country of countries" [value]="country.value">
+            {{ country.key }}
+          </mat-option>
+        </mat-select>
+        <!-- <app-country-select (selected)="countryChanged($event)"></app-country-select> -->
+      </div>
+
+
+      <div class="form-group">
+        <button class="btn btn-primary" (click)="addNews()">{{'NEWS.ADD_NEWS' | translate}}</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first" *ngIf="loading">
+    <div class="imageLoading spin-center">
+      <div class="w-50 mauto gold">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-8 order-lg-first">
+    <div class="table-responsive table-full-width">
+      <table class="table">
+        <thead>
+          <tr class="mat-header-row">
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'NEWS.NEWS_TYPE' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'NEWS.SOURCE_NAME' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'NEWS.LANGUAGE' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'NEWS.COUNTRY_CODE' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'NEWS.AUTHOR' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'NEWS.TITLE' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'NEWS.DESCRIPTION' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'NEWS.CONTENT' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'NEWS.URL' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'NEWS.URL_TO_MEDIA' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'NEWS.MEDIA_TYPE' | translate}}</th>
+            <th class="mat-header-cell" [resizeColumn]="true" scope="col">{{'NEWS.PUBLISHED_AT' | translate}}</th>
+            <th scope="col">{{'NEWS.ACTION' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="!loading">
+          <tr class="mat-row" *ngFor="let newsItem of news">
+            <td class="mat-cell">{{ newsItem.newsType }}</td>
+            <td class="mat-cell">{{ newsItem.sourceName }}</td>
+            <td class="mat-cell">{{ newsItem.language }}</td>
+            <td class="mat-cell">{{ newsItem.countryCode }}</td>
+            <td class="mat-cell">{{ newsItem.author }}</td>
+            <td class="mat-cell">{{ newsItem.title }}</td>
+            <td class="mat-cell">{{ newsItem.description.slice(0, 25) }}...</td>
+            <td class="mat-cell">{{ newsItem.content.slice(0, 25) }}...</td>
+            <td class="mat-cell">{{ newsItem.url }}</td>
+            <td class="mat-cell">{{ newsItem.urlToMedia }}</td>
+            <td class="mat-cell">{{ newsItem.mediaType }}</td>
+            <td class="mat-cell">{{ newsItem.publishedAt | date:'yyyy-MM-dd HH:mm' }}</td>
+            <td class="table-action">
+              <i class="fa fa-edit edit" aria-hidden="true" (click)="edit(newsItem)"></i>
+              <i class="fas fa-copy copy" aria-hidden="true" (click)="copy(newsItem)"></i>
+              <i class="fa fa-trash trash" aria-hidden="true" (click)="delete(newsItem)"></i>
+            </td>
+          </tr>
+          <tr class="translate-paging">
+            <td>
+              <i *ngIf="page>0" class="fa fa-ellipsis-h load-previous-data" aria-hidden="true" (click)="loadPreviousData()"></i>
+            </td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <td>
+              <i class="fa fa-ellipsis-h load-next-data" aria-hidden="true" (click)="loadNextData()"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

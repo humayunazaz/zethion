@@ -1,0 +1,12 @@
+<router-outlet *ngIf="loading == false"></router-outlet>
+<!-- <ngx-loading class="loading-custom loading-first"
+             [show]="loading"
+             [config]="{ backdropBorderRadius: '3px' }"></ngx-loading> -->
+<div #bpDetector
+     hidden="true"
+     ngClass.xs="xs"
+     ngClass.sm="sm"
+     ngClass.md="md"
+     ngClass.lg="lg"
+     ngClass.xl="xl"></div>
+<app-image-preload></app-image-preload>

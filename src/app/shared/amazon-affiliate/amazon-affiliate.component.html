@@ -1,0 +1,28 @@
+<ng-container *ngIf="type === 'news' || type === 'stories'">
+  <div class="affiliate-card" (click)="openLink()">
+    <div class="affiliate-image-wrapper w-100" [class.bottom]="isBottom">
+      <img [src]="affiliateItem.urlToMedia" [alt]="affiliateItem.title">
+      <div class="ads">Ad</div>
+    </div>
+    <div class="affiliate-text p-3" [class.text-bottom]="isBottom">
+      <div class="affiliate-title">{{affiliateItem.title}}</div>
+      <div class="affiliate-price">{{affiliateItem.price}}</div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="type === 'social'">
+  <div class="affiliate-card-social" (click)="openLink()">
+    <div class="affiliate-social-card-wrapper">
+      <div class="affiliate-social-card-wrapper-inner">
+        <img [src]="affiliateItem.urlToMedia" [alt]="affiliateItem.title">
+        <div class="ads">
+          <h4>Ad</h4>
+        </div>
+        <div class="affiliate-social-wrapper">
+          <div class="affiliate-title">{{affiliateItem.title}}</div>
+          <div class="affiliate-price">{{affiliateItem.price}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,61 @@
+<div class="container">
+  <mat-dialog-content class="translation-modal">
+    <div class="card-content">
+      <h3 class="text-center fo-wt-900 title-content">Add Media</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <form [formGroup]="addMediaForm" (ngSubmit)="addMedia()">
+            <div class="form-group">
+              <label for="name">{{'MEDIA.NAME' | translate}}</label>
+              <input matInput type="text" placeholder="{{'MEDIA.NAME' | translate}}" formControlName="name" id="name">
+              <p class="error-message mt-10" *ngIf="addMediaForm.controls.name.touched && addMediaForm.controls.name.errors?.required">Name is required</p>
+            </div>
+            <div class="form-group">
+              <label for="language">{{'MEDIA.LANGUAGE' | translate}}</label>
+              <mat-select formControlName="language" placeholder="{{ 'MEDIA.LANGUAGE' | translate }}" name="language" id="language">
+                <mat-option *ngFor="let language of languages" [value]="language.value">
+                  {{ language.key }}
+                </mat-option>
+              </mat-select>
+              <p class="error-message mt-10" *ngIf="addMediaForm.controls.language.touched && addMediaForm.controls.language.errors?.required">Language is required</p>
+            </div>
+            <div class="form-group">
+              <label for="type">{{'MEDIA.COUNTRY' | translate}}</label>
+              <mat-select formControlName="country" placeholder="{{ 'MEDIA.COUNTRY' | translate }}" name="country" id="country">
+                <mat-option *ngFor="let country of countries" [value]="country.value">
+                  {{ country.key }}
+                </mat-option>
+              </mat-select>
+              <p class="error-message mt-10" *ngIf="addMediaForm.controls.country.touched && addMediaForm.controls.country.errors?.required">Country is required</p>
+            </div>
+            <div class="form-group">
+              <label for="country">{{'MEDIA.TYPE' | translate}}</label>
+              <mat-select formControlName="type" placeholder="{{ 'MEDIA.TYPE' | translate }}" name="type" id="type">
+                <mat-option *ngFor="let type of mediaType" [value]="type.value">
+                  {{ type.key }}
+                </mat-option>
+              </mat-select>
+              <p class="error-message mt-10" *ngIf="addMediaForm.controls.type.touched && addMediaForm.controls.type.errors?.required">Type is required</p>
+            </div>
+            <div class="form-group">
+              <label>{{'MEDIA.SPORT' | translate}}</label>
+              <app-sport-select [sportControl]="addMediaForm.controls.sport" hideAll='true'></app-sport-select>
+              <p class="error-message mt-10" *ngIf="addMediaForm.controls.sport.touched && addMediaForm.controls.sport.errors?.required">Sport is required</p>
+            </div>
+            <div class="form-group">
+              <label for="url">{{'MEDIA.URL' | translate}}</label>
+              <input matInput type="text" placeholder="{{'MEDIA.URL' | translate}}" formControlName="url" id="url">
+              <p class="error-message mt-10" *ngIf="addMediaForm.controls.url.touched && addMediaForm.controls.url.errors?.pattern && addMediaForm.controls.url.value">Url must be valid</p>
+            </div>
+            <div class="add-tournament text-center">
+              <button mat-flat-button color="primary" type="submit" [disabled]="loading">
+                {{loading ? 'FORM.SAVING' : 'FORM.SUBMIT' | translate}}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>
+

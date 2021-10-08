@@ -1,0 +1,28 @@
+<span class="lang-icon alert-icon" [matMenuTriggerFor]="languageMenu">
+  <img *ngIf="translate.currentLang" class="news-flag-language" src="assets/icon/round_flag/{{getLanguageFlag()}}.png" [alt]="translate.currentLang" />
+</span>
+<mat-menu #languageMenu="matMenu" class="language-menu" yPosition="above" (close)="filter()">
+  <div class="custom-drop-menu">
+    <div class="title-list-wrapper">
+      <div class="title">{{ 'LANGUAGE' | translate }}</div>
+      <ul class="custom-language-list">
+        <mat-radio-group aria-label="Select an option" (change)="languageSelect($event.value)">
+          <li *ngFor="let lang of sortedLanguages" (click)="$event.stopPropagation()">
+            <!-- <a class="text-white" [routerLink]="" (click)="useLanguage(lang[0])">{{ lang[1] | translate }}</a> -->
+            <mat-radio-button [value]="lang[0]" [checked]="selectedLanguage === lang[0]" class="primary">{{ lang[1] | translate }}</mat-radio-button>
+          </li>
+        </mat-radio-group>
+      </ul>
+    </div>
+    <div class="verticalLine">
+    </div>
+    <div class="title-list-wrapper">
+      <div class="title">{{ 'COUNTRY' | translate }}</div>
+      <ul class="custom-country-list">
+        <li *ngFor="let country of displayedCountries" (click)="$event.stopPropagation()">
+          <mat-checkbox class="primary" [checked]="country.selected" (change)="onChange($event.checked, country)">{{country.country | translate}}</mat-checkbox>
+        </li>
+      </ul>
+    </div>
+  </div>
+</mat-menu>

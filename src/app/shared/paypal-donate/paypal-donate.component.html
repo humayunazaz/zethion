@@ -1,0 +1,8 @@
+<div class="paypal-donate">
+  <span class="donate-text">{{ 'FORM.DONATE' | translate }}</span>
+  <form #form action="https://www.paypal.com/donate" method="post" target="_top">
+    <input type="hidden" name="hosted_button_id" value="RQQ7QNE23L274" />
+    <input (click)="form.submit()" type="image" src="https://storage.googleapis.com/spring-bucket-sb-gcs-admin/stories/paypal.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+    <img alt="" border="0" src="https://www.paypal.com/en_IT/i/scr/pixel.gif" width="1" height="1" />
+  </form>
+</div>

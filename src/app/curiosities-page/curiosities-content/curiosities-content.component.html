@@ -1,0 +1,22 @@
+<ng-template #template>
+  <div *ngFor="let s of curiositiesBoxes; let i=index" class="hs_{{(i + 1)}} hs_item col-md-4 tile-wrapper"
+    [ngClass]="{'d-none': s.hidden}">
+    <div>
+      <ng-container *ngFor="let p of s.items; let j = index">
+        <app-amazon-affiliate [affiliateItem]="p" [isBottom]="i % 2 === 0" [type]="'news'" *ngIf="p.hasOwnProperty('type') && p.type === 'AFFILIATE'; else curiositiesTile"></app-amazon-affiliate>
+        <ng-template #curiositiesTile>
+          <app-curiosities-tile [curiositiesItem]="p" [isBottom]="i % 2 === 0" (opened)="openItem($event)"
+            [language]="p.language" [hidden]="p.hidden"></app-curiosities-tile>
+        </ng-template>
+      </ng-container>
+    </div>
+    <div class="search-report-wrapper" *ngIf="isLastPage && totalColumn === (i + 1) && totalItem % 2 === 1">
+      <app-search-report [type]="'news'" [isOdd]="i % 2 === 0"></app-search-report>
+    </div>
+  </div>
+  <div class="hs_last hs_item col-md-4 tile-wrapper" *ngIf="isLastPage && totalItem % 2 === 0">
+    <div class="search-report-wrapper">
+      <app-search-report [type]="'news'" [isOdd]="totalColumn % 2 === 0"></app-search-report>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,17 @@
+<div class="col-xl-8 col-lg-7 col-md-6 shortcut-mobile">
+ <div class="shortCutImages" id="scrollable" #shortCutImages (mousewheel)="onScroll($event)">
+    <div class="shortCutImage" *ngFor="let p of currShortcuts" [class.active]="i==0" (click)="shortcutClick(p)" [ngClass]="p.urlToImage ?'tag-img':'tag-letter'">
+      <div [hidden]="!loader" *ngIf="curr === p.id" class="shortcut-img loader-div">
+        <i class="fas fa-circle-notch fa-spin gold"></i>
+      </div>
+      <div class="custom-img-container" *ngIf="curr !== p.id">
+        <img *ngIf="p.urlToImage else shortcut_letter" [src]="p.urlToImage" height="48" width="48" class="shortcut-img" alt="p.source" onError="this.parentNode.style.display = 'none';">
+      </div>
+      <ng-template #shortcut_letter>
+        <div [hidden]="loader  && curr === p.id" class="shortcut-letter">
+          {{p.keyword.charAt(0)}}
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

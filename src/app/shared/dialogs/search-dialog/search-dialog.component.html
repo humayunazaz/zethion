@@ -1,0 +1,45 @@
+<div class="container">
+  <mat-dialog-content class="mat-dialog-content search-modal">
+
+    <div class="row blk-search" >
+        <div class="col-md-6">
+          <div class="full-width">
+            <!-- <input matInput placeholder="What are you looking for...?" type="text"> -->
+            <app-query-autocomplete State="edit" class="mr-3 d-xs-none d-sm-block" (queryChanged)="querySelected($event)"></app-query-autocomplete>
+          </div>
+          <!-- <br /> -->
+          <small>{{'SITEMAP.TAGS' | translate}}</small>
+          <br />
+        </div>
+        <div class="col-md-12">
+          <span *ngFor="let sht of currShortcuts" [class.tag-selected]="sht.selected" class="tag" (click)="selectTag(sht)">
+            {{sht.keyword}}
+          </span>
+          <br />
+          <div class="clear-container" (click)="clearTags()">
+            <i class="fa fa-times clear-btn" ></i> {{'SEARCH.CLEAN_TAGS' | translate}}
+          </div>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="card">
+        <div class="card-header">{{'SEARCH.SELECT_SPORT' | translate}}</div>
+        <div class="card-body">
+          <mat-form-field  class="full-width">
+            <mat-select multiple [(ngModel)]="selectedSports" class="selectSport"  >
+              <mat-option *ngFor="let sp of sports" [value]="sp.sport">
+                {{ sp.sport }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <i class="fa fa-arrow-right confirm-buttom" (click)="closeDialog()"></i>
+    </div>
+
+  </mat-dialog-content>
+</div>

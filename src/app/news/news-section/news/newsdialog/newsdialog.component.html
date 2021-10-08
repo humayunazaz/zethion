@@ -1,0 +1,34 @@
+
+<mat-dialog-content>
+  <button class="close" (click)="onNoClick()">
+    <span class="icon-sb-close"><span class="path1"></span><span class="path2"></span></span>
+  </button>
+  <div class="container">
+    <div class="row">
+      <div class="share-like-wrapper align-items-right">
+        <app-social-share [url]="shareUrl"></app-social-share>
+        <app-social-like [id]="data.sourceId" [type]="'news'"></app-social-like>
+      </div>
+      <div class="col-12 card-content d-flex flex-column align-items-center">
+        <div class="img-div" *ngIf="data.mediaType === 'IMAGE'">
+          <div class="image-source-name-wrapper">
+            <img class="img-content" src="{{ data.urlToMedia }}">
+            <div class="news-source-name">{{ data.sourceName }}</div>
+          </div>
+        </div>
+        <div class="img-div" *ngIf="data.mediaType === 'VIDEO'">
+          <video controls autoplay playsinline onloadedmetadata="this.muted = false" class="img-content">
+            <source src="{{data.urlToMedia}}" type="video/mp4">
+          </video>
+        </div>
+        <div class="bottom-text-wrapper">
+          <h1 class="text-left fo-wt-900 title-content">{{ data.title }}</h1>
+          <p class="description text-left">{{ data.description }}</p>
+          <div class="keepReading">
+            <a (click)="openLink()" class="custom-link">{{ 'NEWS.KEEP_READING' | translate }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

@@ -1,0 +1,91 @@
+<app-ball-possession></app-ball-possession>
+<div class="details-data">
+  <h2 class="detail-item-header">Shots</h2>
+  <div class="row Shots">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="shots-home" [ngStyle]="{'width.%': rate * data['h_shots']}" *ngIf="data['h_shots'] != 0 && data['h_shots'] != undefined">{{data['h_shots']}}</div>
+      <div class="shots-home" [ngStyle]="{'width.%': 2.5}" *ngIf="data['h_shots'] == 0 || data['h_shots'] == undefined"></div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="shots-away" [ngStyle]="{'width.%':  rate * data['a_shots']}" *ngIf="data['a_shots'] != 0 && data['a_shots'] != undefined">{{data['a_shots']}}</div>
+      <div class="shots-away" [ngStyle]="{'width.%': 2.5}" *ngIf="data['a_shots'] == 0 || data['a_shots'] == undefined"></div>
+    </div>
+  </div>
+  <h2 class="detail-item-header">Shots on target</h2>
+  <div class="row Shots">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="starget-home" [ngStyle]="{'width.%': rate * data['h_shotsOnTarget']}" *ngIf="data['h_shotsOnTarget'] != 0 && data['h_shotsOnTarget'] != undefined">{{data['h_shotsOnTarget']}}</div>
+      <div class="starget-home" [ngStyle]="{'width.%': 2.5}" *ngIf="data['h_shotsOnTarget'] == 0 || data['h_shotsOnTarget'] == undefined"></div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="starget-away" [ngStyle]="{'width.%': rate * data['a_shotsOnTarget']}" *ngIf="data['a_shotsOnTarget'] != 0 && data['a_shotsOnTarget'] != undefined">{{data['a_shotsOnTarget']}}</div>
+      <div class="starget-away" [ngStyle]="{'width.%': 2.5}" *ngIf="data['a_shotsOnTarget'] == 0 || data['a_shotsOnTarget'] == undefined"></div>
+    </div>
+  </div>
+  <h2 class="detail-item-header">Fouls</h2>
+  <div class="row Shots">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="fouls-home" [ngStyle]="{'width.%': rate * data['h_fouls']}" *ngIf="data['h_fouls'] != 0 && data['h_fouls'] != undefined">{{data['h_fouls']}}</div>
+      <div class="fouls-home" [ngStyle]="{'width.%': 2.5}" *ngIf="data['h_fouls'] == 0 || data['h_fouls'] == undefined"></div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="fouls-away" [ngStyle]="{'width.%': rate * data['a_fouls']}" *ngIf="data['a_fouls'] != 0 && data['a_fouls'] != undefined">{{data['a_fouls']}}</div>
+      <div class="fouls-away" [ngStyle]="{'width.%': 2.5}" *ngIf="data['a_fouls'] == 0 || data['a_fouls'] == undefined"></div>
+    </div>
+  </div>
+  <h2 class="detail-item-header">Yellow Cards</h2>
+  <div class="row Shots">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="yellow-home" [ngStyle]="{'width.%':  rate * data['h_yellowCards']}" *ngIf="data['h_yellowCards'] != 0 && data['h_yellowCards'] != undefined">{{data['h_yellowCards']}}</div>
+      <div class="yellow-home" [ngStyle]="{'width.%': 2.5}" *ngIf="data['h_yellowCards'] == 0 || data['h_yellowCards'] == undefined"></div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="yellow-away" [ngStyle]="{'width.%':  rate * data['a_yellowCards']}" *ngIf="data['a_yellowCards'] != 0 && data['a_yellowCards'] != undefined">{{data['a_yellowCards']}}</div>
+      <div class="yellow-away" [ngStyle]="{'width.%': 2.5}" *ngIf="data['a_yellowCards'] == 0 || data['a_yellowCards'] == undefined"></div>
+    </div>
+  </div>
+  <h2 class="detail-item-header">Red Cards</h2>
+  <div class="row Shots">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="red-home" [ngStyle]="{'width.%':  rate * data['h_RedCards']}" *ngIf="data['h_RedCards'] != 0 && data['h_RedCards'] != undefined">{{data['h_RedCards']}}</div>
+      <div class="red-home" [ngStyle]="{'width.%': 2.5}" *ngIf="data['h_RedCards'] == 0 || data['h_RedCards'] == undefined"></div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="red-away" [ngStyle]="{'width.%':  rate * data['a_RedCards']}" *ngIf="data['a_RedCards'] != 0 && data['a_RedCards'] != undefined">{{data['a_RedCards']}}</div>
+      <div class="red-away" [ngStyle]="{'width.%': 2.5}" *ngIf="data['a_RedCards'] == 0 || data['a_RedCards'] == undefined"></div>
+    </div>
+  </div>
+  <h2 class="detail-item-header">Corners</h2>
+  <div class="row Shots">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="corners-home" [ngStyle]="{'width.%':  rate * data['h_corners']}" *ngIf="data['h_corners'] != 0 && data['h_corners'] != undefined">{{data['h_corners']}}</div>
+      <div class="corners-home" [ngStyle]="{'width.%': 2.5}" *ngIf="data['h_corners'] == 0 || data['h_corners'] == undefined"></div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="corners-away" [ngStyle]="{'width.%':  rate * data['a_corners']}" *ngIf="data['a_corners'] != 0 && data['a_corners'] != undefined">{{data['a_corners']}}</div>
+      <div class="corners-away" [ngStyle]="{'width.%': 2.5}" *ngIf="data['a_corners'] == 0 || data['a_corners'] == undefined"></div>
+    </div>
+  </div>
+  <h2 class="detail-item-header">FreeKicks</h2>
+  <div class="row Shots">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="freekicks-home" [ngStyle]="{'width.%':  rate * data['h_freekicks']}" *ngIf="data['h_freekicks'] != 0 && data['h_freekicks'] != undefined">{{data['h_freekicks']}}</div>
+      <div class="freekicks-home" [ngStyle]="{'width.%': 2.5}" *ngIf="data['h_freekicks'] == 0 || data['h_freekicks'] == undefined"></div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="freekicks-away" [ngStyle]="{'width.%': rate * data['a_freekicks']}" *ngIf="data['a_freekicks'] != 0 && data['a_freekicks'] != undefined">{{data['a_freekicks']}}</div>
+      <div class="freekicks-away" [ngStyle]="{'width.%': 2.5}" *ngIf="data['a_freekicks'] == 0 || data['a_freekicks'] == undefined"></div>
+    </div>
+  </div>
+  <h2 class="detail-item-header">Offsides</h2>
+  <div class="row Shots">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="freekicks-home" [ngStyle]="{'width.%':  rate * data['h_offsides']}" *ngIf="data['h_offsides'] != 0 && data['h_offsides'] != undefined">{{data['h_offsides']}}</div>
+      <div class="freekicks-home" [ngStyle]="{'width.%': 2.5}" *ngIf="data['h_offsides'] == 0 || data['h_offsides'] == undefined"></div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 detail-item">
+      <div class="freekicks-away" [ngStyle]="{'width.%':  rate * data['a_offsides']}" *ngIf="data['a_offsides'] != 0 && data['a_offsides'] != undefined">{{data['a_offsides']}}</div>
+      <div class="freekicks-away" [ngStyle]="{'width.%': 2.5}" *ngIf="data['a_offsides'] == 0 || data['a_offsides'] == undefined"></div>
+    </div>
+  </div>
+</div>

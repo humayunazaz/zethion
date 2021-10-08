@@ -1,0 +1,19 @@
+<mat-form-field class="w-100 nationality">
+  <i [hidden]="loader" matSuffix class="icon-sb-search" aria-hidden="true" (click)='changeSelection(query); closePanel($event);'></i>
+  <i [hidden]="!loader" matSuffix class="fas fa-circle-notch fa-spin gold"></i>
+  <input type="text" #inputAutoComplete
+    matInput
+    [formControl]="control"
+    [matAutocomplete]="auto"
+    [(ngModel)]="query"
+    (keyup.enter)="onEnterPressed()"
+    [matAutocompletePosition]="'above'"
+  >
+  <!-- <mat-error> {{ 'USER.BIRTHPLACE_REQUIRED' | translate }} </mat-error> -->
+  <mat-autocomplete #auto="matAutocomplete"
+    (optionSelected)='changeSelection($event.option.value)'
+  >
+    <mat-option *ngFor="let query of queries | async"
+      [value]="query"> {{query}} </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
